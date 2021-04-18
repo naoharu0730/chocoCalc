@@ -6,13 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <title>ドピ計算</title>
 
-    <script>
-        function calc(id) {
-
-        }
-    </script>
-    <link rel="stylesheet" type="text/css" href="index.css">
-
+    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
 </head>
 
 <body>
@@ -181,15 +175,16 @@
     <fieldset>
         <legend>表示ステータス</legend>
         <p>
-            <label>POW:</label><output name="resultAtk">???</output>
-            <label>INT:</label><output name="resultAtk">???</output>
-            <label>SPD:</label><output name="resultAtk">???</output>
-            <label>VIT:</label><output name="resultAtk">???</output>
-            <label>LUK:</label><output name="resultAtk">???</output>
-            <label>ATK:</label><output name="resultAtk">???</output>
-            <label>DEF:</label><output name="resultAtk">???</output>
-            <label>MAT:</label><output name="resultAtk">???</output>
-            <label>MDF:</label><output name="resultAtk">???</output>
+            <label>POW:</label><output name="powResult">???</output>
+            <label>INT:</label><output name="intResult">???</output>
+            <label>SPD:</label><output name="spdResult">???</output>
+            <label>VIT:</label><output name="vitResult">???</output>
+            <label>LUK:</label><output name="lukResult">???</output>
+            <label>ATK:</label><output name="atkResult">???</output>
+            <label>DEF:</label><output name="defResult">???</output>
+            <label>MAT:</label><output name="matResult">???</output>
+            <label>MDF:</label><output name="mdfResult">???</output>
+            <button onclick="calc()">計算</button>
         </p>
     </fieldset>
 
@@ -356,6 +351,7 @@
 
     </fieldset>
 
+    <script type="text/javascript" src="js/calc.js"></script>
 </body>
 
 </html>
