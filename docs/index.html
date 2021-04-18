@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width">
     <title>ドピ計算</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/calc.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
 </head>
 
@@ -175,16 +177,16 @@
     <fieldset>
         <legend>表示ステータス</legend>
         <p>
-            <label>POW:</label><output name="powResult">???</output>
-            <label>INT:</label><output name="intResult">???</output>
-            <label>SPD:</label><output name="spdResult">???</output>
-            <label>VIT:</label><output name="vitResult">???</output>
-            <label>LUK:</label><output name="lukResult">???</output>
-            <label>ATK:</label><output name="atkResult">???</output>
-            <label>DEF:</label><output name="defResult">???</output>
-            <label>MAT:</label><output name="matResult">???</output>
-            <label>MDF:</label><output name="mdfResult">???</output>
-            <button onclick="calc()">計算</button>
+            <label>POW:</label><output id="powResult" name="powResult">???</output>
+            <label>INT:</label><output id="intResult" name="intResult">???</output>
+            <label>SPD:</label><output id="spdResult" name="spdResult">???</output>
+            <label>VIT:</label><output id="vitResult" name="vitResult">???</output>
+            <label>LUK:</label><output id="lukResult" name="lukResult">???</output>
+            <label>ATK:</label><output id="atkResult" name="atkResult">???</output>
+            <label>DEF:</label><output id="defResult" name="defResult">???</output>
+            <label>MAT:</label><output id="matResult" name="matResult">???</output>
+            <label>MDF:</label><output id="mdfResult" name="mdfResult">???</output>
+            <button id="button">計算</button>
         </p>
     </fieldset>
 
@@ -351,7 +353,6 @@
 
     </fieldset>
 
-    <script type="text/javascript" src="js/calc.js"></script>
 </body>
 
 </html>
