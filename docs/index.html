@@ -11,6 +11,7 @@
 
         }
     </script>
+    <link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
 
@@ -20,70 +21,171 @@
     </header>
 
     <fieldset>
-        <table>
+        <legend>ステータス入力</legend>
+        キャラレベル：<input id="level" type="number" value="1" name="level" required />
 
+        <table>
             <tr>
-                <th></th><th>ステ振り</th> <th>合計（ヌシステあり、ビタ等なしの数値を入力）</th>
+                <th></th>
+                <th>ステ振り</th>
+                <th>カード</th>
+                <th>合計（ヌシステあり、ビタ等なしの数値を入力）</th>
             </tr>
-          
             <tr>
                 <th>POW</th>
                 <td>
-                    <input id="pow-status" type="number" value="1" min="1" name="example1" required />
+                    <input id="powStatus" type="number" value="1" name="powStatus" required />
                 </td>
                 <td>
-                    <input id="pow-total" type="number" value="1" min="1" name="example1" required />
+                    <input id="powCard" type="number" value="1" name="powCard" required />
+                </td>
+                <td>
+                    <input id="powTotal" type="number" value="1" name="powTotal" required />
                 </td>
             </tr>
             <tr>
                 <th>INT</th>
                 <td>
-                    <input id="int-status" type="number" value="1" min="1" name="example1" required />
+                    <input id="intStatus" type="number" value="1" name="intStatus" required />
                 </td>
                 <td>
-                    <input id="int-total" type="number" value="1" min="1" name="example1" required />
+                    <input id="intCard" type="number" value="1" name="intCard" required />
+                </td>
+                <td>
+                    <input id="intTotal" type="number" value="1" name="intTotal" required />
                 </td>
             </tr>
             <tr>
                 <th>SPD</th>
                 <td>
-                    <input id="spd-status" type="number" value="1" min="1" name="example1" required />
+                    <input id="spdStatus" type="number" value="1" name="spdStatus" required />
                 </td>
                 <td>
-                    <input id="spd-total" type="number" value="1" min="1" name="example1" required />
+                    <input id="spdCard" type="number" value="1" name="spdCard" required />
+                </td>
+                <td>
+                    <input id="spdTotal" type="number" value="1" name="spdTotal" required />
                 </td>
             </tr>
             <tr>
                 <th>VIT</th>
                 <td>
-                    <input id="vit-status" type="number" value="1" min="1" name="example1" required />
+                    <input id="vitStatus" type="number" value="1" name="vitStatus" required />
                 </td>
                 <td>
-                    <input id="vit-total" type="number" value="1" min="1" name="example1" required />
+                    <input id="vitCard" type="number" value="1" name="vitCard" required />
+                </td>
+                <td>
+                    <input id="vitTotal" type="number" value="1" name="vitTotal" required />
                 </td>
             </tr>
             <tr>
                 <th>LUK</th>
                 <td>
-                    <input id="luk-status" type="number" value="1" min="1" name="example1" required />
+                    <input id="lukStatus" type="number" value="1" name="lukStatus" required />
                 </td>
                 <td>
-                    <input id="luk-total" type="number" value="1" min="1" name="example1" required />
+                    <input id="lukCard" type="number" value="1" name="lukCard" required />
+                </td>
+                <td>
+                    <input id="lukTotal" type="number" value="1" name="lukTotal" required />
                 </td>
             </tr>
         </table>
 
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>ATK</th>
+                <td>
+                    <input id="atkStatus" type="number" value="1" name="atkStatus" required />
+                </td>
+                <th>DEF</th>
+                <td>
+                    <input id="defStatus" type="number" value="1" name="defStatus" required />
+                </td>
+            </tr>
+            <tr>
+                <th>MAT</th>
+                <td>
+                    <input id="matStatus" type="number" value="1" name="matStatus" required />
+                </td>
+                <th>MDF</th>
+                <td>
+                    <input id="mdfStatus" type="number" value="1" name="mdfStatus" required />
+                </td>
+            </tr>
+        </table>
+
+    </fieldset>
+
+    <fieldset>
         <legend>ステータス入力</legend>
         <p>
-        </p>
-
-        <p>
-            <label>atk ：</label><output name="resultAtk">???</output>
+            <label>POW:</label><output name="resultAtk">???</output>
+            <label>INT:</label><output name="resultAtk">???</output>
+            <label>SPD:</label><output name="resultAtk">???</output>
+            <label>VIT:</label><output name="resultAtk">???</output>
+            <label>LUK:</label><output name="resultAtk">???</output>
+            <label>ATK:</label><output name="resultAtk">???</output>
+            <label>DEF:</label><output name="resultAtk">???</output>
+            <label>MAT:</label><output name="resultAtk">???</output>
+            <label>MDF:</label><output name="resultAtk">???</output>
         </p>
     </fieldset>
 
     <fieldset>
         <legend>消費アイテム</legend>
+
+        <div class="bita">
+            <label for="powBita">POWビタ</label>
+            <input type="checkbox" id="powBita">
+
+            <label for="intBita">INTビタ</label>
+            <input type="checkbox" id="intBita">
+
+            <label for="spdBita">SPDビタ</label>
+            <input type="checkbox" id="spdBita">
+
+            <label for="vitBita">VITビタ</label>
+            <input type="checkbox" id="vitBita">
+
+            <label for="lukBita">LUKビタ</label>
+            <input type="checkbox" id="lukBita">
+
+            <label for="allBita">ALLビタ</label>
+            <input type="checkbox" id="allBita">
+        </div>
+
+        <div class="can">
+            <label for="powCan">魔獣缶A</label>
+            <input type="radio" name="canAndSeal" id="powCan">
+
+            <label for="intCan">魔獣缶B</label>
+            <input type="radio" name="canAndSeal" id="intCan">
+        </div>
+
+        <div class="seal">
+            <label for="powSeal">POWシール</label>
+            <input type="radio" name="canAndSeal" id="powSeal">
+
+            <label for="intSeal">INTシール</label>
+            <input type="radio" name="canAndSeal" id="intSeal">
+
+            <label for="spdSeal">SPDシール</label>
+            <input type="radio" name="canAndSeal" id="spdSeal">
+
+            <label for="vitSeal">VITシール</label>
+            <input type="radio" name="canAndSeal" id="vitSeal">
+
+            <label for="lukSeal">LUKシール</label>
+            <input type="radio" name="canAndSeal" id="lukSeal">
+        </div>
 
     </fieldset>
 
