@@ -22,7 +22,7 @@
 
     <fieldset>
         <legend>ステータス入力</legend>
-        キャラレベル：<input id="level" type="number" value="1" name="level" required />
+        キャラレベル：<input id="level" type="number" value="99" name="level" required />
 
         <table>
             <tr>
@@ -95,19 +95,43 @@
 
         <table>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
                 <th>ATK</th>
                 <td>
                     <input id="atkStatus" type="number" value="1" name="atkStatus" required />
                 </td>
+                <td>
+                    ATK巻物 <select name="atkMakimono">
+                        <option value="0" selected>0</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="60">60</option>
+                        <option value="80">80</option>
+                        <option value="100">100</option>
+                        <option value="120">120</option>
+                        <option value="140">140</option>
+                        <option value="160">160</option>
+                        <option value="180">180</option>
+                        <option value="200">200</option>
+                    </select>
+                </td>
                 <th>DEF</th>
                 <td>
                     <input id="defStatus" type="number" value="1" name="defStatus" required />
+                </td>
+                <td>
+                    DEF巻物 <select name="defMakimono">
+                        <option value="0" selected>0</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="60">60</option>
+                        <option value="80">80</option>
+                        <option value="100">100</option>
+                        <option value="120">120</option>
+                        <option value="140">140</option>
+                        <option value="160">160</option>
+                        <option value="180">180</option>
+                        <option value="200">200</option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -115,9 +139,39 @@
                 <td>
                     <input id="matStatus" type="number" value="1" name="matStatus" required />
                 </td>
+                <td>
+                    MAT巻物 <select name="matMakimono">
+                        <option value="0" selected>0</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="60">60</option>
+                        <option value="80">80</option>
+                        <option value="100">100</option>
+                        <option value="120">120</option>
+                        <option value="140">140</option>
+                        <option value="160">160</option>
+                        <option value="180">180</option>
+                        <option value="200">200</option>
+                    </select>
+                </td>
                 <th>MDF</th>
                 <td>
                     <input id="mdfStatus" type="number" value="1" name="mdfStatus" required />
+                </td>
+                <td>
+                    MDF巻物 <select name="mdfMakimono">
+                        <option value="0" selected>0</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                        <option value="60">60</option>
+                        <option value="80">80</option>
+                        <option value="100">100</option>
+                        <option value="120">120</option>
+                        <option value="140">140</option>
+                        <option value="160">160</option>
+                        <option value="180">180</option>
+                        <option value="200">200</option>
+                    </select>
                 </td>
             </tr>
         </table>
@@ -125,7 +179,7 @@
     </fieldset>
 
     <fieldset>
-        <legend>ステータス入力</legend>
+        <legend>表示ステータス</legend>
         <p>
             <label>POW:</label><output name="resultAtk">???</output>
             <label>INT:</label><output name="resultAtk">???</output>
@@ -162,29 +216,142 @@
             <input type="checkbox" id="allBita">
         </div>
 
-        <div class="can">
-            <label for="powCan">魔獣缶A</label>
-            <input type="radio" name="canAndSeal" id="powCan">
+        <div class="canAndSeal">
+            <label for="noneCanAndSeal">缶・シールなし</label>
+            <input type="radio" name="canAndSeal" id="noneCanAndSeal" checked>
 
-            <label for="intCan">魔獣缶B</label>
-            <input type="radio" name="canAndSeal" id="intCan">
+            <div class="can">
+                <label for="powCan">魔獣缶A</label>
+                <input type="radio" name="canAndSeal" id="powCan">
+
+                <label for="intCan">魔獣缶B</label>
+                <input type="radio" name="canAndSeal" id="intCan">
+            </div>
+
+            <div class="seal">
+                <label for="powSeal">POWシール</label>
+                <input type="radio" name="canAndSeal" id="powSeal">
+
+                <label for="intSeal">INTシール</label>
+                <input type="radio" name="canAndSeal" id="intSeal">
+
+                <label for="spdSeal">SPDシール</label>
+                <input type="radio" name="canAndSeal" id="spdSeal">
+
+                <label for="vitSeal">VITシール</label>
+                <input type="radio" name="canAndSeal" id="vitSeal">
+
+                <label for="lukSeal">LUKシール</label>
+                <input type="radio" name="canAndSeal" id="lukSeal">
+            </div>
         </div>
 
-        <div class="seal">
-            <label for="powSeal">POWシール</label>
-            <input type="radio" name="canAndSeal" id="powSeal">
+        <div class="makimono">
+            POW巻物 <select name="powMakimono">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
-            <label for="intSeal">INTシール</label>
-            <input type="radio" name="canAndSeal" id="intSeal">
+            INT巻物 <select name="intMakimono">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
-            <label for="spdSeal">SPDシール</label>
-            <input type="radio" name="canAndSeal" id="spdSeal">
+            SPD巻物 <select name="spdMakimono">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
-            <label for="vitSeal">VITシール</label>
-            <input type="radio" name="canAndSeal" id="vitSeal">
+            VIT巻物 <select name="vitMakimono">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
-            <label for="lukSeal">LUKシール</label>
-            <input type="radio" name="canAndSeal" id="lukSeal">
+            LUK巻物 <select name="lukMakimono">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="liquid">
+            <label for="atkLiquid">アタークリキッド</label>
+            <input type="checkbox" id="atkLiquid">
+
+            <label for="defLiquid">マモールリキッド</label>
+            <input type="checkbox" id="defLiquid">
+
+            <label for="matLiquid">マホアタリキッド</label>
+            <input type="checkbox" id="matLiquid">
+
+            <label for="mdfLiquid">マホマモリキッド</label>
+            <input type="checkbox" id="mdfLiquid">
+        </div>
+
+    </fieldset>
+
+
+    <fieldset>
+        <legend>スキル</legend>
+
+        <div class="bloodScraper">
+            <label for="bloodScraper">ブラッドスクレイパー</label>
+            <input type="checkbox" id="bloodScraper">
+        </div>
+
+        <div class="wing">
+            <label for="noneWing">羽なし</label>
+            <input type="radio" name="wing" id="noneWing" checked>
+
+            <label for="elysion">大天使の加護</label>
+            <input type="radio" name="wing" id="elysion">
+
+            <label for="apophis">邪神の呪詛</label>
+            <input type="radio" name="wing" id="apophis">
         </div>
 
     </fieldset>
