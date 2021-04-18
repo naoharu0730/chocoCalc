@@ -18,9 +18,9 @@ https://naoharu0730.github.io/chocoCalc/
 
 - 表示ステータス計算
   - 表示ATK：純ATK + POW × 3
-  - 表示DEF：純DEF + POW × 2
-  - 表示MAT：純MAT + POW × 2
-  - 表示MDF：純MDF + POW × 15
+  - 表示DEF：純DEF + VIT × 2
+  - 表示MAT：純MAT + INT × 2
+  - 表示MDF：純MDF + INT × 15
 
 - ビタ上昇量
   - POW/INT/SPD/VIT/LUK：キャラのステ振り × 0.2
