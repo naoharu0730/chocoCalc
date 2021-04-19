@@ -35,44 +35,146 @@ $(document).ready(function () {
 
             // ビタ処理
             if (task == "powBita") {
-                let powBuff = parseInt(powStatus * 0.2); // POWバフ
+                let powBuff = parseInt(powStatus * 0.2); // POW上昇値
                 powResult += powBuff;
                 atkResult += powBuff * 3;
             }
             if (task == "intBita") {
-                let intBuff = parseInt(intStatus * 0.2); // INTバフ
+                let intBuff = parseInt(intStatus * 0.2); // INT上昇値
                 intResult += intBuff;
                 matResult += intBuff * 2;
                 mdfResult += intBuff * 15;
             }
             if (task == "spdBita") {
-                let spdBuff = parseInt(spdStatus * 0.2); // SPDバフ
+                let spdBuff = parseInt(spdStatus * 0.2); // SPD上昇値
                 spdResult += spdBuff;
             }
             if (task == "vitBita") {
-                let vitBuff = parseInt(vitStatus * 0.2); // VITバフ
+                let vitBuff = parseInt(vitStatus * 0.2); // VIT上昇値
                 vitResult += vitBuff;
                 defResult += vitBuff * 2;
             }
             if (task == "lukBita") {
-                let lukBuff = parseInt(lukStatus * 0.2); // LUKバフ
+                let lukBuff = parseInt(lukStatus * 0.2); // LUK上昇値
                 lukResult += lukBuff;
             }
             if (task == "allBita") {
-                let powBuff = parseInt(powStatus * 0.1); // POWバフ
+                let powBuff = parseInt(powStatus * 0.1); // POW上昇値
                 powResult += powBuff;
                 atkResult += powBuff * 3;
-                let intBuff = parseInt(intStatus * 0.1); // INTバフ
+                let intBuff = parseInt(intStatus * 0.1); // INT上昇値
                 intResult += intBuff;
                 matResult += intBuff * 2;
                 mdfResult += intBuff * 15;
-                let spdBuff = parseInt(spdStatus * 0.1); // SPDバフ
+                let spdBuff = parseInt(spdStatus * 0.1); // SPD上昇値
                 spdResult += spdBuff;
-                let vitBuff = parseInt(vitStatus * 0.1); // VITバフ
+                let vitBuff = parseInt(vitStatus * 0.1); // VIT上昇値
                 vitResult += vitBuff;
                 defResult += vitBuff * 2;
-                let lukBuff = parseInt(lukStatus * 0.1); // LUKバフ
+                let lukBuff = parseInt(lukStatus * 0.1); // LUK上昇値
                 lukResult += lukBuff;
+            }
+
+            // 魔獣缶処理
+            if (task == "powCan") {
+                let powBuff = 10; // POW上昇値
+                powResult += powBuff;
+                atkResult += powBuff * 3;
+                let intBuff = -10; // INT上昇値
+                intResult += intBuff;
+                matResult += intBuff * 2;
+                mdfResult += intBuff * 15;
+            }
+            if (task == "intCan") {
+                let intBuff = 10; // INT上昇値
+                intResult += intBuff;
+                matResult += intBuff * 2;
+                mdfResult += intBuff * 15;
+                let vitBuff = -10; // VIT上昇値
+                vitResult += vitBuff;
+                defResult += vitBuff * 2;
+            }
+
+            // シール処理
+            if (task == "powSeal") {
+                let powBuff = 15; // POW上昇値
+                powResult += powBuff;
+                atkResult += powBuff * 3;
+                let intBuff = -15; // INT上昇値
+                intResult += intBuff;
+                matResult += intBuff * 2;
+                mdfResult += intBuff * 15;
+            }
+            if (task == "intSeal") {
+                let powBuff = -15; // POW上昇値
+                powResult += powBuff;
+                atkResult += powBuff * 3;
+                let intBuff = 15; // INT上昇値
+                intResult += intBuff;
+                matResult += intBuff * 2;
+                mdfResult += intBuff * 15;
+            }
+            if (task == "spdSeal") {
+                let spdBuff = 15; // SPD上昇値
+                spdResult += spdBuff;
+                let lukBuff = -15; // LUK上昇値
+                lukResult += lukBuff;
+            }   
+            if (task == "vitSeal") {
+                let spdBuff = -15; // SPD上昇値
+                spdResult += spdBuff;
+                let vitBuff = 15; // VIT上昇値
+                vitResult += vitBuff;
+                defResult += vitBuff * 2;
+            }   
+            if (task == "lukSeal") {
+                let vitBuff = -15; // VIT上昇値
+                vitResult += vitBuff;
+                defResult += vitBuff * 2;
+                let lukBuff = 15; // LUK上昇値
+                lukResult += lukBuff;
+            }
+
+            // 巻物処理
+            if (task == "powMakimono") {
+                let powBuff = Number($(".process div").eq(i).children().val()); // POW上昇値
+                powResult += powBuff;
+                atkResult += powBuff * 3;
+            }
+            if (task == "intMakimono") {
+                let intBuff = Number($(".process div").eq(i).children().val()); // INT上昇値
+                intResult += intBuff;
+                matResult += intBuff * 2;
+                mdfResult += intBuff * 15;
+            }
+            if (task == "spdMakimono") {
+                let spdBuff = Number($(".process div").eq(i).children().val()); // SPD上昇値
+                spdResult += spdBuff;
+            }
+            if (task == "vitMakimono") {
+                let vitBuff = Number($(".process div").eq(i).children().val()); // VIT上昇値
+                vitResult += vitBuff;
+                defResult += vitBuff * 2;
+            }
+            if (task == "lukMakimono") {
+                let lukBuff = Number($(".process div").eq(i).children().val()); // LUK上昇値
+                lukResult += lukBuff;
+            }
+            if (task == "atkMakimono") {
+                let atkBuff = Number($(".process div").eq(i).children().val()); // ATK上昇値
+                atkResult += atkBuff;
+            }
+            if (task == "defMakimono") {
+                let atkBuff = Number($(".process div").eq(i).children().val()); // DEF上昇値
+                defResult += atkBuff;
+            }
+            if (task == "matMakimono") {
+                let atkBuff = Number($(".process div").eq(i).children().val()); // MAT上昇値
+                matResult += atkBuff;
+            }
+            if (task == "mdfMakimono") {
+                let atkBuff = Number($(".process div").eq(i).children().val()); // MDF上昇値
+                mdfResult += atkBuff;
             }
 
             // リキッド処理
@@ -129,6 +231,186 @@ $(document).ready(function () {
     });
     $('#appendAllBita').on('click', function () {
         $('.process').append('<div name=allBita>ALLビタ <button class="delete">削除</button> </div>');
+    });
+
+    // 魔獣缶処理の追加
+    $('#appendPowCan').on('click', function () {
+        $('.process').append('<div name=powCan>魔獣缶A <button class="delete">削除</button> </div>');
+    });
+    $('#appendIntCan').on('click', function () {
+        $('.process').append('<div name=intCan>魔獣缶B <button class="delete">削除</button> </div>');
+    });
+
+    // シール処理の追加
+    $('#appendPowSeal').on('click', function () {
+        $('.process').append('<div name=powSeal>POWシール <button class="delete">削除</button> </div>');
+    });
+    $('#appendIntSeal').on('click', function () {
+        $('.process').append('<div name=intSeal>INTシール <button class="delete">削除</button> </div>');
+    }); 
+    $('#appendSpdSeal').on('click', function () {
+        $('.process').append('<div name=spdSeal>SPDシール <button class="delete">削除</button> </div>');
+    }); 
+    $('#appendVitSeal').on('click', function () {
+        $('.process').append('<div name=vitSeal>VITシール <button class="delete">削除</button> </div>');
+    }); 
+    $('#appendLukSeal').on('click', function () {
+        $('.process').append('<div name=lukSeal>LUKシール <button class="delete">削除</button> </div>');
+    });    
+
+    // 巻物処理の追加
+    $('#appendPowMakimono').on('click', function () {
+        $('.process').append(`<div name=powMakimono>POW巻物
+        <select name="selectPowMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendIntMakimono').on('click', function () {
+        $('.process').append(`<div name=intMakimono>INT巻物
+        <select name="selectIntMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendSpdMakimono').on('click', function () {
+        $('.process').append(`<div name=spdMakimono>SPD巻物
+        <select name="selectSpdMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendVitMakimono').on('click', function () {
+        $('.process').append(`<div name=vitMakimono>VIT巻物
+        <select name="selectVitMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendLukMakimono').on('click', function () {
+        $('.process').append(`<div name=lukMakimono>LUK巻物
+        <select name="selectLukMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendAtkMakimono').on('click', function () {
+        $('.process').append(`<div name=atkMakimono>ATK巻物
+        <select name="selectAtkMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendDefMakimono').on('click', function () {
+        $('.process').append(`<div name=defMakimono>DEF巻物
+        <select name="selectDefMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendMatMakimono').on('click', function () {
+        $('.process').append(`<div name=matMakimono>MAT巻物
+        <select name="selectMatMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
+    });
+    $('#appendMdfMakimono').on('click', function () {
+        $('.process').append(`<div name=mdfMakimono>MDF巻物
+        <select name="selectMdfMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete">削除</button> </div>`)
     });
 
     // リキッド処理の追加
