@@ -28,6 +28,12 @@ $(document).ready(function () {
         let matResult = matStatus; // MAT結果
         let mdfResult = mdfStatus; // MDF結果
 
+        // リキッドの上昇値
+        let atkLiquidBuff = 0; // リキッドのATK上昇値
+        let defLiquidBuff = 0; // リキッドのDEF上昇値
+        let matLiquidBuff = 0; // リキッドのMAT上昇値
+        let mdfLiquidBuff = 0; // リキッドのMDF上昇値
+
         // エル羽の上昇値
         let atkBuffEl = 0; // エル羽のATK上昇値
         let defBuffEl = 0; // エル羽のDEF上昇値
@@ -186,24 +192,24 @@ $(document).ready(function () {
             // リキッド処理
             if (task == "powLiquid") {
                 let atkMagni = (level + powResult - 100) / 100; // ATK上昇倍率
-                let atkBuff = parseInt( (atkResult - powResult - atkBuffEl) * Math.max(0.1, atkMagni) ); // ATK上昇量
-                atkResult += atkBuff;
+                atkLiquidBuff = parseInt( (atkResult - powResult - atkBuffEl) * Math.max(0.1, atkMagni) ); // ATK上昇量
+                atkResult += atkLiquidBuff;
             }
             if (task == "defLiquid") {
                 let defMagni = (level + vitResult - 100) / 100; // DEF上昇倍率
-                let defBuff = parseInt( (defResult - defBuffEl) * Math.max(0.1, defMagni) ); // DEF上昇量
-                defResult += defBuff;
+                defLiquidBuff = parseInt( (defResult - defBuffEl) * Math.max(0.1, defMagni) ); // DEF上昇量
+                defResult += defLiquidBuff;
             }
             if (task == "matLiquid") {
                 let matMagni = (level + intResult - 100) / 100; // MAT上昇倍率
-                let matBuff = parseInt( (matResult - matBuffEl) * Math.max(0.1, matMagni) ); // MAT上昇量
-                matResult += matBuff;
+                matLiquidBuff = parseInt( (matResult - matBuffEl) * Math.max(0.1, matMagni) ); // MAT上昇量
+                matResult += matLiquidBuff;
             }
             if (task == "mdfLiquid") {
                 let maxIntOrVit = Math.max(intResult, vitResult) // INT or VIT の大きい値を取る
                 let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
-                let mdfBuff = parseInt( (mdfResult - (intResult * 15) + (maxIntOrVit * 2) - mdfBuffEl) * Math.max(0.1, mdfMagni) ); // MDF上昇量
-                mdfResult += mdfBuff;
+                mdfLiquidBuff = parseInt( (mdfResult - (intResult * 15) + (maxIntOrVit * 2) - mdfBuffEl) * Math.max(0.1, mdfMagni) ); // MDF上昇量
+                mdfResult += mdfLiquidBuff;
             }
 
             // スキル処理
@@ -250,10 +256,10 @@ $(document).ready(function () {
         $('#spdResult').text(spdResult);
         $('#vitResult').text(vitResult);
         $('#lukResult').text(lukResult);
-        $('#atkResult').text(atkResult);
-        $('#defResult').text(defResult);
-        $('#matResult').text(matResult);
-        $('#mdfResult').text(mdfResult);
+        $('#atkResult').text(atkResult + "(上昇値：" + atkLiquidBuff + ")");
+        $('#defResult').text(defResult + "(上昇値：" + defLiquidBuff + ")");
+        $('#matResult').text(matResult + "(上昇値：" + matLiquidBuff + ")");
+        $('#mdfResult').text(mdfResult + "(上昇値：" + mdfLiquidBuff + ")");
     });
 
     // ビタ処理の追加
