@@ -26,7 +26,7 @@ https://naoharu0730.github.io/chocoCalc/
   - ATK：(表示ATK - POW) × ((キャラレベル + POW - 100) / 100)
   - DEF：(表示DEF) × ((キャラレベル + VIT - 100) / 100)
   - MAT：(表示MAT) × ((キャラレベル + INT - 100) / 100)
-  - MDF：(表示MDF - INT×15 + INTorVIT×2) × (INTorVIT/200 + 1) ※INTとVITのうち、大きい方を参照
+  - MDF：(表示MDF - INT×15 + INTorVIT×2) × ((キャラレベル + INTorVIT - 100) / 100) ※INTとVITのうち、大きい方を参照
   - 上昇倍率の最低保障は0.1倍
 
 - 魔獣缶

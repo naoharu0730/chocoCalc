@@ -77,7 +77,7 @@ $(document).ready(function () {
             }
             if (task == "mdfLiquid") {
                 let maxIntOrVit = Math.max(intResult, vitResult) // INT or VIT の大きい値を取る
-                let mdfMagni = (maxIntOrVit / 200) + 1; // MDF上昇倍率
+                let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
                 let mdfBuff = parseInt( (mdfResult - (intResult * 15) + (maxIntOrVit * 2) ) * Math.max(0.1, mdfMagni) ); // MDF上昇量
                 mdfResult += mdfBuff;
             }
