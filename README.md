@@ -46,7 +46,7 @@ https://naoharu0730.github.io/chocoCalc/
 
 - 大天使の加護
   - POW/INT/SPD/VIT/LUK：合計ステ × 0.2 ※上昇量は少数切り捨て
-  - ATK：(表示ATK + 表示POW + エル羽上昇POW×2) × 0.2
+  - ATK：(表示ATK - 表示POW + エル羽上昇POW×2) × 0.2
   - DEF：(表示DEF + エル羽VIT×2) × 0.2
   - MAT：(表示MAT + エル羽上INT×2) × 0.2
   - MDF：(表示MDF - 表示INT×15 + 表示INTorVIT×2 + エル羽上昇INTorVIT×2) × 0.2 ※INTとVITのうち、大きい方を参照

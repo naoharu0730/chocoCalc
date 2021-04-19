@@ -28,6 +28,12 @@ $(document).ready(function () {
         let matResult = matStatus; // MAT結果
         let mdfResult = mdfStatus; // MDF結果
 
+        // エル羽の上昇値
+        let atkBuffEl = 0; // エル羽のATK上昇値
+        let defBuffEl = 0; // エル羽のDEF上昇値
+        let matBuffEl = 0; // エル羽のMAT上昇値
+        let mdfBuffEl = 0; // エル羽のMDF上昇値
+
         // 処理
         $(".process div").each(function (i) {
             $(".process div").eq(i).css('color', 'red');
@@ -180,24 +186,61 @@ $(document).ready(function () {
             // リキッド処理
             if (task == "powLiquid") {
                 let atkMagni = (level + powResult - 100) / 100; // ATK上昇倍率
-                let atkBuff = parseInt( (atkResult - powResult) * Math.max(0.1, atkMagni) ); // ATK上昇量
+                let atkBuff = parseInt( (atkResult - powResult - atkBuffEl) * Math.max(0.1, atkMagni) ); // ATK上昇量
                 atkResult += atkBuff;
             }
             if (task == "defLiquid") {
                 let defMagni = (level + vitResult - 100) / 100; // DEF上昇倍率
-                let defBuff = parseInt( defResult * Math.max(0.1, defMagni) ); // DEF上昇量
+                let defBuff = parseInt( (defResult - defBuffEl) * Math.max(0.1, defMagni) ); // DEF上昇量
                 defResult += defBuff;
             }
             if (task == "matLiquid") {
                 let matMagni = (level + intResult - 100) / 100; // MAT上昇倍率
-                let matBuff = parseInt( matResult * Math.max(0.1, matMagni) ); // MAT上昇量
+                let matBuff = parseInt( (matResult - matBuffEl) * Math.max(0.1, matMagni) ); // MAT上昇量
                 matResult += matBuff;
             }
             if (task == "mdfLiquid") {
                 let maxIntOrVit = Math.max(intResult, vitResult) // INT or VIT の大きい値を取る
                 let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
-                let mdfBuff = parseInt( (mdfResult - (intResult * 15) + (maxIntOrVit * 2) ) * Math.max(0.1, mdfMagni) ); // MDF上昇量
+                let mdfBuff = parseInt( (mdfResult - (intResult * 15) + (maxIntOrVit * 2) - mdfBuffEl) * Math.max(0.1, mdfMagni) ); // MDF上昇量
                 mdfResult += mdfBuff;
+            }
+
+            // スキル処理
+            if (task == "bloodScraper") {
+                let powBuff = 9; // POW上昇値
+                powResult += powBuff;
+                atkResult += powBuff * 3;
+            }
+            if (task == "elysion") {
+                let powBuff = parseInt(powResult * 0.2); // POW上昇値
+                powResult += powBuff;
+                // atkResult += powBuff * 3;
+                let intBuff = parseInt(intResult * 0.2); // INT上昇値
+                intResult += intBuff;
+                // matResult += intBuff * 2;
+                // mdfResult += intBuff * 15;
+                let spdBuff = parseInt(spdResult * 0.2); // SPD上昇値
+                spdResult += spdBuff;
+                let vitBuff = parseInt(vitResult * 0.2); // VIT上昇値
+                vitResult += vitBuff;
+                // defResult += vitBuff * 2;
+                let lukBuff = parseInt(lukResult * 0.2); // LUK上昇値
+                lukResult += lukBuff;
+
+                atkBuffEl = parseInt( (atkResult/*atkStatus*/ + (powResult * 2) ) * 0.2 ); // エル羽のATK上昇量
+                atkResult += atkBuffEl;
+                defBuffEl = parseInt( (defResult/*defStatus*/ + (vitResult * 2) ) * 0.2 ); // エル羽のDEF上昇量
+                defResult += defBuffEl;
+                matBuffEl = parseInt( (matResult/*matStatus*/ + (intResult * 2) ) * 0.2 ); // エル羽のMAT上昇量
+                matResult += matBuffEl;
+                let maxIntOrVit = Math.max(intResult, vitResult); // INT or VIT の大きい値を取る
+                mdfBuffEl = parseInt( (mdfResult/*mdfStatus*/ + (maxIntOrVit * 2) ) * 0.2 ); // エル羽のMDF上昇量
+                mdfResult += mdfBuffEl;
+            }
+            if (task == "apophis") {
+                let lukBuff = parseInt(lukResult * 0.3); // LUK上昇値
+                lukResult += lukBuff;
             }
         });
 
@@ -425,6 +468,17 @@ $(document).ready(function () {
     });
     $('#appendMdfLiquid').on('click', function () {
         $('.process').append('<div name=mdfLiquid>マホマモリキッド  <button class="delete">削除</button> </div>');
+    });
+
+    // スキル処理の追加
+    $('#appendBloodScraper').on('click', function () {
+        $('.process').append('<div name=bloodScraper>ブラッドスクレイパー  <button class="delete">削除</button> </div>');
+    });
+    $('#appendElysion').on('click', function () {
+        $('.process').append('<div name=elysion>大天使の加護  <button class="delete">削除</button> </div>');
+    });
+    $('#appendApophis').on('click', function () {
+        $('.process').append('<div name=apophis>邪神の呪詛  <button class="delete">削除</button> </div>');
     });
 
     // 処理項目を削除する
