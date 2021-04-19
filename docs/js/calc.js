@@ -1,21 +1,21 @@
 $(document).ready(function () {
     $('#button').on('click', function () {
         // 入力の取得
-        let level = Number($('#level').val());
-        let powStatus = Number($('#powStatus').val());
-        let intStatus = Number($('#intStatus').val());
-        let spdStatus = Number($('#spdStatus').val());
-        let vitStatus = Number($('#vitStatus').val());
-        let lukStatus = Number($('#lukStatus').val());
-        let atkStatus = Number($('#atkStatus').val());
-        let defStatus = Number($('#defStatus').val());
-        let matStatus = Number($('#matStatus').val());
-        let mdfStatus = Number($('#mdfStatus').val());
-        let powTotal = Number($('#powTotal').val());
-        let intTotal = Number($('#intTotal').val());
-        let spdTotal = Number($('#spdTotal').val());
-        let vitTotal = Number($('#vitTotal').val());
-        let lukTotal = Number($('#lukTotal').val());
+        const level = Number($('#level').val());
+        const powStatus = Number($('#powStatus').val());
+        const intStatus = Number($('#intStatus').val());
+        const spdStatus = Number($('#spdStatus').val());
+        const vitStatus = Number($('#vitStatus').val());
+        const lukStatus = Number($('#lukStatus').val());
+        const atkStatus = Number($('#atkStatus').val());
+        const defStatus = Number($('#defStatus').val());
+        const matStatus = Number($('#matStatus').val());
+        const mdfStatus = Number($('#mdfStatus').val());
+        const powTotal = Number($('#powTotal').val());
+        const intTotal = Number($('#intTotal').val());
+        const spdTotal = Number($('#spdTotal').val());
+        const vitTotal = Number($('#vitTotal').val());
+        const lukTotal = Number($('#lukTotal').val());
 
         // 結果の初期化
         let powResult = powTotal; // POW結果
@@ -56,6 +56,22 @@ $(document).ready(function () {
             }
             if (task == "lukBita") {
                 let lukBuff = parseInt(lukStatus * 0.2); // LUKバフ
+                lukResult += lukBuff;
+            }
+            if (task == "allBita") {
+                let powBuff = parseInt(powStatus * 0.1); // POWバフ
+                powResult += powBuff;
+                atkResult += powBuff * 3;
+                let intBuff = parseInt(intStatus * 0.1); // INTバフ
+                intResult += intBuff;
+                matResult += intBuff * 2;
+                mdfResult += intBuff * 15;
+                let spdBuff = parseInt(spdStatus * 0.1); // SPDバフ
+                spdResult += spdBuff;
+                let vitBuff = parseInt(vitStatus * 0.1); // VITバフ
+                vitResult += vitBuff;
+                defResult += vitBuff * 2;
+                let lukBuff = parseInt(lukStatus * 0.1); // LUKバフ
                 lukResult += lukBuff;
             }
 
