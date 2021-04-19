@@ -175,6 +175,12 @@
     </fieldset>
 
     <fieldset>
+        <legend>処理</legend>
+        <div class="process">
+            <!-- ここに p タグが追加されていく -->
+        </div>
+    </fieldset>
+    <fieldset>
         <legend>表示ステータス</legend>
         <p>
             <label>POW:</label><output id="powResult" name="powResult">???</output>
@@ -194,7 +200,14 @@
         <legend>消費アイテム</legend>
 
         <div class="bita">
-            <label for="powBita">POWビタ</label>
+            <button id="appendPowBita">POWビタ</button>
+            <button id="appendIntBita">INTビタ</button>
+            <button id="appendSpdBita">SPDビタ</button>
+            <button id="appendVitBita">VITビタ</button>
+            <button id="appendLukBita">LUKビタ</button>
+            <button id="appendAllBita">ALLビタ</button>
+
+            <!-- <label for="powBita">POWビタ</label>
             <input type="checkbox" id="powBita">
 
             <label for="intBita">INTビタ</label>
@@ -210,10 +223,10 @@
             <input type="checkbox" id="lukBita">
 
             <label for="allBita">ALLビタ</label>
-            <input type="checkbox" id="allBita">
+            <input type="checkbox" id="allBita"> -->
         </div>
 
-        <div class="canAndSeal">
+        <!-- <div class="canAndSeal">
             <label for="noneCanAndSeal">缶・シールなし</label>
             <input type="radio" name="canAndSeal" id="noneCanAndSeal" checked>
 
@@ -241,9 +254,9 @@
                 <label for="lukSeal">LUKシール</label>
                 <input type="radio" name="canAndSeal" id="lukSeal">
             </div>
-        </div>
+        </div> -->
 
-        <div class="makimono">
+        <!-- <div class="makimono">
             POW巻物 <select name="powMakimono">
                 <option value="0" selected>0</option>
                 <option value="1">1</option>
@@ -313,10 +326,15 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-        </div>
+        </div> -->
 
         <div class="liquid">
-            <label for="atkLiquid">アタークリキッド</label>
+            <button id="appendPowLiquid">アタークリキッド</button>
+            <button id="appendDefLiquid">マモールリキッド</button>
+            <button id="appendMatLiquid">マホアタリキッド</button>
+            <button id="appendMdfLiquid">マホマモリキッド</button>
+            
+            <!-- <label for="atkLiquid">アタークリキッド</label>
             <input type="checkbox" id="atkLiquid">
 
             <label for="defLiquid">マモールリキッド</label>
@@ -326,7 +344,7 @@
             <input type="checkbox" id="matLiquid">
 
             <label for="mdfLiquid">マホマモリキッド</label>
-            <input type="checkbox" id="mdfLiquid">
+            <input type="checkbox" id="mdfLiquid"> -->
         </div>
 
     </fieldset>
@@ -335,7 +353,7 @@
     <fieldset>
         <legend>スキル</legend>
 
-        <div class="bloodScraper">
+        <!-- <div class="bloodScraper">
             <label for="bloodScraper">ブラッドスクレイパー</label>
             <input type="checkbox" id="bloodScraper">
         </div>
@@ -349,7 +367,7 @@
 
             <label for="apophis">邪神の呪詛</label>
             <input type="radio" name="wing" id="apophis">
-        </div>
+        </div> -->
 
     </fieldset>
 
