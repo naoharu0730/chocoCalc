@@ -24,9 +24,9 @@ $(document).ready(function () {
         let vitResult = vitTotal; // POW結果
         let lukResult = lukTotal; // POW結果
         let atkResult = atkStatus; // ATK結果
-        let defResult = defStatus; // ATK結果
-        let matResult = matStatus; // ATK結果
-        let mdfResult = mdfStatus; // ATK結果
+        let defResult = defStatus; // DEF結果
+        let matResult = matStatus; // MAT結果
+        let mdfResult = mdfStatus; // MDF結果
 
         // 処理
         $(".process div").each(function (i) {
