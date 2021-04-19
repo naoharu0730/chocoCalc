@@ -1,0 +1,44 @@
+table{
+    /* border-collapse: collapse;
+    border-spacing: 1; */
+    border:solid 1px gray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* th, td{
+    border:solid 1px;
+} */
+
+.pow-input{
+    color: deeppink;
+}
+.int-input{
+    color: limegreen;
+}
+.spd-input{
+    color: deepskyblue;
+}
+.vit-input{
+    color: orange;
+}
+.luk-input{
+    color: gold;
+}
+
+.atk-input{
+    color: red;
+}
+.def-input{
+    color: blue;
+}
+.mat-input{
+    color: purple;
+}
+.mdf-input{
+    color: royalblue;
+}
+
+input{
+    width: 6em;
+}
