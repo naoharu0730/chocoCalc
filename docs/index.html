@@ -20,7 +20,7 @@
         <legend>ステータス入力</legend>
         キャラレベル：<input id="level" type="number" value="99" name="level" required />
 
-        <table id="statusTable">
+        <table class="status-table">
             <tr>
                 <th></th>
                 <th>ステ振り</th>
@@ -89,7 +89,7 @@
             </tr>
         </table>
 
-        <table>
+        <table class="status-table">
             <tr>
                 <th class="atk-item">ATK</th>
                 <td>
@@ -128,18 +128,37 @@
     </fieldset>
     <fieldset>
         <legend>表示ステータス</legend>
-        <p>
-            <label class="pow-item">POW:</label><output id="powResult" name="powResult">???</output>
-            <label class="int-item">INT:</label><output id="intResult" name="intResult">???</output>
-            <label class="spd-item">SPD:</label><output id="spdResult" name="spdResult">???</output>
-            <label class="vit-item">VIT:</label><output id="vitResult" name="vitResult">???</output>
-            <label class="luk-item">LUK:</label><output id="lukResult" name="lukResult">???</output>
-            <label class="atk-item">ATK:</label><output id="atkResult" name="atkResult">???</output>
-            <label class="def-item">DEF:</label><output id="defResult" name="defResult">???</output>
-            <label class="mat-item">MAT:</label><output id="matResult" name="matResult">???</output>
-            <label class="mdf-item">MDF:</label><output id="mdfResult" name="mdfResult">???</output>
-            <button id="button">計算</button>
-        </p>
+            <table class="result-table">
+                <tr>
+                    <th><label class="pow-item">POW:</label></th>
+                    <td><output id="powResult" name="powResult">???</output></td>
+                    <th><label class="atk-item">ATK:</label></th>
+                    <td><output id="atkResult" name="atkResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="int-item">INT:</label></th>
+                    <td><output id="intResult" name="intResult">???</output></td>
+                    <th><label class="def-item">DEF:</label></th>
+                    <td><output id="defResult" name="defResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="spd-item">SPD:</label></th>
+                    <td><output id="spdResult" name="spdResult">???</output></td>
+                    <th><label class="mat-item">MAT:</label></th>
+                    <td><output id="matResult" name="matResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="vit-item">VIT:</label></th>
+                    <td><output id="vitResult" name="vitResult">???</output></td>
+                    <th><label class="mdf-item">MDF:</label></th>
+                    <td><output id="mdfResult" name="mdfResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="luk-item">LUK:</label></th>
+                    <td><output id="lukResult" name="lukResult">???</output></td>
+                </tr>
+            </table>
+        <button id="button">計算</button>
     </fieldset>
 
     <fieldset>

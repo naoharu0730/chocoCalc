@@ -547,7 +547,7 @@ function csvImport() {
 function csvExport() {
     // table からデータを取得
     let d = [];
-    $('table tr').each(function (i) {
+    $('.status-table tr').each(function (i) {
         let dd = [];
             $(this).find('th').each(function () { 
                 dd.push($(this).text()); // ラベル
