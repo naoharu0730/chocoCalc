@@ -1,5 +1,13 @@
 $(document).ready(function () {
-    $('#button').on('click', function () {
+    $('input[type="number"]').change(function() {
+        calculation() // 入力値の更新タイミングで更新
+    });
+
+    $('.process').on('change', 'select', function() {
+        calculation() // 入力値の更新タイミングで更新
+    });
+
+    function calculation(){
         // 入力の取得
         const level = Number($('#level').val());
         const powStatus = Number($('#powStatus').val());
@@ -260,51 +268,64 @@ $(document).ready(function () {
         $('#defResult').text(defResult + "(上昇値：" + defLiquidBuff + ")");
         $('#matResult').text(matResult + "(上昇値：" + matLiquidBuff + ")");
         $('#mdfResult').text(mdfResult + "(上昇値：" + mdfLiquidBuff + ")");
-    });
+    }
 
     // ビタ処理の追加
     $('#appendPowBita').on('click', function () {
         $('.process').append('<div name=powBita>POWビタ <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntBita').on('click', function () {
         $('.process').append('<div name=intBita>INTビタ <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdBita').on('click', function () {
         $('.process').append('<div name=spdBita>SPDビタ <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitBita').on('click', function () {
         $('.process').append('<div name=vitBita>VITビタ <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukBita').on('click', function () {
         $('.process').append('<div name=lukBita>LUKビタ <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendAllBita').on('click', function () {
         $('.process').append('<div name=allBita>ALLビタ <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
 
     // 魔獣缶処理の追加
     $('#appendPowCan').on('click', function () {
         $('.process').append('<div name=powCan>魔獣缶A <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntCan').on('click', function () {
         $('.process').append('<div name=intCan>魔獣缶B <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
 
     // シール処理の追加
     $('#appendPowSeal').on('click', function () {
         $('.process').append('<div name=powSeal>POWシール <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntSeal').on('click', function () {
         $('.process').append('<div name=intSeal>INTシール <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     }); 
     $('#appendSpdSeal').on('click', function () {
         $('.process').append('<div name=spdSeal>SPDシール <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     }); 
     $('#appendVitSeal').on('click', function () {
         $('.process').append('<div name=vitSeal>VITシール <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     }); 
     $('#appendLukSeal').on('click', function () {
         $('.process').append('<div name=lukSeal>LUKシール <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });    
 
     // 巻物処理の追加
@@ -324,6 +345,7 @@ $(document).ready(function () {
         <option value="10">10</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntMakimono').on('click', function () {
         $('.process').append(`<div name=intMakimono>INT巻物
@@ -341,6 +363,7 @@ $(document).ready(function () {
         <option value="10">10</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdMakimono').on('click', function () {
         $('.process').append(`<div name=spdMakimono>SPD巻物
@@ -358,6 +381,7 @@ $(document).ready(function () {
         <option value="10">10</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitMakimono').on('click', function () {
         $('.process').append(`<div name=vitMakimono>VIT巻物
@@ -374,7 +398,8 @@ $(document).ready(function () {
         <option value="9">9</option>
         <option value="10">10</option>
         </select>
-        <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新<button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukMakimono').on('click', function () {
         $('.process').append(`<div name=lukMakimono>LUK巻物
@@ -392,6 +417,7 @@ $(document).ready(function () {
         <option value="10">10</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendAtkMakimono').on('click', function () {
         $('.process').append(`<div name=atkMakimono>ATK巻物
@@ -409,6 +435,7 @@ $(document).ready(function () {
         <option value="200">200</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendDefMakimono').on('click', function () {
         $('.process').append(`<div name=defMakimono>DEF巻物
@@ -426,6 +453,7 @@ $(document).ready(function () {
         <option value="200">200</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendMatMakimono').on('click', function () {
         $('.process').append(`<div name=matMakimono>MAT巻物
@@ -443,6 +471,7 @@ $(document).ready(function () {
         <option value="200">200</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendMdfMakimono').on('click', function () {
         $('.process').append(`<div name=mdfMakimono>MDF巻物
@@ -460,36 +489,45 @@ $(document).ready(function () {
         <option value="200">200</option>
         </select>
         <button class="delete">削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
     });
 
     // リキッド処理の追加
     $('#appendPowLiquid').on('click', function () {
         $('.process').append('<div name=powLiquid>アタークリキッド  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendDefLiquid').on('click', function () {
         $('.process').append('<div name=defLiquid>マモールリキッド  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendMatLiquid').on('click', function () {
         $('.process').append('<div name=matLiquid>マホアタリキッド  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendMdfLiquid').on('click', function () {
         $('.process').append('<div name=mdfLiquid>マホマモリキッド  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
 
     // スキル処理の追加
     $('#appendBloodScraper').on('click', function () {
         $('.process').append('<div name=bloodScraper>ブラッドスクレイパー  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendElysion').on('click', function () {
         $('.process').append('<div name=elysion>大天使の加護  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
     $('#appendApophis').on('click', function () {
         $('.process').append('<div name=apophis>邪神の呪詛  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
     });
 
     // 処理項目を削除する
-    $(document).on('click', '.delete', function () {
+    $('.process').on('click', '.delete', function () {
         $(this).parent()[0].remove();
+        calculation() // 処理の追加タイミングで更新
     });
 
     // CSVインスポート
