@@ -8,7 +8,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/calc.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
 <body>
@@ -20,68 +20,68 @@
         <legend>ステータス入力</legend>
         キャラレベル：<input id="level" type="number" value="99" name="level" required />
 
-        <table>
+        <table class="status-table">
             <tr>
                 <th></th>
                 <th>ステ振り</th>
                 <th>カード</th>
-                <th>合計（ヌシステあり、ビタ等なしの数値を入力）</th>
+                <th>合計</th>
             </tr>
             <tr>
-                <th>POW</th>
+                <th class="pow-item">POW</th>
                 <td>
                     <input id="powStatus" type="number" value="1" name="powStatus" required />
                 </td>
                 <td>
-                    <input id="powCard" type="number" value="1" name="powCard" required />
+                    <input id="powCard" type="number" value="0" name="powCard" required />
                 </td>
                 <td>
                     <input id="powTotal" type="number" value="1" name="powTotal" required />
                 </td>
             </tr>
             <tr>
-                <th>INT</th>
+                <th class="int-item">INT</th>
                 <td>
                     <input id="intStatus" type="number" value="1" name="intStatus" required />
                 </td>
                 <td>
-                    <input id="intCard" type="number" value="1" name="intCard" required />
+                    <input id="intCard" type="number" value="0" name="intCard" required />
                 </td>
                 <td>
                     <input id="intTotal" type="number" value="1" name="intTotal" required />
                 </td>
             </tr>
             <tr>
-                <th>SPD</th>
+                <th class="spd-item">SPD</th>
                 <td>
                     <input id="spdStatus" type="number" value="1" name="spdStatus" required />
                 </td>
                 <td>
-                    <input id="spdCard" type="number" value="1" name="spdCard" required />
+                    <input id="spdCard" type="number" value="0" name="spdCard" required />
                 </td>
                 <td>
                     <input id="spdTotal" type="number" value="1" name="spdTotal" required />
                 </td>
             </tr>
             <tr>
-                <th>VIT</th>
+                <th class="vit-item">VIT</th>
                 <td>
                     <input id="vitStatus" type="number" value="1" name="vitStatus" required />
                 </td>
                 <td>
-                    <input id="vitCard" type="number" value="1" name="vitCard" required />
+                    <input id="vitCard" type="number" value="0" name="vitCard" required />
                 </td>
                 <td>
                     <input id="vitTotal" type="number" value="1" name="vitTotal" required />
                 </td>
             </tr>
             <tr>
-                <th>LUK</th>
+                <th class="luk-item">LUK</th>
                 <td>
                     <input id="lukStatus" type="number" value="1" name="lukStatus" required />
                 </td>
                 <td>
-                    <input id="lukCard" type="number" value="1" name="lukCard" required />
+                    <input id="lukCard" type="number" value="0" name="lukCard" required />
                 </td>
                 <td>
                     <input id="lukTotal" type="number" value="1" name="lukTotal" required />
@@ -89,28 +89,34 @@
             </tr>
         </table>
 
-        <table>
+        <table class="status-table">
             <tr>
-                <th>ATK</th>
+                <th class="atk-item">ATK</th>
                 <td>
-                    <input id="atkStatus" type="number" value="1" name="atkStatus" required />
+                    <input id="atkTotal" type="number" value="1" name="atkTotal" required />
                 </td>
-                <th>DEF</th>
+                <th class="def-item">DEF</th>
                 <td>
-                    <input id="defStatus" type="number" value="1" name="defStatus" required />
+                    <input id="defTotal" type="number" value="1" name="defTotal" required />
                 </td>
             </tr>
             <tr>
-                <th>MAT</th>
+                <th class="mat-item">MAT</th>
                 <td>
-                    <input id="matStatus" type="number" value="1" name="matStatus" required />
+                    <input id="matTotal" type="number" value="1" name="matTotal" required />
                 </td>
-                <th>MDF</th>
+                <th class="mdf-item">MDF</th>
                 <td>
-                    <input id="mdfStatus" type="number" value="1" name="mdfStatus" required />
+                    <input id="mdfTotal" type="number" value="1" name="mdfTotal" required />
                 </td>
             </tr>
         </table>
+
+        <a id="export" href="#" download="status.csv">CSVエクスポート</a>
+        <div class="fileButton">
+            CSVインポート
+            <input type="file" id="import">
+        </div>
 
     </fieldset>
 
@@ -122,18 +128,37 @@
     </fieldset>
     <fieldset>
         <legend>表示ステータス</legend>
-        <p>
-            <label>POW:</label><output id="powResult" name="powResult">???</output>
-            <label>INT:</label><output id="intResult" name="intResult">???</output>
-            <label>SPD:</label><output id="spdResult" name="spdResult">???</output>
-            <label>VIT:</label><output id="vitResult" name="vitResult">???</output>
-            <label>LUK:</label><output id="lukResult" name="lukResult">???</output>
-            <label>ATK:</label><output id="atkResult" name="atkResult">???</output>
-            <label>DEF:</label><output id="defResult" name="defResult">???</output>
-            <label>MAT:</label><output id="matResult" name="matResult">???</output>
-            <label>MDF:</label><output id="mdfResult" name="mdfResult">???</output>
-            <button id="button">計算</button>
-        </p>
+            <table class="result-table">
+                <tr>
+                    <th><label class="pow-item">POW:</label></th>
+                    <td><output id="powResult" name="powResult">???</output></td>
+                    <th><label class="atk-item">ATK:</label></th>
+                    <td><output id="atkResult" name="atkResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="int-item">INT:</label></th>
+                    <td><output id="intResult" name="intResult">???</output></td>
+                    <th><label class="def-item">DEF:</label></th>
+                    <td><output id="defResult" name="defResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="spd-item">SPD:</label></th>
+                    <td><output id="spdResult" name="spdResult">???</output></td>
+                    <th><label class="mat-item">MAT:</label></th>
+                    <td><output id="matResult" name="matResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="vit-item">VIT:</label></th>
+                    <td><output id="vitResult" name="vitResult">???</output></td>
+                    <th><label class="mdf-item">MDF:</label></th>
+                    <td><output id="mdfResult" name="mdfResult">???</output></td>
+                </tr>
+                <tr>
+                    <th><label class="luk-item">LUK:</label></th>
+                    <td><output id="lukResult" name="lukResult">???</output></td>
+                </tr>
+            </table>
+        <button id="button">計算</button>
     </fieldset>
 
     <fieldset>
@@ -148,22 +173,18 @@
             <button id="appendAllBita">ALLビタ</button>
         </div>
 
-        <!-- <div class="canAndSeal">
-            <label for="noneCanAndSeal">缶・シールなし</label>
-            <input type="radio" name="canAndSeal" id="noneCanAndSeal" checked> -->
-
-            <div class="can">
+        <div class="can">
             <button id="appendPowCan">魔獣缶A</button>
             <button id="appendIntCan">魔獣缶B</button>
-            </div>
+        </div>
 
-            <div class="seal">
-                <button id="appendPowSeal">POWシール</button>
-                <button id="appendIntSeal">INTシール</button>
-                <button id="appendSpdSeal">SPDシール</button>
-                <button id="appendVitSeal">VITシール</button>
-                <button id="appendLukSeal">LUKシール</button>
-            </div>
+        <div class="seal">
+            <button id="appendPowSeal">POWシール</button>
+            <button id="appendIntSeal">INTシール</button>
+            <button id="appendSpdSeal">SPDシール</button>
+            <button id="appendVitSeal">VITシール</button>
+            <button id="appendLukSeal">LUKシール</button>
+        </div>
         </div>
 
         <div class="makimono">
@@ -187,7 +208,6 @@
         </div>
 
     </fieldset>
-
 
     <fieldset>
         <legend>スキル</legend>
