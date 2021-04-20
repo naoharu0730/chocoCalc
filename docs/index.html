@@ -20,7 +20,7 @@
         <legend>ステータス入力</legend>
         キャラレベル：<input id="level" type="number" value="99" name="level" required />
 
-        <table>
+        <table id="statusTable">
             <tr>
                 <th></th>
                 <th>ステ振り</th>
@@ -111,6 +111,8 @@
                 </td>
             </tr>
         </table>
+
+        <a id="export" href="#" download="status.csv">CSVエクスポート</a>
 
     </fieldset>
 

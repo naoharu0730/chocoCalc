@@ -491,4 +491,56 @@ $(document).ready(function () {
     $(document).on('click', '.delete', function () {
         $(this).parent()[0].remove();
     });
+
+    // CSVエクスポート
+    $('#export').on('click', function () {
+        csvExport();
+    });
+    
 })
+
+function csvExport() {
+
+    // table からデータを取得
+    let d = [];
+    $('table tr').each(function (i) {
+        let dd = [];
+            $(this).find('th').each(function () { 
+                dd.push($(this).text()); // ラベル
+            });
+            $(this).find('td').each(function () {
+                dd.push($(this).find('input').val()); // 入力値
+            });
+            d.push(dd);
+    });
+
+    // CSV として見やすいようにデータを入れ替え
+    let m = [];
+    $.each(d, function (i) {
+        if(i > 5){
+            let m1 = [];
+            m1.push(this[0])
+            m1.push("")
+            m1.push("")
+            m1.push(this[2])
+            let m2 = [];
+            m2.push(this[1])
+            m2.push("")
+            m2.push("")
+            m2.push(this[3])
+            m.push(m2)
+        }else{
+            m.push(this)
+        }
+        
+    })
+    console.log(m);
+
+    // CSV 出力
+    let csv_data = m.map(function(l){return l.join(',')}).join('\r\n');
+    let bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM を用意（文字コードを BOM 付き UTF-8 にする）
+    let blob = new Blob([bom, csv_data], { type: "text/csv" }); // データを CSV の BLOB に変換
+    document.getElementById("download").href = window.URL.createObjectURL(blob);
+
+    delete csv_data; // オブジェクトを削除してメモリを開放
+}
