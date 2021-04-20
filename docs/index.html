@@ -27,8 +27,8 @@
                 <th>カード</th>
                 <th>合計</th>
             </tr>
-            <tr class="pow-input">
-                <th>POW</th>
+            <tr>
+                <th class="pow-item">POW</th>
                 <td>
                     <input id="powStatus" type="number" value="1" name="powStatus" required />
                 </td>
@@ -39,8 +39,8 @@
                     <input id="powTotal" type="number" value="1" name="powTotal" required />
                 </td>
             </tr>
-            <tr class="int-input">
-                <th>INT</th>
+            <tr>
+                <th class="int-item">INT</th>
                 <td>
                     <input id="intStatus" type="number" value="1" name="intStatus" required />
                 </td>
@@ -51,8 +51,8 @@
                     <input id="intTotal" type="number" value="1" name="intTotal" required />
                 </td>
             </tr>
-            <tr class="spd-input">
-                <th>SPD</th>
+            <tr>
+                <th class="spd-item">SPD</th>
                 <td>
                     <input id="spdStatus" type="number" value="1" name="spdStatus" required />
                 </td>
@@ -63,8 +63,8 @@
                     <input id="spdTotal" type="number" value="1" name="spdTotal" required />
                 </td>
             </tr>
-            <tr class="vit-input">
-                <th>VIT</th>
+            <tr>
+                <th class="vit-item">VIT</th>
                 <td>
                     <input id="vitStatus" type="number" value="1" name="vitStatus" required />
                 </td>
@@ -75,8 +75,8 @@
                     <input id="vitTotal" type="number" value="1" name="vitTotal" required />
                 </td>
             </tr>
-            <tr class="luk-input">
-                <th>LUK</th>
+            <tr>
+                <th class="luk-item">LUK</th>
                 <td>
                     <input id="lukStatus" type="number" value="1" name="lukStatus" required />
                 </td>
@@ -91,21 +91,21 @@
 
         <table>
             <tr>
-                <th class="atk-input">ATK</th>
+                <th class="atk-item">ATK</th>
                 <td>
                     <input id="atkTotal" type="number" value="1" name="atkTotal" required />
                 </td>
-                <th class="def-input">DEF</th>
+                <th class="def-item">DEF</th>
                 <td>
                     <input id="defTotal" type="number" value="1" name="defTotal" required />
                 </td>
             </tr>
             <tr>
-                <th class="mat-input">MAT</th>
+                <th class="mat-item">MAT</th>
                 <td>
                     <input id="matTotal" type="number" value="1" name="matTotal" required />
                 </td>
-                <th class="mdf-input">MDF</th>
+                <th class="mdf-item">MDF</th>
                 <td>
                     <input id="mdfTotal" type="number" value="1" name="mdfTotal" required />
                 </td>
@@ -129,15 +129,15 @@
     <fieldset>
         <legend>表示ステータス</legend>
         <p>
-            <label>POW:</label><output id="powResult" name="powResult">???</output>
-            <label>INT:</label><output id="intResult" name="intResult">???</output>
-            <label>SPD:</label><output id="spdResult" name="spdResult">???</output>
-            <label>VIT:</label><output id="vitResult" name="vitResult">???</output>
-            <label>LUK:</label><output id="lukResult" name="lukResult">???</output>
-            <label>ATK:</label><output id="atkResult" name="atkResult">???</output>
-            <label>DEF:</label><output id="defResult" name="defResult">???</output>
-            <label>MAT:</label><output id="matResult" name="matResult">???</output>
-            <label>MDF:</label><output id="mdfResult" name="mdfResult">???</output>
+            <label class="pow-item">POW:</label><output id="powResult" name="powResult">???</output>
+            <label class="int-item">INT:</label><output id="intResult" name="intResult">???</output>
+            <label class="spd-item">SPD:</label><output id="spdResult" name="spdResult">???</output>
+            <label class="vit-item">VIT:</label><output id="vitResult" name="vitResult">???</output>
+            <label class="luk-item">LUK:</label><output id="lukResult" name="lukResult">???</output>
+            <label class="atk-item">ATK:</label><output id="atkResult" name="atkResult">???</output>
+            <label class="def-item">DEF:</label><output id="defResult" name="defResult">???</output>
+            <label class="mat-item">MAT:</label><output id="matResult" name="matResult">???</output>
+            <label class="mdf-item">MDF:</label><output id="mdfResult" name="mdfResult">???</output>
             <button id="button">計算</button>
         </p>
     </fieldset>

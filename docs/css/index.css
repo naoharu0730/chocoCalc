@@ -10,32 +10,32 @@ table{
     border:solid 1px;
 } */
 
-.pow-input{
+.pow-item{
     color: deeppink;
 }
-.int-input{
+.int-item{
     color: limegreen;
 }
-.spd-input{
+.spd-item{
     color: deepskyblue;
 }
-.vit-input{
+.vit-item{
     color: orange;
 }
-.luk-input{
+.luk-item{
     color: gold;
 }
 
-.atk-input{
+.atk-item{
     color: red;
 }
-.def-input{
+.def-item{
     color: blue;
 }
-.mat-input{
+.mat-item{
     color: purple;
 }
-.mdf-input{
+.mdf-item{
     color: royalblue;
 }
 
