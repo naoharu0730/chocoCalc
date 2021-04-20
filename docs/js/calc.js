@@ -7,10 +7,10 @@ $(document).ready(function () {
         const spdStatus = Number($('#spdStatus').val());
         const vitStatus = Number($('#vitStatus').val());
         const lukStatus = Number($('#lukStatus').val());
-        const atkStatus = Number($('#atkStatus').val());
-        const defStatus = Number($('#defStatus').val());
-        const matStatus = Number($('#matStatus').val());
-        const mdfStatus = Number($('#mdfStatus').val());
+        const atkTotal = Number($('#atkTotal').val());
+        const defTotal = Number($('#defTotal').val());
+        const matTotal = Number($('#matTotal').val());
+        const mdfTotal = Number($('#mdfTotal').val());
         const powTotal = Number($('#powTotal').val());
         const intTotal = Number($('#intTotal').val());
         const spdTotal = Number($('#spdTotal').val());
@@ -23,10 +23,10 @@ $(document).ready(function () {
         let spdResult = spdTotal; // POW結果
         let vitResult = vitTotal; // POW結果
         let lukResult = lukTotal; // POW結果
-        let atkResult = atkStatus; // ATK結果
-        let defResult = defStatus; // DEF結果
-        let matResult = matStatus; // MAT結果
-        let mdfResult = mdfStatus; // MDF結果
+        let atkResult = atkTotal; // ATK結果
+        let defResult = defTotal; // DEF結果
+        let matResult = matTotal; // MAT結果
+        let mdfResult = mdfTotal; // MDF結果
 
         // リキッドの上昇値
         let atkLiquidBuff = 0; // リキッドのATK上昇値
@@ -234,14 +234,14 @@ $(document).ready(function () {
                 let lukBuff = parseInt(lukResult * 0.2); // LUK上昇値
                 lukResult += lukBuff;
 
-                atkElBuff = parseInt( (atkResult/*atkStatus*/ + (powResult * 2) ) * 0.2 ); // エル羽のATK上昇量
+                atkElBuff = parseInt( (atkResult/*atkTotal*/ + (powResult * 2) ) * 0.2 ); // エル羽のATK上昇量
                 atkResult += atkElBuff;
-                defElBuff = parseInt( (defResult/*defStatus*/ + (vitResult * 2) ) * 0.2 ); // エル羽のDEF上昇量
+                defElBuff = parseInt( (defResult/*defTotal*/ + (vitResult * 2) ) * 0.2 ); // エル羽のDEF上昇量
                 defResult += defElBuff;
-                matElBuff = parseInt( (matResult/*matStatus*/ + (intResult * 2) ) * 0.2 ); // エル羽のMAT上昇量
+                matElBuff = parseInt( (matResult/*matTotal*/ + (intResult * 2) ) * 0.2 ); // エル羽のMAT上昇量
                 matResult += matElBuff;
                 let maxIntOrVit = Math.max(intResult, vitResult); // INT or VIT の大きい値を取る
-                mdfElBuff = parseInt( (mdfResult/*mdfStatus*/ + (maxIntOrVit * 2) ) * 0.2 ); // エル羽のMDF上昇量
+                mdfElBuff = parseInt( (mdfResult/*mdfTotal*/ + (maxIntOrVit * 2) ) * 0.2 ); // エル羽のMDF上昇量
                 mdfResult += mdfElBuff;
             }
             if (task == "apophis") {
@@ -492,6 +492,11 @@ $(document).ready(function () {
         $(this).parent()[0].remove();
     });
 
+    // CSVインスポート
+    $('#import').on('click', function () {
+        csvImport();
+    });
+
     // CSVエクスポート
     $('#export').on('click', function () {
         csvExport();
@@ -499,8 +504,47 @@ $(document).ready(function () {
     
 })
 
-function csvExport() {
+const simpleParseCSV = (csv) => { 
+    return csv.split(/\r\n|\r|\n/).map((row)=>row.split(','));  
+}
 
+function csvImport() {
+    // let fileInput = document.getElementById('import');
+    let fileInput = $('#import')[0];
+    let fileReader = new FileReader();
+    fileInput.onchange = () => {
+      let file = fileInput.files[0];
+      fileReader.readAsText(file);
+    };
+
+    fileReader.onload = () => {
+        csv = simpleParseCSV(fileReader.result);
+        console.log(csv);
+        input_id = []
+        input_id.push([])
+        input_id.push(['', '#powStatus', '#powCard', '#powTotal'])
+        input_id.push(['', '#intStatus', '#intCard', '#intTotal'])
+        input_id.push(['', '#spdStatus', '#spdCard', '#spdTotal'])
+        input_id.push(['', '#vitStatus', '#vitCard', '#vitTotal'])
+        input_id.push(['', '#lukStatus', '#lukCard', '#lukTotal'])
+        input_id.push(['', '', '', '#atkTotal'])
+        input_id.push(['', '', '', '#defTotal'])
+        input_id.push(['', '', '', '#matTotal'])
+        input_id.push(['', '', '', '#mdfTotal'])
+        $.each(input_id, function (i, e) {
+            $.each(e, function (j, elem) {
+                if (i > 5) {
+                    $(elem).val(csv[i][j]);
+                } else {
+                    $(elem).val(csv[i][j]);
+                }
+            })
+        })
+
+    }
+}
+
+function csvExport() {
     // table からデータを取得
     let d = [];
     $('table tr').each(function (i) {
@@ -523,6 +567,7 @@ function csvExport() {
             m1.push("")
             m1.push("")
             m1.push(this[2])
+            m.push(m1)
             let m2 = [];
             m2.push(this[1])
             m2.push("")
@@ -540,7 +585,7 @@ function csvExport() {
     let csv_data = m.map(function(l){return l.join(',')}).join('\r\n');
     let bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM を用意（文字コードを BOM 付き UTF-8 にする）
     let blob = new Blob([bom, csv_data], { type: "text/csv" }); // データを CSV の BLOB に変換
-    document.getElementById("download").href = window.URL.createObjectURL(blob);
+    $("#export")[0].href = window.URL.createObjectURL(blob);
 
     delete csv_data; // オブジェクトを削除してメモリを開放
 }

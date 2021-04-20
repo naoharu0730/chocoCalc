@@ -42,3 +42,20 @@ table{
 input{
     width: 6em;
 }
+
+.fileButton {
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 2px 1em;
+    position: relative;
+    background-color: lightgray;
+}
+.fileButton input[type="file"] {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
