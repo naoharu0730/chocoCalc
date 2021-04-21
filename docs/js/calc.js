@@ -1,13 +1,18 @@
 $(document).ready(function () {
-    $('input[type="number"]').change(function() {
+    $('input[type="number"]').change(function () {
+        calculation() // 入力値の更新タイミングで更新
+    });
+    $('input[type="text"]').change(function () {
         calculation() // 入力値の更新タイミングで更新
     });
 
-    $('.process').on('change', 'select', function() {
+    $('.process').on('change', 'select', function () {
         calculation() // 入力値の更新タイミングで更新
     });
 
-    function calculation(){
+    function calculation() {
+        // 式の評価
+
         // 入力の取得
         const level = Number($('#level').val());
         const powStatus = Number($('#powStatus').val());
@@ -19,11 +24,11 @@ $(document).ready(function () {
         const defTotal = Number($('#defTotal').val());
         const matTotal = Number($('#matTotal').val());
         const mdfTotal = Number($('#mdfTotal').val());
-        const powTotal = Number($('#powTotal').val());
-        const intTotal = Number($('#intTotal').val());
-        const spdTotal = Number($('#spdTotal').val());
-        const vitTotal = Number($('#vitTotal').val());
-        const lukTotal = Number($('#lukTotal').val());
+        const powTotal = Number(safeEval(safeReplace($('#powTotal').val())));
+        const intTotal = Number(safeEval(safeReplace($('#intTotal').val())));
+        const spdTotal = Number(safeEval(safeReplace($('#spdTotal').val())));
+        const vitTotal = Number(safeEval(safeReplace($('#vitTotal').val())));
+        const lukTotal = Number(safeEval(safeReplace($('#lukTotal').val())));
 
         // 結果の初期化
         let powResult = powTotal; // POW結果
@@ -139,14 +144,14 @@ $(document).ready(function () {
                 spdResult += spdBuff;
                 let lukBuff = -15; // LUK上昇値
                 lukResult += lukBuff;
-            }   
+            }
             if (task == "vitSeal") {
                 let spdBuff = -15; // SPD上昇値
                 spdResult += spdBuff;
                 let vitBuff = 15; // VIT上昇値
                 vitResult += vitBuff;
                 defResult += vitBuff * 2;
-            }   
+            }
             if (task == "lukSeal") {
                 let vitBuff = -15; // VIT上昇値
                 vitResult += vitBuff;
@@ -200,23 +205,23 @@ $(document).ready(function () {
             // リキッド処理
             if (task == "powLiquid") {
                 let atkMagni = (level + powResult - 100) / 100; // ATK上昇倍率
-                atkLiquidBuff = parseInt( (atkResult - powResult - atkElBuff) * Math.max(0.1, atkMagni) ); // ATK上昇量
+                atkLiquidBuff = parseInt((atkResult - powResult - atkElBuff) * Math.max(0.1, atkMagni)); // ATK上昇量
                 atkResult += atkLiquidBuff;
             }
             if (task == "defLiquid") {
                 let defMagni = (level + vitResult - 100) / 100; // DEF上昇倍率
-                defLiquidBuff = parseInt( (defResult - defElBuff) * Math.max(0.1, defMagni) ); // DEF上昇量
+                defLiquidBuff = parseInt((defResult - defElBuff) * Math.max(0.1, defMagni)); // DEF上昇量
                 defResult += defLiquidBuff;
             }
             if (task == "matLiquid") {
                 let matMagni = (level + intResult - 100) / 100; // MAT上昇倍率
-                matLiquidBuff = parseInt( (matResult - matElBuff) * Math.max(0.1, matMagni) ); // MAT上昇量
+                matLiquidBuff = parseInt((matResult - matElBuff) * Math.max(0.1, matMagni)); // MAT上昇量
                 matResult += matLiquidBuff;
             }
             if (task == "mdfLiquid") {
                 let maxIntOrVit = Math.max(intResult, vitResult) // INT or VIT の大きい値を取る
                 let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
-                mdfLiquidBuff = parseInt( (mdfResult - (intResult * 15) + (maxIntOrVit * 2) - mdfElBuff) * Math.max(0.1, mdfMagni) ); // MDF上昇量
+                mdfLiquidBuff = parseInt((mdfResult - (intResult * 15) + (maxIntOrVit * 2) - mdfElBuff) * Math.max(0.1, mdfMagni)); // MDF上昇量
                 mdfResult += mdfLiquidBuff;
             }
 
@@ -242,14 +247,14 @@ $(document).ready(function () {
                 let lukBuff = parseInt(lukResult * 0.2); // LUK上昇値
                 lukResult += lukBuff;
 
-                atkElBuff = parseInt( (atkResult/*atkTotal*/ + (powResult * 2) ) * 0.2 ); // エル羽のATK上昇量
+                atkElBuff = parseInt((atkResult/*atkTotal*/ + (powResult * 2)) * 0.2); // エル羽のATK上昇量
                 atkResult += atkElBuff;
-                defElBuff = parseInt( (defResult/*defTotal*/ + (vitResult * 2) ) * 0.2 ); // エル羽のDEF上昇量
+                defElBuff = parseInt((defResult/*defTotal*/ + (vitResult * 2)) * 0.2); // エル羽のDEF上昇量
                 defResult += defElBuff;
-                matElBuff = parseInt( (matResult/*matTotal*/ + (intResult * 2) ) * 0.2 ); // エル羽のMAT上昇量
+                matElBuff = parseInt((matResult/*matTotal*/ + (intResult * 2)) * 0.2); // エル羽のMAT上昇量
                 matResult += matElBuff;
                 let maxIntOrVit = Math.max(intResult, vitResult); // INT or VIT の大きい値を取る
-                mdfElBuff = parseInt( (mdfResult/*mdfTotal*/ + (maxIntOrVit * 2) ) * 0.2 ); // エル羽のMDF上昇量
+                mdfElBuff = parseInt((mdfResult/*mdfTotal*/ + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
                 mdfResult += mdfElBuff;
             }
             if (task == "apophis") {
@@ -314,19 +319,19 @@ $(document).ready(function () {
     $('#appendIntSeal').on('click', function () {
         $('.process').append('<div name=intSeal>INTシール <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
-    }); 
+    });
     $('#appendSpdSeal').on('click', function () {
         $('.process').append('<div name=spdSeal>SPDシール <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
-    }); 
+    });
     $('#appendVitSeal').on('click', function () {
         $('.process').append('<div name=vitSeal>VITシール <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
-    }); 
+    });
     $('#appendLukSeal').on('click', function () {
         $('.process').append('<div name=lukSeal>LUKシール <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
-    });    
+    });
 
     // 巻物処理の追加
     $('#appendPowMakimono').on('click', function () {
@@ -539,11 +544,11 @@ $(document).ready(function () {
     $('#export').on('click', function () {
         csvExport();
     });
-    
+
 })
 
-const simpleParseCSV = (csv) => { 
-    return csv.split(/\r\n|\r|\n/).map((row)=>row.split(','));  
+const simpleParseCSV = (csv) => {
+    return csv.split(/\r\n|\r|\n/).map((row) => row.split(','));
 }
 
 function csvImport() {
@@ -551,8 +556,8 @@ function csvImport() {
     let fileInput = $('#import')[0];
     let fileReader = new FileReader();
     fileInput.onchange = () => {
-      let file = fileInput.files[0];
-      fileReader.readAsText(file);
+        let file = fileInput.files[0];
+        fileReader.readAsText(file);
     };
 
     fileReader.onload = () => {
@@ -587,19 +592,19 @@ function csvExport() {
     let d = [];
     $('.status-table tr').each(function (i) {
         let dd = [];
-            $(this).find('th').each(function () { 
-                dd.push($(this).text()); // ラベル
-            });
-            $(this).find('td').each(function () {
-                dd.push($(this).find('input').val()); // 入力値
-            });
-            d.push(dd);
+        $(this).find('th').each(function () {
+            dd.push($(this).text()); // ラベル
+        });
+        $(this).find('td').each(function () {
+            dd.push($(this).find('input').val()); // 入力値
+        });
+        d.push(dd);
     });
 
     // CSV として見やすいようにデータを入れ替え
     let m = [];
     $.each(d, function (i) {
-        if(i > 5){
+        if (i > 5) {
             let m1 = [];
             m1.push(this[0])
             m1.push("")
@@ -612,18 +617,35 @@ function csvExport() {
             m2.push("")
             m2.push(this[3])
             m.push(m2)
-        }else{
+        } else {
             m.push(this)
         }
-        
+
     })
     console.log(m);
 
     // CSV 出力
-    let csv_data = m.map(function(l){return l.join(',')}).join('\r\n');
+    let csv_data = m.map(function (l) { return l.join(',') }).join('\r\n');
     let bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM を用意（文字コードを BOM 付き UTF-8 にする）
     let blob = new Blob([bom, csv_data], { type: "text/csv" }); // データを CSV の BLOB に変換
     $("#export")[0].href = window.URL.createObjectURL(blob);
 
     delete csv_data; // オブジェクトを削除してメモリを開放
+}
+
+function safeEval(val) {
+    // 式の評価
+    return Function('"use strict";return (' + val + ')')();
+}
+
+/**
+ * 文字列を加算と減算の式に変換
+ */
+function safeReplace(str) {
+    // 0-9, +, -, 以外を削除
+    // 先頭と末尾の記号を削除
+    // +, -, が連続している場合は削除
+    tmp = str.replace(/[^0-9+-]/g, '').replace(/^[+-]+|[+-]+$/g, '').replace(/[+-][+-]+/g, '')
+    // 数字が入力されていない場合は0を返す
+    return (tmp.length) ? tmp : 0
 }
