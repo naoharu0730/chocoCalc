@@ -25,15 +25,15 @@ function csvImport() {
         console.log(csv);
         input_id = []
         input_id.push([])
-        input_id.push(['', '#powStatus', '#powTotal'])
-        input_id.push(['', '#intStatus', '#intTotal'])
-        input_id.push(['', '#spdStatus', '#spdTotal'])
-        input_id.push(['', '#vitStatus', '#vitTotal'])
-        input_id.push(['', '#lukStatus', '#lukTotal'])
-        input_id.push(['', '', '#atkTotal'])
-        input_id.push(['', '', '#defTotal'])
-        input_id.push(['', '', '#matTotal'])
-        input_id.push(['', '', '#mdfTotal'])
+        input_id.push(['', '#powStatus', '#powCard', '#powTotal'])
+        input_id.push(['', '#intStatus', '#intCard', '#intTotal'])
+        input_id.push(['', '#spdStatus', '#spdCard', '#spdTotal'])
+        input_id.push(['', '#vitStatus', '#vitCard', '#vitTotal'])
+        input_id.push(['', '#lukStatus', '#lukCard', '#lukTotal'])
+        input_id.push(['', '', '', '#atkTotal'])
+        input_id.push(['', '', '', '#defTotal'])
+        input_id.push(['', '', '', '#matTotal'])
+        input_id.push(['', '', '', '#mdfTotal'])
         $.each(input_id, function (i, e) {
             $.each(e, function (j, elem) {
                 if (i > 5) {
@@ -72,10 +72,12 @@ function csvExport() {
             let m1 = [];
             m1.push(this[0])
             m1.push("")
+            m1.push("")
             m1.push(this[2])
             m.push(m1)
             let m2 = [];
             m2.push(this[1])
+            m2.push("")
             m2.push("")
             m2.push(this[3])
             m.push(m2)

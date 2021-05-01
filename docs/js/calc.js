@@ -46,35 +46,35 @@ function calculation() {
 
     // 処理
     $(".process div").each(function (i) {
-        let task = $(".process div").eq(i);
-        let taskName = (task.attr('name'));
+        $(".process div").eq(i).css('color', 'red');
+        let task = ($(".process div").eq(i).attr('name'));
 
         // ビタ処理
-        if (taskName == "powBita") {
+        if (task == "powBita") {
             let powBuff = parseInt(powStatus * 0.2); // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
         }
-        if (taskName == "intBita") {
+        if (task == "intBita") {
             let intBuff = parseInt(intStatus * 0.2); // INT上昇値
             intResult += intBuff;
             matResult += intBuff * 2;
             mdfResult += intBuff * 15;
         }
-        if (taskName == "spdBita") {
+        if (task == "spdBita") {
             let spdBuff = parseInt(spdStatus * 0.2); // SPD上昇値
             spdResult += spdBuff;
         }
-        if (taskName == "vitBita") {
+        if (task == "vitBita") {
             let vitBuff = parseInt(vitStatus * 0.2); // VIT上昇値
             vitResult += vitBuff;
             defResult += vitBuff * 2;
         }
-        if (taskName == "lukBita") {
+        if (task == "lukBita") {
             let lukBuff = parseInt(lukStatus * 0.2); // LUK上昇値
             lukResult += lukBuff;
         }
-        if (taskName == "allBita") {
+        if (task == "allBita") {
             let powBuff = parseInt(powStatus * 0.1); // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
@@ -92,7 +92,7 @@ function calculation() {
         }
 
         // 魔獣缶処理
-        if (taskName == "powCan") {
+        if (task == "powCan") {
             let powBuff = 10; // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
@@ -101,7 +101,7 @@ function calculation() {
             matResult += intBuff * 2;
             mdfResult += intBuff * 15;
         }
-        if (taskName == "intCan") {
+        if (task == "intCan") {
             let intBuff = 10; // INT上昇値
             intResult += intBuff;
             matResult += intBuff * 2;
@@ -112,7 +112,7 @@ function calculation() {
         }
 
         // シール処理
-        if (taskName == "powSeal") {
+        if (task == "powSeal") {
             let powBuff = 15; // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
@@ -121,7 +121,7 @@ function calculation() {
             matResult += intBuff * 2;
             mdfResult += intBuff * 15;
         }
-        if (taskName == "intSeal") {
+        if (task == "intSeal") {
             let powBuff = -15; // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
@@ -130,20 +130,20 @@ function calculation() {
             matResult += intBuff * 2;
             mdfResult += intBuff * 15;
         }
-        if (taskName == "spdSeal") {
+        if (task == "spdSeal") {
             let spdBuff = 15; // SPD上昇値
             spdResult += spdBuff;
             let lukBuff = -15; // LUK上昇値
             lukResult += lukBuff;
         }
-        if (taskName == "vitSeal") {
+        if (task == "vitSeal") {
             let spdBuff = -15; // SPD上昇値
             spdResult += spdBuff;
             let vitBuff = 15; // VIT上昇値
             vitResult += vitBuff;
             defResult += vitBuff * 2;
         }
-        if (taskName == "lukSeal") {
+        if (task == "lukSeal") {
             let vitBuff = -15; // VIT上昇値
             vitResult += vitBuff;
             defResult += vitBuff * 2;
@@ -151,83 +151,65 @@ function calculation() {
             lukResult += lukBuff;
         }
 
-        // ブレイク処理
-        if (taskName == "break") {
-            let powBuff = Number(task.find("input[name=powCard]").val()); // POW上昇値
-            powResult += powBuff;
-            atkResult += powBuff * 3;
-            let intBuff = Number(task.find("input[name=intCard]").val()); // INT上昇値
-            intResult += intBuff;
-            matResult += intBuff * 2;
-            mdfResult += intBuff * 15;
-            let spdBuff = Number(task.find("input[name=spdCard]").val()); // SPD上昇値
-            spdResult += spdBuff;
-            let vitBuff = Number(task.find("input[name=vitCard]").val()); // VIT上昇値
-            vitResult += vitBuff;
-            defResult += vitBuff * 2;
-            let lukBuff = Number(task.find("input[name=lukCard]").val()); // LUK上昇値
-            lukResult += lukBuff;
-        }
-
         // 巻物処理
-        if (taskName == "powMakimono") {
-            let powBuff = Number(task.children().val()); // POW上昇値
+        if (task == "powMakimono") {
+            let powBuff = Number($(".process div").eq(i).children().val()); // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
         }
-        if (taskName == "intMakimono") {
-            let intBuff = Number(task.children().val()); // INT上昇値
+        if (task == "intMakimono") {
+            let intBuff = Number($(".process div").eq(i).children().val()); // INT上昇値
             intResult += intBuff;
             matResult += intBuff * 2;
             mdfResult += intBuff * 15;
         }
-        if (taskName == "spdMakimono") {
-            let spdBuff = Number(task.children().val()); // SPD上昇値
+        if (task == "spdMakimono") {
+            let spdBuff = Number($(".process div").eq(i).children().val()); // SPD上昇値
             spdResult += spdBuff;
         }
-        if (taskName == "vitMakimono") {
-            let vitBuff = Number(task.children().val()); // VIT上昇値
+        if (task == "vitMakimono") {
+            let vitBuff = Number($(".process div").eq(i).children().val()); // VIT上昇値
             vitResult += vitBuff;
             defResult += vitBuff * 2;
         }
-        if (taskName == "lukMakimono") {
-            let lukBuff = Number(task.children().val()); // LUK上昇値
+        if (task == "lukMakimono") {
+            let lukBuff = Number($(".process div").eq(i).children().val()); // LUK上昇値
             lukResult += lukBuff;
         }
-        if (taskName == "atkMakimono") {
-            let atkBuff = Number(task.children().val()); // ATK上昇値
+        if (task == "atkMakimono") {
+            let atkBuff = Number($(".process div").eq(i).children().val()); // ATK上昇値
             atkResult += atkBuff;
         }
-        if (taskName == "defMakimono") {
-            let atkBuff = Number(task.children().val()); // DEF上昇値
+        if (task == "defMakimono") {
+            let atkBuff = Number($(".process div").eq(i).children().val()); // DEF上昇値
             defResult += atkBuff;
         }
-        if (taskName == "matMakimono") {
-            let atkBuff = Number(task.children().val()); // MAT上昇値
+        if (task == "matMakimono") {
+            let atkBuff = Number($(".process div").eq(i).children().val()); // MAT上昇値
             matResult += atkBuff;
         }
-        if (taskName == "mdfMakimono") {
-            let atkBuff = Number(task.children().val()); // MDF上昇値
+        if (task == "mdfMakimono") {
+            let atkBuff = Number($(".process div").eq(i).children().val()); // MDF上昇値
             mdfResult += atkBuff;
         }
 
         // リキッド処理
-        if (taskName == "powLiquid") {
+        if (task == "powLiquid") {
             let atkMagni = (level + powResult - 100) / 100; // ATK上昇倍率
             atkLiquidBuff = parseInt((atkResult - powResult - atkElBuff) * Math.max(0.1, atkMagni)); // ATK上昇量
             atkResult += atkLiquidBuff;
         }
-        if (taskName == "defLiquid") {
+        if (task == "defLiquid") {
             let defMagni = (level + vitResult - 100) / 100; // DEF上昇倍率
             defLiquidBuff = parseInt((defResult - defElBuff) * Math.max(0.1, defMagni)); // DEF上昇量
             defResult += defLiquidBuff;
         }
-        if (taskName == "matLiquid") {
+        if (task == "matLiquid") {
             let matMagni = (level + intResult - 100) / 100; // MAT上昇倍率
             matLiquidBuff = parseInt((matResult - matElBuff) * Math.max(0.1, matMagni)); // MAT上昇量
             matResult += matLiquidBuff;
         }
-        if (taskName == "mdfLiquid") {
+        if (task == "mdfLiquid") {
             let maxIntOrVit = Math.max(intResult, vitResult) // INT or VIT の大きい値を取る
             let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
             mdfLiquidBuff = parseInt((mdfResult - (intResult * 15) + (maxIntOrVit * 2) - mdfElBuff) * Math.max(0.1, mdfMagni)); // MDF上昇量
@@ -235,12 +217,12 @@ function calculation() {
         }
 
         // スキル処理
-        if (taskName == "bloodScraper") {
+        if (task == "bloodScraper") {
             let powBuff = 9; // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
         }
-        if (taskName == "elysion") {
+        if (task == "elysion") {
             let powBuff = parseInt(powResult * 0.2); // POW上昇値
             powResult += powBuff;
             atkResult += powBuff * 3;
@@ -266,7 +248,7 @@ function calculation() {
             mdfElBuff = parseInt((mdfTotal - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
             mdfResult += mdfElBuff;
         }
-        if (taskName == "apophis") {
+        if (task == "apophis") {
             let lukBuff = parseInt(lukResult * 0.3); // LUK上昇値
             lukResult += lukBuff;
         }
