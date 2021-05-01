@@ -12,6 +12,9 @@ $(document).ready(function () {
     $('.process').on('change', 'select', function () {
         calculation() // 入力値の更新タイミングで更新
     });
+    $('.process').on('change', 'input[type="number"]', function () {
+        calculation() // 入力値の更新タイミングで更新
+    });
 
     // ビタ処理の追加
     $('#appendPowBita').on('click', function () {
@@ -68,6 +71,29 @@ $(document).ready(function () {
     });
     $('#appendLukSeal').on('click', function () {
         $('.process').append('<div name=lukSeal>LUKシール <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+
+    // ブレイク処理の追加
+    $('#appendBreak').on('click', function () {
+        $('.process').append(`<div name=break>ブレイク
+        <table class="card-table">
+        <tr>
+            <th class="pow-item">POW</th>
+            <th class="int-item">INT</th>
+            <th class="spd-item">SPD</th>
+            <th class="vit-item">VIT</th>
+            <th class="luk-item">LUK</th>
+        </tr>
+        <tr>
+            <th><input type="number" value="0" name="powCard"/></th>
+            <th><input type="number" value="0" name="intCard"/></th>
+            <th><input type="number" value="0" name="spdCard"/></th>
+            <th><input type="number" value="0" name="vitCard"/></th>
+            <th><input type="number" value="0" name="lukCard"/></th>
+        </tr>
+        </table>
+        <button class="delete">削除</button> </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
