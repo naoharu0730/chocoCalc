@@ -252,18 +252,23 @@ function calculation() {
         }
         if (taskName == "elysion") {
             let powBuff = parseInt(powResult * 0.2); // POW上昇値
+            powBuff = Math.max(1, powBuff); // POW上昇値が 0 以下だったら、上昇値は 1 とする
             powResult += powBuff;
             atkResult += powBuff * 3;
             let intBuff = parseInt(intResult * 0.2); // INT上昇値
+            intBuff = Math.max(1, intBuff); // INT上昇値が 0 以下だったら、上昇値は 1 とする
             intResult += intBuff;
             matResult += intBuff * 2;
             mdfResult += intBuff * 15;
             let spdBuff = parseInt(spdResult * 0.2); // SPD上昇値
+            spdBuff = Math.max(1, spdBuff); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
             spdResult += spdBuff;
             let vitBuff = parseInt(vitResult * 0.2); // VIT上昇値
+            vitBuff = Math.max(1, vitBuff); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
             vitResult += vitBuff;
             defResult += vitBuff * 2;
             let lukBuff = parseInt(lukResult * 0.2); // LUK上昇値
+            lukBuff = Math.max(1, lukBuff); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             lukResult += lukBuff;
 
             atkElBuff = parseInt((atkTotal - (powTotal * 3) + (powResult * 2)) * 0.2); // エル羽のATK上昇量
