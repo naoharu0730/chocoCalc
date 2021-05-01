@@ -167,7 +167,7 @@ $(document).ready(function () {
         <option value="9">9</option>
         <option value="10">10</option>
         </select>
-        calculation() // 処理の追加タイミングで更新<button class="delete">削除</button> </div>`)
+        <button class="delete">削除</button> </div>`)
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukMakimono').on('click', function () {
