@@ -225,27 +225,27 @@ function calculation() {
         if (task == "elysion") {
             let powBuff = parseInt(powResult * 0.2); // POW上昇値
             powResult += powBuff;
-            // atkResult += powBuff * 3;
+            atkResult += powBuff * 3;
             let intBuff = parseInt(intResult * 0.2); // INT上昇値
             intResult += intBuff;
-            // matResult += intBuff * 2;
-            // mdfResult += intBuff * 15;
+            matResult += intBuff * 2;
+            mdfResult += intBuff * 15;
             let spdBuff = parseInt(spdResult * 0.2); // SPD上昇値
             spdResult += spdBuff;
             let vitBuff = parseInt(vitResult * 0.2); // VIT上昇値
             vitResult += vitBuff;
-            // defResult += vitBuff * 2;
+            defResult += vitBuff * 2;
             let lukBuff = parseInt(lukResult * 0.2); // LUK上昇値
             lukResult += lukBuff;
 
-            atkElBuff = parseInt((atkResult/*atkTotal*/ + (powResult * 2)) * 0.2); // エル羽のATK上昇量
+            atkElBuff = parseInt((atkTotal - (powTotal * 3) + (powResult * 2)) * 0.2); // エル羽のATK上昇量
             atkResult += atkElBuff;
-            defElBuff = parseInt((defResult/*defTotal*/ + (vitResult * 2)) * 0.2); // エル羽のDEF上昇量
+            defElBuff = parseInt((defTotal - (vitTotal * 2) + (vitResult * 2)) * 0.2); // エル羽のDEF上昇量
             defResult += defElBuff;
-            matElBuff = parseInt((matResult/*matTotal*/ + (intResult * 2)) * 0.2); // エル羽のMAT上昇量
+            matElBuff = parseInt((matTotal - (intTotal * 2) + (intResult * 2)) * 0.2); // エル羽のMAT上昇量
             matResult += matElBuff;
             let maxIntOrVit = Math.max(intResult, vitResult); // INT or VIT の大きい値を取る
-            mdfElBuff = parseInt((mdfResult/*mdfTotal*/ + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
+            mdfElBuff = parseInt((mdfTotal - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
             mdfResult += mdfElBuff;
         }
         if (task == "apophis") {
