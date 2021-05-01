@@ -27,16 +27,12 @@
             <tr>
                 <th></th>
                 <th>ステ振り</th>
-                <th>カード</th>
                 <th>合計</th>
             </tr>
             <tr>
                 <th class="pow-item">POW</th>
                 <td>
                     <input id="powStatus" type="number" value="1" name="powStatus" required />
-                </td>
-                <td>
-                    <input id="powCard" type="number" value="0" name="powCard" required />
                 </td>
                 <td>
                     <input id="powTotal" type="text" value="1" name="powTotal" required />
@@ -48,9 +44,6 @@
                     <input id="intStatus" type="number" value="1" name="intStatus" required />
                 </td>
                 <td>
-                    <input id="intCard" type="number" value="0" name="intCard" required />
-                </td>
-                <td>
                     <input id="intTotal" type="text" value="1" name="intTotal" required />
                 </td>
             </tr>
@@ -58,9 +51,6 @@
                 <th class="spd-item">SPD</th>
                 <td>
                     <input id="spdStatus" type="number" value="1" name="spdStatus" required />
-                </td>
-                <td>
-                    <input id="spdCard" type="number" value="0" name="spdCard" required />
                 </td>
                 <td>
                     <input id="spdTotal" type="text" value="1" name="spdTotal" required />
@@ -72,9 +62,6 @@
                     <input id="vitStatus" type="number" value="1" name="vitStatus" required />
                 </td>
                 <td>
-                    <input id="vitCard" type="number" value="0" name="vitCard" required />
-                </td>
-                <td>
                     <input id="vitTotal" type="text" value="1" name="vitTotal" required />
                 </td>
             </tr>
@@ -82,9 +69,6 @@
                 <th class="luk-item">LUK</th>
                 <td>
                     <input id="lukStatus" type="number" value="1" name="lukStatus" required />
-                </td>
-                <td>
-                    <input id="lukCard" type="number" value="0" name="lukCard" required />
                 </td>
                 <td>
                     <input id="lukTotal" type="text" value="1" name="lukTotal" required />
@@ -222,6 +206,15 @@
         <div class="specialSkill">
             <button id="appendElysion">大天使の加護</button>
             <button id="appendApophis">邪神の呪詛</button>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>アタッチメントシステム</legend>
+
+        <div class="break">
+            <button id="appendBreak">ブレイク</button>
         </div>
 
     </fieldset>
