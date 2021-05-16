@@ -298,6 +298,10 @@ $(document).ready(function () {
         $(this).parent()[0].remove();
         calculation() // 処理の追加タイミングで更新
     });
+    $('.process').on('click', '.all-delete', function () {
+        $(this).parent().find("div").remove();
+        calculation() // 処理の追加タイミングで更新
+    });
 
     // CSVインポート
     $('#import').on('click', function (e) {
