@@ -153,19 +153,13 @@ function calculation() {
     let result = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
     // リキッドの上昇値
-    let atkLiquidBuff = 0; // リキッドのATK上昇値
-    let defLiquidBuff = 0; // リキッドのDEF上昇値
-    let matLiquidBuff = 0; // リキッドのMAT上昇値
-    let mdfLiquidBuff = 0; // リキッドのMDF上昇値
+    let liquidBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0)
 
     // 魔獣缶・シールの上昇値
-    let canSealBuff = new PISVL();
+    let canSealBuff = new PISVL(0, 0, 0, 0, 0);
 
     // エル羽の上昇値
-    let atkElBuff = 0; // エル羽のATK上昇値
-    let defElBuff = 0; // エル羽のDEF上昇値
-    let matElBuff = 0; // エル羽のMAT上昇値
-    let mdfElBuff = 0; // エル羽のMDF上昇値
+    let elBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0)
 
     // 処理
     $(".process div").each(function (i) {
@@ -354,24 +348,24 @@ function calculation() {
         // リキッド処理
         if (taskName == "powLiquid") {
             let atkMagni = (level + result.pow - 100) / 100; // ATK上昇倍率
-            atkLiquidBuff = parseInt((result.atk - result.pow - atkElBuff) * Math.max(0.1, atkMagni)); // ATK上昇量
-            result.atk += atkLiquidBuff;
+            liquidBuff.atk = parseInt((result.atk - result.pow - elBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
+            result.atk += liquidBuff.atk;
         }
         if (taskName == "defLiquid") {
             let defMagni = (level + result.vit - 100) / 100; // DEF上昇倍率
-            defLiquidBuff = parseInt((result.def - defElBuff) * Math.max(0.1, defMagni)); // DEF上昇量
-            result.def += defLiquidBuff;
+            liquidBuff.def = parseInt((result.def - elBuff.def) * Math.max(0.1, defMagni)); // DEF上昇量
+            result.def += liquidBuff.def;
         }
         if (taskName == "matLiquid") {
             let matMagni = (level + result.int - 100) / 100; // MAT上昇倍率
-            matLiquidBuff = parseInt((result.mat - matElBuff) * Math.max(0.1, matMagni)); // MAT上昇量
-            result.mat += matLiquidBuff;
+            liquidBuff.mat = parseInt((result.mat - elBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
+            result.mat += liquidBuff.mat;
         }
         if (taskName == "mdfLiquid") {
             let maxIntOrVit = Math.max(result.int, result.vit) // INT or VIT の大きい値を取る
             let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
-            mdfLiquidBuff = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - mdfElBuff) * Math.max(0.1, mdfMagni)); // MDF上昇量
-            result.mdf += mdfLiquidBuff;
+            liquidBuff.mdf = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - elBuff.mdf) * Math.max(0.1, mdfMagni)); // MDF上昇量
+            result.mdf += liquidBuff.mdf;
         }
 
         // スキル処理
@@ -401,15 +395,15 @@ function calculation() {
             lukBuff = Math.max(1, lukBuff); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += lukBuff;
 
-            atkElBuff = parseInt((atkTotal - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
-            result.atk += atkElBuff;
-            defElBuff = parseInt((defTotal - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
-            result.def += defElBuff;
-            matElBuff = parseInt((matTotal - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
-            result.mat += matElBuff;
+            elBuff.atk = parseInt((atkTotal - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
+            result.atk += elBuff.atk;
+            elBuff.def = parseInt((defTotal - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
+            result.def += elBuff.def;
+            elBuff.mat = parseInt((matTotal - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
+            result.mat += elBuff.mat;
             let maxIntOrVit = Math.max(result.int, result.vit); // INT or VIT の大きい値を取る
-            mdfElBuff = parseInt((mdfTotal - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
-            result.mdf += mdfElBuff;
+            elBuff.mdf = parseInt((mdfTotal - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
+            result.mdf += elBuff.mdf;
         }
         if (taskName == "apophis") {
             let lukBuff = parseInt(result.luk * 0.3); // LUK上昇値
@@ -423,10 +417,10 @@ function calculation() {
     $('#spdResult').text(result.spd);
     $('#vitResult').text(result.vit);
     $('#lukResult').text(result.luk);
-    $('#atkResult').text(result.atk + "(上昇値：" + atkLiquidBuff + ")");
-    $('#defResult').text(result.def + "(上昇値：" + defLiquidBuff + ")");
-    $('#matResult').text(result.mat + "(上昇値：" + matLiquidBuff + ")");
-    $('#mdfResult').text(result.mdf + "(上昇値：" + mdfLiquidBuff + ")");
+    $('#atkResult').text(result.atk + "(上昇値：" + liquidBuff.atk + ")");
+    $('#defResult').text(result.def + "(上昇値：" + liquidBuff.def + ")");
+    $('#matResult').text(result.mat + "(上昇値：" + liquidBuff.mat + ")");
+    $('#mdfResult').text(result.mdf + "(上昇値：" + liquidBuff.mdf + ")");
 }
 
 /**
