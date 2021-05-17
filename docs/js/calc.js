@@ -168,8 +168,14 @@ function calculation() {
     // 巻物の上昇値
     let makimonoBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
+    // ブラッドスクレイパーの上昇値
+    let bloodScraperBuff = new PISVL(0, 0, 0, 0, 0);
+
     // エル羽の上昇値
-    let elBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let elysionBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+    // フィス羽の上昇値
+    let apophisBuff = new PISVL(0, 0, 0, 0, 0);
 
     // 処理
     $(".process div").each(function (i) {
@@ -336,51 +342,51 @@ function calculation() {
 
         // 巻物処理
         if (taskName == "powMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.pow = Number(task.children().val()); // POW上昇値
             result.pow += makimonoBuff.pow;
             result.atk += makimonoBuff.pow * 3;
         }
         if (taskName == "intMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.int = Number(task.children().val()); // INT上昇値
             result.int += makimonoBuff.int;
             result.mat += makimonoBuff.int * 2;
             result.mdf += makimonoBuff.int * 15;
         }
         if (taskName == "spdMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.spd = Number(task.children().val()); // SPD上昇値
             result.spd += makimonoBuff.spd;
         }
         if (taskName == "vitMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.vit = Number(task.children().val()); // VIT上昇値
             result.vit += makimonoBuff.vit;
             result.def += makimonoBuff.vit * 2;
         }
         if (taskName == "lukMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.luk = Number(task.children().val()); // LUK上昇値
             result.luk += makimonoBuff.luk;
         }
         if (taskName == "atkMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.atk = Number(task.children().val()); // ATK上昇値
             result.atk += makimonoBuff.atk;
         }
         if (taskName == "defMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.def = Number(task.children().val()); // DEF上昇値
             result.def += makimonoBuff.def;
         }
         if (taskName == "matMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.mat = Number(task.children().val()); // MAT上昇値
             result.mat += makimonoBuff.mat;
         }
         if (taskName == "mdfMakimono") {
-            resetMakimonoBuff(makimonoBuff, result);
+            resetPISVLADMaMdBuff(makimonoBuff, result);
             makimonoBuff.mdf = Number(task.children().val()); // MDF上昇値
             result.mdf += makimonoBuff.mdf;
         }
@@ -391,7 +397,7 @@ function calculation() {
             result.atk -= liquidBuff.atk;
 
             let atkMagni = (level + result.pow - 100) / 100; // ATK上昇倍率
-            liquidBuff.atk = parseInt((result.atk - result.pow - elBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
+            liquidBuff.atk = parseInt((result.atk - result.pow - elysionBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
             result.atk += liquidBuff.atk;
         }
         if (taskName == "defLiquid") {
@@ -399,7 +405,7 @@ function calculation() {
             result.def -= liquidBuff.def;
 
             let defMagni = (level + result.vit - 100) / 100; // DEF上昇倍率
-            liquidBuff.def = parseInt((result.def - elBuff.def) * Math.max(0.1, defMagni)); // DEF上昇量
+            liquidBuff.def = parseInt((result.def - elysionBuff.def) * Math.max(0.1, defMagni)); // DEF上昇量
             result.def += liquidBuff.def;
         }
         if (taskName == "matLiquid") {
@@ -407,7 +413,7 @@ function calculation() {
             result.mat -= liquidBuff.mat;
 
             let matMagni = (level + result.int - 100) / 100; // MAT上昇倍率
-            liquidBuff.mat = parseInt((result.mat - elBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
+            liquidBuff.mat = parseInt((result.mat - elysionBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
             result.mat += liquidBuff.mat;
         }
         if (taskName == "mdfLiquid") {
@@ -416,50 +422,54 @@ function calculation() {
 
             let maxIntOrVit = Math.max(result.int, result.vit) // INT or VIT の大きい値を取る
             let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
-            liquidBuff.mdf = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - elBuff.mdf) * Math.max(0.1, mdfMagni)); // MDF上昇量
+            liquidBuff.mdf = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - elysionBuff.mdf) * Math.max(0.1, mdfMagni)); // MDF上昇量
             result.mdf += liquidBuff.mdf;
         }
 
         // スキル処理
         if (taskName == "bloodScraper") {
-            let powBuff = 9; // POW上昇値
-            result.pow += powBuff;
-            result.atk += powBuff * 3;
+            resetPISVLBuff(bloodScraperBuff, result);
+            bloodScraperBuff.pow = 9; // POW上昇値
+            result.pow += bloodScraperBuff.pow;
+            result.atk += bloodScraperBuff.pow * 3;
         }
         if (taskName == "elysion") {
-            let powBuff = parseInt(result.pow * 0.2); // POW上昇値
-            powBuff = Math.max(1, powBuff); // POW上昇値が 0 以下だったら、上昇値は 1 とする
-            result.pow += powBuff;
-            result.atk += powBuff * 3;
-            let intBuff = parseInt(result.int * 0.2); // INT上昇値
-            intBuff = Math.max(1, intBuff); // INT上昇値が 0 以下だったら、上昇値は 1 とする
-            result.int += intBuff;
-            result.mat += intBuff * 2;
-            result.mdf += intBuff * 15;
-            let spdBuff = parseInt(result.spd * 0.2); // SPD上昇値
-            spdBuff = Math.max(1, spdBuff); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
-            result.spd += spdBuff;
-            let vitBuff = parseInt(result.vit * 0.2); // VIT上昇値
-            vitBuff = Math.max(1, vitBuff); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
-            result.vit += vitBuff;
-            result.def += vitBuff * 2;
-            let lukBuff = parseInt(result.luk * 0.2); // LUK上昇値
-            lukBuff = Math.max(1, lukBuff); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
-            result.luk += lukBuff;
+            resetPISVLADMaMdBuff(elysionBuff, result);
 
-            elBuff.atk = parseInt((atkTotal + makimonoBuff.atk - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
-            result.atk += elBuff.atk;
-            elBuff.def = parseInt((defTotal + makimonoBuff.def - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
-            result.def += elBuff.def;
-            elBuff.mat = parseInt((matTotal + makimonoBuff.mat - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
-            result.mat += elBuff.mat;
+            elysionBuff.pow = parseInt(result.pow * 0.2); // POW上昇値
+            elysionBuff.pow = Math.max(1, elysionBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
+            result.pow += elysionBuff.pow;
+            result.atk += elysionBuff.pow * 3;
+            elysionBuff.int = parseInt(result.int * 0.2); // INT上昇値
+            elysionBuff.int = Math.max(1, elysionBuff.int); // INT上昇値が 0 以下だったら、上昇値は 1 とする
+            result.int += elysionBuff.int;
+            result.mat += elysionBuff.int * 2;
+            result.mdf += elysionBuff.int * 15;
+            elysionBuff.spd = parseInt(result.spd * 0.2); // SPD上昇値
+            elysionBuff.spd = Math.max(1, elysionBuff.spd); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
+            result.spd += elysionBuff.spd;
+            elysionBuff.vit = parseInt(result.vit * 0.2); // VIT上昇値
+            elysionBuff.vit = Math.max(1, elysionBuff.vit); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
+            result.vit += elysionBuff.vit;
+            result.def += elysionBuff.vit * 2;
+            elysionBuff.luk = parseInt(result.luk * 0.2); // LUK上昇値
+            elysionBuff.luk = Math.max(1, elysionBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
+            result.luk += elysionBuff.luk;
+
+            elysionBuff.atk = parseInt((atkTotal + makimonoBuff.atk - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
+            result.atk += elysionBuff.atk;
+            elysionBuff.def = parseInt((defTotal + makimonoBuff.def - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
+            result.def += elysionBuff.def;
+            elysionBuff.mat = parseInt((matTotal + makimonoBuff.mat - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
+            result.mat += elysionBuff.mat;
             let maxIntOrVit = Math.max(result.int, result.vit); // INT or VIT の大きい値を取る
-            elBuff.mdf = parseInt((mdfTotal + makimonoBuff.mdf - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
-            result.mdf += elBuff.mdf;
+            elysionBuff.mdf = parseInt((mdfTotal + makimonoBuff.mdf - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
+            result.mdf += elysionBuff.mdf;
         }
         if (taskName == "apophis") {
-            let lukBuff = parseInt(result.luk * 0.3); // LUK上昇値
-            result.luk += lukBuff;
+            resetPISVLBuff(apophisBuff, result);
+            apophisBuff.luk = parseInt(result.luk * 0.3); // LUK上昇値
+            result.luk += apophisBuff.luk;
         }
     });
 
@@ -476,8 +486,8 @@ function calculation() {
 }
 
 /**
- * PPW/INT/SPD/VIT/LUKの上昇値をリセットする
- * 魔獣缶・シールや、ビタなどのリセットに使用する
+ * POW/INT/SPD/VIT/LUKの上昇値をリセットする
+ * 魔獣缶・シールや、ビタ、スクレイパー、フィス羽などのリセットに使用する
  */
 function resetPISVLBuff(PISVLBuff, result) {
     // POW上昇による効果のリセット
@@ -500,35 +510,36 @@ function resetPISVLBuff(PISVLBuff, result) {
 }
 
 /**
- * 巻物の上昇値をリセットする
+ * POW/INT/SPD/VIT/LUK/ATK/DEF/MAT/MDFの上昇値をリセットする
+ * 巻物や、エル羽などのリセットに使用する
  */
- function resetMakimonoBuff(makimonoBuff, result) {
+ function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
     // POW上昇による効果のリセット
-    result.pow -= makimonoBuff.pow;
-    result.atk -= makimonoBuff.pow * 3;
+    result.pow -= PISVLADMaMdBuff.pow;
+    result.atk -= PISVLADMaMdBuff.pow * 3;
     // INT上昇による効果のリセット
-    result.int -= makimonoBuff.int;
-    result.mat -= makimonoBuff.int * 2;
-    result.mdf -= makimonoBuff.int * 15;
+    result.int -= PISVLADMaMdBuff.int;
+    result.mat -= PISVLADMaMdBuff.int * 2;
+    result.mdf -= PISVLADMaMdBuff.int * 15;
     // SPD上昇による効果のリセット
-    result.spd -= makimonoBuff.spd;
+    result.spd -= PISVLADMaMdBuff.spd;
     // VIT上昇による効果のリセット
-    result.vit -= makimonoBuff.vit;
-    result.def -= makimonoBuff.vit * 2;
+    result.vit -= PISVLADMaMdBuff.vit;
+    result.def -= PISVLADMaMdBuff.vit * 2;
     // LUK上昇による効果のリセット
-    result.luk -= makimonoBuff.luk;
+    result.luk -= PISVLADMaMdBuff.luk;
 
     // ATK上昇による効果のリセット
-    result.atk -= makimonoBuff.atk;
+    result.atk -= PISVLADMaMdBuff.atk;
     // DEF上昇による効果のリセット
-    result.def -= makimonoBuff.def;
+    result.def -= PISVLADMaMdBuff.def;
     // MAT上昇による効果のリセット
-    result.mat -= makimonoBuff.mat;
+    result.mat -= PISVLADMaMdBuff.mat;
     // MDf上昇による効果のリセット
-    result.mdf -= makimonoBuff.mdf;
+    result.mdf -= PISVLADMaMdBuff.mdf;
 
     // 上昇値のリセット
-    makimonoBuff.reset();
+    PISVLADMaMdBuff.reset();
 }
 
 /**
