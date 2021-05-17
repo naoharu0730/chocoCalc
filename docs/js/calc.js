@@ -308,42 +308,51 @@ function calculation() {
 
         // 巻物処理
         if (taskName == "powMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.pow = Number(task.children().val()); // POW上昇値
             result.pow += makimonoBuff.pow;
             result.atk += makimonoBuff.pow * 3;
         }
         if (taskName == "intMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.int = Number(task.children().val()); // INT上昇値
             result.int += makimonoBuff.int;
             result.mat += makimonoBuff.int * 2;
             result.mdf += makimonoBuff.int * 15;
         }
         if (taskName == "spdMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.spd = Number(task.children().val()); // SPD上昇値
             result.spd += makimonoBuff.spd;
         }
         if (taskName == "vitMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.vit = Number(task.children().val()); // VIT上昇値
             result.vit += makimonoBuff.vit;
             result.def += makimonoBuff.vit * 2;
         }
         if (taskName == "lukMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.luk = Number(task.children().val()); // LUK上昇値
             result.luk += makimonoBuff.luk;
         }
         if (taskName == "atkMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.atk = Number(task.children().val()); // ATK上昇値
             result.atk += makimonoBuff.atk;
         }
         if (taskName == "defMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.def = Number(task.children().val()); // DEF上昇値
             result.def += makimonoBuff.def;
         }
         if (taskName == "matMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.mat = Number(task.children().val()); // MAT上昇値
             result.mat += makimonoBuff.mat;
         }
         if (taskName == "mdfMakimono") {
+            resetMakimonoBuff(makimonoBuff, result);
             makimonoBuff.mdf = Number(task.children().val()); // MDF上昇値
             result.mdf += makimonoBuff.mdf;
         }
@@ -447,6 +456,38 @@ function resetCanSealBuff(canSealBuff, result) {
 
     // 上昇値のリセット
     canSealBuff.reset();
+}
+
+/**
+ * 巻物の上昇値をリセットする
+ */
+ function resetMakimonoBuff(makimonoBuff, result) {
+    // POW上昇による効果のリセット
+    result.pow -= makimonoBuff.pow;
+    result.atk -= makimonoBuff.pow * 3;
+    // INT上昇による効果のリセット
+    result.int -= makimonoBuff.int;
+    result.mat -= makimonoBuff.int * 2;
+    result.mdf -= makimonoBuff.int * 15;
+    // SPD上昇による効果のリセット
+    result.spd -= makimonoBuff.spd;
+    // VIT上昇による効果のリセット
+    result.vit -= makimonoBuff.vit;
+    result.def -= makimonoBuff.vit * 2;
+    // LUK上昇による効果のリセット
+    result.luk -= makimonoBuff.luk;
+
+    // ATK上昇による効果のリセット
+    result.atk -= makimonoBuff.atk;
+    // DEF上昇による効果のリセット
+    result.def -= makimonoBuff.def;
+    // MAT上昇による効果のリセット
+    result.mat -= makimonoBuff.mat;
+    // MDf上昇による効果のリセット
+    result.mdf -= makimonoBuff.mdf;
+
+    // 上昇値のリセット
+    makimonoBuff.reset();
 }
 
 /**
