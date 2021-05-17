@@ -383,21 +383,33 @@ function calculation() {
 
         // リキッド処理
         if (taskName == "powLiquid") {
+            // ATK上昇による効果のリセット
+            result.atk -= liquidBuff.atk;
+
             let atkMagni = (level + result.pow - 100) / 100; // ATK上昇倍率
             liquidBuff.atk = parseInt((result.atk - result.pow - elBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
             result.atk += liquidBuff.atk;
         }
         if (taskName == "defLiquid") {
+            // DEF上昇による効果のリセット
+            result.def -= liquidBuff.def;
+
             let defMagni = (level + result.vit - 100) / 100; // DEF上昇倍率
             liquidBuff.def = parseInt((result.def - elBuff.def) * Math.max(0.1, defMagni)); // DEF上昇量
             result.def += liquidBuff.def;
         }
         if (taskName == "matLiquid") {
+            // MAT上昇による効果のリセット
+            result.mat -= liquidBuff.mat;
+
             let matMagni = (level + result.int - 100) / 100; // MAT上昇倍率
             liquidBuff.mat = parseInt((result.mat - elBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
             result.mat += liquidBuff.mat;
         }
         if (taskName == "mdfLiquid") {
+            // MDf上昇による効果のリセット
+            result.mdf -= liquidBuff.mdf;
+
             let maxIntOrVit = Math.max(result.int, result.vit) // INT or VIT の大きい値を取る
             let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
             liquidBuff.mdf = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - elBuff.mdf) * Math.max(0.1, mdfMagni)); // MDF上昇量
