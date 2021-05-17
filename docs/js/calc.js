@@ -152,6 +152,10 @@ function calculation() {
     // 結果の初期化
     let result = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
+    // ビタの上昇値
+    let bitaBuff = new PISVL(0, 0, 0, 0, 0);
+    let allBitaBuff = new PISVL(0, 0, 0, 0, 0);
+
     // リキッドの上昇値
     let liquidBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -171,59 +175,79 @@ function calculation() {
 
         // ビタ処理
         if (taskName == "powBita") {
-            let powBuff = parseInt(powStatus * 0.2); // POW上昇値
-            powBuff = Math.max(1, powBuff); // POW上昇値が 0 以下だったら、上昇値は 1 とする
-            result.pow += powBuff;
-            result.atk += powBuff * 3;
+            // POW上昇による効果のリセット
+            result.pow -= bitaBuff.pow;
+            result.atk -= bitaBuff.pow * 3;
+
+            bitaBuff.pow = parseInt(powStatus * 0.2); // POW上昇値
+            bitaBuff.pow = Math.max(1, bitaBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
+            result.pow += bitaBuff.pow;
+            result.atk += bitaBuff.pow * 3;
         }
         if (taskName == "intBita") {
-            let intBuff = parseInt(intStatus * 0.2); // INT上昇値
-            intBuff = Math.max(1, intBuff); // INT上昇値が 0 以下だったら、上昇値は 1 とする
-            result.int += intBuff;
-            result.mat += intBuff * 2;
-            result.mdf += intBuff * 15;
+            // INT上昇による効果のリセット
+            result.int -= bitaBuff.int;
+            result.mat -= bitaBuff.int * 2;
+            result.mdf -= bitaBuff.int * 15;
+
+            bitaBuff.int = parseInt(intStatus * 0.2); // INT上昇値
+            bitaBuff.int = Math.max(1, bitaBuff.int); // INT上昇値が 0 以下だったら、上昇値は 1 とする
+            result.int += bitaBuff.int;
+            result.mat += bitaBuff.int * 2;
+            result.mdf += bitaBuff.int * 15;
         }
         if (taskName == "spdBita") {
-            let spdBuff = parseInt(spdStatus * 0.2); // SPD上昇値
-            spdBuff = Math.max(1, spdBuff); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
-            result.spd += spdBuff;
+            // SPD上昇による効果のリセット
+            result.spd -= bitaBuff.spd;
+
+            bitaBuff.spd = parseInt(spdStatus * 0.2); // SPD上昇値
+            bitaBuff.spd = Math.max(1, bitaBuff.spd); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
+            result.spd += bitaBuff.spd;
         }
         if (taskName == "vitBita") {
-            let vitBuff = parseInt(vitStatus * 0.2); // VIT上昇値
-            vitBuff = Math.max(1, vitBuff); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
-            result.vit += vitBuff;
-            result.def += vitBuff * 2;
+            // VIT上昇による効果のリセット
+            result.vit -= bitaBuff.vit;
+            result.def -= bitaBuff.vit * 2;
+
+            bitaBuff.vit = parseInt(vitStatus * 0.2); // VIT上昇値
+            bitaBuff.vit = Math.max(1, bitaBuff.vit); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
+            result.vit += bitaBuff.vit;
+            result.def += bitaBuff.vit * 2;
         }
         if (taskName == "lukBita") {
-            let lukBuff = parseInt(lukStatus * 0.2); // LUK上昇値
-            lukBuff = Math.max(1, lukBuff); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
-            result.luk += lukBuff;
+            // LUK上昇による効果のリセット
+            result.luk -= bitaBuff.luk;
+
+            bitaBuff.luk = parseInt(lukStatus * 0.2); // LUK上昇値
+            bitaBuff.luk = Math.max(1, bitaBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
+            result.luk += bitaBuff.luk;
         }
         if (taskName == "allBita") {
-            let powBuff = parseInt(powStatus * 0.1); // POW上昇値
-            powBuff = Math.max(1, powBuff); // POW上昇値が 0 以下だったら、上昇値は 1 とする
-            result.pow += powBuff;
-            result.atk += powBuff * 3;
-            let intBuff = parseInt(intStatus * 0.1); // INT上昇値
-            intBuff = Math.max(1, intBuff); // INT上昇値が 0 以下だったら、上昇値は 1 とする
-            result.int += intBuff;
-            result.mat += intBuff * 2;
-            result.mdf += intBuff * 15;
-            let spdBuff = parseInt(spdStatus * 0.1); // SPD上昇値
-            spdBuff = Math.max(1, spdBuff); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
-            result.spd += spdBuff;
-            let vitBuff = parseInt(vitStatus * 0.1); // VIT上昇値
-            vitBuff = Math.max(1, vitBuff); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
-            result.vit += vitBuff;
-            result.def += vitBuff * 2;
-            let lukBuff = parseInt(lukStatus * 0.1); // LUK上昇値
-            lukBuff = Math.max(1, lukBuff); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
-            result.luk += lukBuff;
+            resetPISVLBuff(allBitaBuff, result);
+            allBitaBuff.pow = parseInt(powStatus * 0.1); // POW上昇値
+            allBitaBuff.pow = Math.max(1, allBitaBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
+            result.pow += allBitaBuff.pow;
+            result.atk += allBitaBuff.pow * 3;
+            allBitaBuff.int = parseInt(intStatus * 0.1); // INT上昇値
+            allBitaBuff.int = Math.max(1, allBitaBuff.int); // INT上昇値が 0 以下だったら、上昇値は 1 とする
+            result.int += allBitaBuff.int;
+            result.mat += allBitaBuff.int * 2;
+            result.mdf += allBitaBuff.int * 15;
+            allBitaBuff.spd = parseInt(spdStatus * 0.1); // SPD上昇値
+            allBitaBuff.spd = Math.max(1, allBitaBuff.spd); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
+            result.spd += allBitaBuff.spd;
+            allBitaBuff.vit = parseInt(vitStatus * 0.1); // VIT上昇値
+            allBitaBuff.vit = Math.max(1, allBitaBuff.vit); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
+            result.vit += allBitaBuff.vit;
+            result.def += allBitaBuff.vit * 2;
+            allBitaBuff.luk = parseInt(lukStatus * 0.1); // LUK上昇値
+            allBitaBuff.luk = Math.max(1, allBitaBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
+            result.luk += allBitaBuff.luk;
         }
 
         // 魔獣缶処理
         if (taskName == "powCan") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.pow = 10; // POW上昇値
             result.pow += canSealBuff.pow;
             result.atk += canSealBuff.pow * 3;
@@ -233,7 +257,7 @@ function calculation() {
             result.mdf += canSealBuff.int * 15;
         }
         if (taskName == "intCan") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.int = 10; // INT上昇値
             result.int += canSealBuff.int;
             result.mat += canSealBuff.int * 2;
@@ -245,7 +269,7 @@ function calculation() {
 
         // シール処理
         if (taskName == "powSeal") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.pow = 15; // POW上昇値
             result.pow += canSealBuff.pow;
             result.atk += canSealBuff.pow * 3;
@@ -255,7 +279,7 @@ function calculation() {
             result.mdf += canSealBuff.int * 15;
         }
         if (taskName == "intSeal") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.pow = -15; // POW上昇値
             result.pow += canSealBuff.pow;
             result.atk += canSealBuff.pow * 3;
@@ -265,14 +289,14 @@ function calculation() {
             result.mdf += canSealBuff.int * 15;
         }
         if (taskName == "spdSeal") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.spd = 15; // SPD上昇値
             result.spd += canSealBuff.spd;
             canSealBuff.luk = -15; // LUK上昇値
             result.luk += canSealBuff.luk;
         }
         if (taskName == "vitSeal") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.spd = -15; // SPD上昇値
             result.spd += canSealBuff.spd;
             canSealBuff.vit = 15; // VIT上昇値
@@ -280,7 +304,7 @@ function calculation() {
             result.def += canSealBuff.vit * 2;
         }
         if (taskName == "lukSeal") {
-            resetCanSealBuff(canSealBuff, result);
+            resetPISVLBuff(canSealBuff, result);
             canSealBuff.vit = -15; // VIT上昇値
             result.vit += canSealBuff.vit;
             result.def += canSealBuff.vit * 2;
@@ -359,21 +383,33 @@ function calculation() {
 
         // リキッド処理
         if (taskName == "powLiquid") {
+            // ATK上昇による効果のリセット
+            result.atk -= liquidBuff.atk;
+
             let atkMagni = (level + result.pow - 100) / 100; // ATK上昇倍率
             liquidBuff.atk = parseInt((result.atk - result.pow - elBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
             result.atk += liquidBuff.atk;
         }
         if (taskName == "defLiquid") {
+            // DEF上昇による効果のリセット
+            result.def -= liquidBuff.def;
+
             let defMagni = (level + result.vit - 100) / 100; // DEF上昇倍率
             liquidBuff.def = parseInt((result.def - elBuff.def) * Math.max(0.1, defMagni)); // DEF上昇量
             result.def += liquidBuff.def;
         }
         if (taskName == "matLiquid") {
+            // MAT上昇による効果のリセット
+            result.mat -= liquidBuff.mat;
+
             let matMagni = (level + result.int - 100) / 100; // MAT上昇倍率
             liquidBuff.mat = parseInt((result.mat - elBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
             result.mat += liquidBuff.mat;
         }
         if (taskName == "mdfLiquid") {
+            // MDf上昇による効果のリセット
+            result.mdf -= liquidBuff.mdf;
+
             let maxIntOrVit = Math.max(result.int, result.vit) // INT or VIT の大きい値を取る
             let mdfMagni = (level + maxIntOrVit - 100) / 100; // MDF上昇倍率
             liquidBuff.mdf = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - elBuff.mdf) * Math.max(0.1, mdfMagni)); // MDF上昇量
@@ -436,26 +472,27 @@ function calculation() {
 }
 
 /**
- * 魔獣缶・シールの上昇値をリセットする
+ * PPW/INT/SPD/VIT/LUKの上昇値をリセットする
+ * 魔獣缶・シールや、ビタなどのリセットに使用する
  */
-function resetCanSealBuff(canSealBuff, result) {
+function resetPISVLBuff(PISVLBuff, result) {
     // POW上昇による効果のリセット
-    result.pow -= canSealBuff.pow;
-    result.atk -= canSealBuff.pow * 3;
+    result.pow -= PISVLBuff.pow;
+    result.atk -= PISVLBuff.pow * 3;
     // INT上昇による効果のリセット
-    result.int -= canSealBuff.int;
-    result.mat -= canSealBuff.int * 2;
-    result.mdf -= canSealBuff.int * 15;
+    result.int -= PISVLBuff.int;
+    result.mat -= PISVLBuff.int * 2;
+    result.mdf -= PISVLBuff.int * 15;
     // SPD上昇による効果のリセット
-    result.spd -= canSealBuff.spd;
+    result.spd -= PISVLBuff.spd;
     // VIT上昇による効果のリセット
-    result.vit -= canSealBuff.vit;
-    result.def -= canSealBuff.vit * 2;
+    result.vit -= PISVLBuff.vit;
+    result.def -= PISVLBuff.vit * 2;
     // LUK上昇による効果のリセット
-    result.luk -= canSealBuff.luk;
+    result.luk -= PISVLBuff.luk;
 
     // 上昇値のリセット
-    canSealBuff.reset();
+    PISVLBuff.reset();
 }
 
 /**
