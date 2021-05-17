@@ -153,13 +153,16 @@ function calculation() {
     let result = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
     // リキッドの上昇値
-    let liquidBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0)
+    let liquidBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // 魔獣缶・シールの上昇値
     let canSealBuff = new PISVL(0, 0, 0, 0, 0);
 
+    // 巻物の上昇値
+    let makimonoBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+
     // エル羽の上昇値
-    let elBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0)
+    let elBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // 処理
     $(".process div").each(function (i) {
@@ -305,44 +308,44 @@ function calculation() {
 
         // 巻物処理
         if (taskName == "powMakimono") {
-            let powBuff = Number(task.children().val()); // POW上昇値
-            result.pow += powBuff;
-            result.atk += powBuff * 3;
+            makimonoBuff.pow = Number(task.children().val()); // POW上昇値
+            result.pow += makimonoBuff.pow;
+            result.atk += makimonoBuff.pow * 3;
         }
         if (taskName == "intMakimono") {
-            let intBuff = Number(task.children().val()); // INT上昇値
-            result.int += intBuff;
-            result.mat += intBuff * 2;
-            result.mdf += intBuff * 15;
+            makimonoBuff.int = Number(task.children().val()); // INT上昇値
+            result.int += makimonoBuff.int;
+            result.mat += makimonoBuff.int * 2;
+            result.mdf += makimonoBuff.int * 15;
         }
         if (taskName == "spdMakimono") {
-            let spdBuff = Number(task.children().val()); // SPD上昇値
-            result.spd += spdBuff;
+            makimonoBuff.spd = Number(task.children().val()); // SPD上昇値
+            result.spd += makimonoBuff.spd;
         }
         if (taskName == "vitMakimono") {
-            let vitBuff = Number(task.children().val()); // VIT上昇値
-            result.vit += vitBuff;
-            result.def += vitBuff * 2;
+            makimonoBuff.vit = Number(task.children().val()); // VIT上昇値
+            result.vit += makimonoBuff.vit;
+            result.def += makimonoBuff.vit * 2;
         }
         if (taskName == "lukMakimono") {
-            let lukBuff = Number(task.children().val()); // LUK上昇値
-            result.luk += lukBuff;
+            makimonoBuff.luk = Number(task.children().val()); // LUK上昇値
+            result.luk += makimonoBuff.luk;
         }
         if (taskName == "atkMakimono") {
-            let atkBuff = Number(task.children().val()); // ATK上昇値
-            result.atk += atkBuff;
+            makimonoBuff.atk = Number(task.children().val()); // ATK上昇値
+            result.atk += makimonoBuff.atk;
         }
         if (taskName == "defMakimono") {
-            let atkBuff = Number(task.children().val()); // DEF上昇値
-            result.def += atkBuff;
+            makimonoBuff.def = Number(task.children().val()); // DEF上昇値
+            result.def += makimonoBuff.def;
         }
         if (taskName == "matMakimono") {
-            let atkBuff = Number(task.children().val()); // MAT上昇値
-            result.mat += atkBuff;
+            makimonoBuff.mat = Number(task.children().val()); // MAT上昇値
+            result.mat += makimonoBuff.mat;
         }
         if (taskName == "mdfMakimono") {
-            let atkBuff = Number(task.children().val()); // MDF上昇値
-            result.mdf += atkBuff;
+            makimonoBuff.mdf = Number(task.children().val()); // MDF上昇値
+            result.mdf += makimonoBuff.mdf;
         }
 
         // リキッド処理
@@ -395,14 +398,14 @@ function calculation() {
             lukBuff = Math.max(1, lukBuff); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += lukBuff;
 
-            elBuff.atk = parseInt((atkTotal - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
+            elBuff.atk = parseInt((atkTotal + makimonoBuff.atk - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
             result.atk += elBuff.atk;
-            elBuff.def = parseInt((defTotal - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
+            elBuff.def = parseInt((defTotal + makimonoBuff.def - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
             result.def += elBuff.def;
-            elBuff.mat = parseInt((matTotal - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
+            elBuff.mat = parseInt((matTotal + makimonoBuff.mat - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
             result.mat += elBuff.mat;
             let maxIntOrVit = Math.max(result.int, result.vit); // INT or VIT の大きい値を取る
-            elBuff.mdf = parseInt((mdfTotal - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
+            elBuff.mdf = parseInt((mdfTotal + makimonoBuff.mdf - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
             result.mdf += elBuff.mdf;
         }
         if (taskName == "apophis") {
