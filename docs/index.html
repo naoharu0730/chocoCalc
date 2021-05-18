@@ -7,6 +7,8 @@
     <title>ドピ計算</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
     <script src="js/csv.js"></script>
     <script src="js/calc.js"></script>
     <script src="js/event.js"></script>
@@ -153,46 +155,55 @@
         <legend>消費アイテム</legend>
 
         <div class="bita">
-            <button id="appendPowBita">POWビタ</button>
-            <button id="appendIntBita">INTビタ</button>
-            <button id="appendSpdBita">SPDビタ</button>
-            <button id="appendVitBita">VITビタ</button>
-            <button id="appendLukBita">LUKビタ</button>
-            <button id="appendAllBita">ALLビタ</button>
+            <div class="ui buttons">
+                <button id="appendPowBita" class="ui pink basic button">POWビタ</button>
+                <button id="appendIntBita" class="ui green basic button">INTビタ</button>
+                <button id="appendSpdBita" class="ui teal basic button">SPDビタ</button>
+                <button id="appendVitBita" class="ui orange basic button">VITビタ</button>
+                <button id="appendLukBita" class="ui yellow basic button">LUKビタ</button>
+                <button id="appendAllBita" class="ui basic button">ALLビタ</button>
+            </div>
         </div>
 
         <div class="can">
-            <button id="appendPowCan">魔獣缶A</button>
-            <button id="appendIntCan">魔獣缶B</button>
+            <div class="ui buttons">
+                <button id="appendPowCan" class="ui pink basic button">魔獣缶A</button>
+                <button id="appendIntCan" class="ui green basic button">魔獣缶B</button>
+            </div>
         </div>
 
         <div class="seal">
-            <button id="appendPowSeal">POWシール</button>
-            <button id="appendIntSeal">INTシール</button>
-            <button id="appendSpdSeal">SPDシール</button>
-            <button id="appendVitSeal">VITシール</button>
-            <button id="appendLukSeal">LUKシール</button>
-        </div>
+            <div class="ui buttons">
+            <button id="appendPowSeal" class="ui pink basic button">POWシール</button>
+            <button id="appendIntSeal" class="ui green basic button">INTシール</button>
+            <button id="appendSpdSeal" class="ui teal basic button">SPDシール</button>
+            <button id="appendVitSeal" class="ui orange basic button">VITシール</button>
+            <button id="appendLukSeal" class="ui yellow basic button">LUKシール</button>
+            </div>
         </div>
 
         <div class="makimono">
-            <button id="appendPowMakimono">POW巻物</button>
-            <button id="appendIntMakimono">INT巻物</button>
-            <button id="appendSpdMakimono">SPD巻物</button>
-            <button id="appendVitMakimono">VIT巻物</button>
-            <button id="appendLukMakimono">LUK巻物</button>
+            <div class="ui buttons">
+            <button id="appendPowMakimono" class="ui pink basic button">POW巻物</button>
+            <button id="appendIntMakimono" class="ui green basic button">INT巻物</button>
+            <button id="appendSpdMakimono" class="ui teal basic button">SPD巻物</button>
+            <button id="appendVitMakimono" class="ui orange basic button">VIT巻物</button>
+            <button id="appendLukMakimono" class="ui yellow basic button">LUK巻物</button>
 
-            <button id="appendAtkMakimono">ATK巻物</button>
-            <button id="appendDefMakimono">DEF巻物</button>
-            <button id="appendMatMakimono">MAT巻物</button>
-            <button id="appendMdfMakimono">MDF巻物</button>
+            <button id="appendAtkMakimono" class="ui red basic button">ATK巻物</button>
+            <button id="appendDefMakimono" class="ui blue basic button">DEF巻物</button>
+            <button id="appendMatMakimono" class="ui purple basic button">MAT巻物</button>
+            <button id="appendMdfMakimono" class="ui violet basic button">MDF巻物</button>
+            </div>
         </div>
 
         <div class="liquid">
-            <button id="appendPowLiquid">アタークリキッド</button>
-            <button id="appendDefLiquid">マモールリキッド</button>
-            <button id="appendMatLiquid">マホアタリキッド</button>
-            <button id="appendMdfLiquid">マホマモリキッド</button>
+            <div class="ui buttons">
+            <button id="appendPowLiquid" class="ui pink basic button">アタークリキッド</button>
+            <button id="appendDefLiquid" class="ui pink basic button">マモールリキッド</button>
+            <button id="appendMatLiquid" class="ui pink basic button">マホアタリキッド</button>
+            <button id="appendMdfLiquid" class="ui pink basic button">マホマモリキッド</button>
+            </div>
         </div>
 
     </fieldset>
@@ -201,12 +212,14 @@
         <legend>スキル</legend>
 
         <div class="jobSkill">
-            <button id="appendBloodScraper">ブラッドスクレイパー</button>
+            <button id="appendBloodScraper" class="ui pink basic button">ブラッドスクレイパー</button>
         </div>
 
         <div class="specialSkill">
-            <button id="appendElysion">大天使の加護</button>
-            <button id="appendApophis">邪神の呪詛</button>
+            <div class="ui buttons">
+            <button id="appendElysion" class="ui basic button">大天使の加護</button>
+            <button id="appendApophis" class="ui yellow basic button">邪神の呪詛</button>
+            </div>
         </div>
 
     </fieldset>
@@ -215,7 +228,7 @@
         <legend>アタッチメントシステム</legend>
 
         <div class="break">
-            <button id="appendBreak">ブレイク</button>
+            <button id="appendBreak" class="ui basic button">ブレイク</button>
         </div>
 
     </fieldset>
