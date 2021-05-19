@@ -74,29 +74,6 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
 
-    // ブレイク処理の追加
-    $('#appendBreak').on('click', function () {
-        $('.process').append(`<div name=break><i class="ring icon"></i>ブレイク
-        <table class="card-table">
-        <tr>
-            <th class="pow-item">POW</th>
-            <th class="int-item">INT</th>
-            <th class="spd-item">SPD</th>
-            <th class="vit-item">VIT</th>
-            <th class="luk-item">LUK</th>
-        </tr>
-        <tr>
-            <th><input type="number" value="0" name="powCard"/></th>
-            <th><input type="number" value="0" name="intCard"/></th>
-            <th><input type="number" value="0" name="spdCard"/></th>
-            <th><input type="number" value="0" name="vitCard"/></th>
-            <th><input type="number" value="0" name="lukCard"/></th>
-        </tr>
-        </table>
-        <button class="delete">削除</button> </div>`);
-        calculation() // 処理の追加タイミングで更新
-    });
-
     // 巻物処理の追加
     $('#appendPowMakimono').on('click', function () {
         $('.process').append(`<div name=powMakimono><i class="scroll icon"></i>POW巻物
@@ -290,6 +267,29 @@ $(document).ready(function () {
     });
     $('#appendApophis').on('click', function () {
         $('.process').append('<div name=apophis><i class="feather alternate icon"></i>邪神の呪詛  <button class="delete">削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+
+    // ブレイク処理の追加
+    $('#appendBreak').on('click', function () {
+        $('.process').append(`<div name=break><i class="ring icon"></i>ブレイク
+        <table class="card-table">
+        <tr>
+            <th class="pow-item">POW</th>
+            <th class="int-item">INT</th>
+            <th class="spd-item">SPD</th>
+            <th class="vit-item">VIT</th>
+            <th class="luk-item">LUK</th>
+        </tr>
+        <tr>
+            <th><input type="number" value="0" name="powCard"/></th>
+            <th><input type="number" value="0" name="intCard"/></th>
+            <th><input type="number" value="0" name="spdCard"/></th>
+            <th><input type="number" value="0" name="vitCard"/></th>
+            <th><input type="number" value="0" name="lukCard"/></th>
+        </tr>
+        </table>
+        <button class="delete">削除</button> </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
