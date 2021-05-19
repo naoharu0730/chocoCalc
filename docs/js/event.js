@@ -240,39 +240,39 @@ $(document).ready(function () {
 
     // リキッド処理の追加
     $('#appendPowLiquid').on('click', function () {
-        $('.process').append('<div name=powLiquid><i class="flask icon"></i>アタークリキッド  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=powLiquid><i class="flask icon"></i>アタークリキッド <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendDefLiquid').on('click', function () {
-        $('.process').append('<div name=defLiquid><i class="flask icon"></i>マモールリキッド  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=defLiquid><i class="flask icon"></i>マモールリキッド <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendMatLiquid').on('click', function () {
-        $('.process').append('<div name=matLiquid><i class="flask icon"></i>マホアタリキッド  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=matLiquid><i class="flask icon"></i>マホアタリキッド <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendMdfLiquid').on('click', function () {
-        $('.process').append('<div name=mdfLiquid><i class="flask icon"></i>マホマモリキッド  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=mdfLiquid><i class="flask icon"></i>マホマモリキッド <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // スキル処理の追加
     $('#appendBloodScraper').on('click', function () {
-        $('.process').append('<div name=bloodScraper><i class="tint icon"></i>ブラッドスクレイパー  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=bloodScraper><i class="tint icon"></i>ブラッドスクレイパー <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendElysion').on('click', function () {
-        $('.process').append('<div name=elysion><i class="feather alternate icon"></i>大天使の加護  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=elysion><i class="feather alternate icon"></i>大天使の加護 <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendApophis').on('click', function () {
-        $('.process').append('<div name=apophis><i class="feather alternate icon"></i>邪神の呪詛  <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=apophis><i class="feather alternate icon"></i>邪神の呪詛 <button class="delete">削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // ブレイク処理の追加
     $('#appendBreak').on('click', function () {
-        $('.process').append(`<div name=break><i class="ring icon"></i>ブレイク
+        $('.process').append(`<div name=break><i class="ring icon"></i>ブレイク <button class="delete">削除</button>
         <table class="card-table">
         <tr>
             <th class="pow-item">POW</th>
@@ -289,7 +289,7 @@ $(document).ready(function () {
             <th><input type="number" value="0" name="lukCard"/></th>
         </tr>
         </table>
-        <button class="delete">削除</button> </div>`);
+        </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
