@@ -15,6 +15,9 @@ $(document).ready(function () {
     $('.process').on('change', 'input[type="number"]', function () {
         calculation() // 入力値の更新タイミングで更新
     });
+    $('.process').on('change', 'input[type="text"]', function () {
+        calculation() // 入力値の更新タイミングで更新
+    });
 
     // ビタ処理の追加
     $('#appendPowBita').on('click', function () {
@@ -293,6 +296,66 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
 
+    // 着替え処理の追加
+    $('#appendChangeClothes').on('click', function () {
+        $('.process').append(`<div name=changeClothes><i class="tshirt icon"></i>着替え <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
+        <table class="status-table">
+            <tr>
+                <th></th>
+                <th>ステ振り</th>
+                <th>合計</th>
+            </tr>
+            <tr>
+                <th class="pow-item">POW</th>
+                <td> <input type="number" value="" name="powStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="powTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="int-item">INT</th>
+                <td> <input type="number" value="" name="intStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="intTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="spd-item">SPD</th>
+                <td> <input type="number" value="" name="spdStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="spdTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="vit-item">VIT</th>
+                <td> <input type="number" value="" name="vitStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="vitTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="luk-item">LUK</th>
+                <td> <input type="number" value="" name="lukStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="lukTotal" required /> </td>
+            </tr>
+        </table>
+        <table class="status-table">
+            <tr>
+                <th class="atk-item">ATK</th>
+                <td> <input type="number" value="1" name="atkTotal" required /> </td>
+                <th class="def-item">DEF</th>
+                <td> <input type="number" value="1" name="defTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="mat-item">MAT</th>
+                <td> <input type="number" value="1" name="matTotal" required /> </td>
+                <th class="mdf-item">MDF</th>
+                <td> <input type="number" value="1" name="mdfTotal" required /> </td>
+            </tr>
+        </table>
+        <a name="export" href="#" download="status.csv"><i class="download icon"></i>CSVエクスポート</a>
+        <div class="fileButton">
+            <i class="upload icon"></i>
+            CSVインポート
+            <input type="file" name="import">
+        </div>
+
+        </div>`);
+        calculation() // 処理の追加タイミングで更新
+    });
+
     // 処理項目を削除する
     $('.process').on('click', '.delete', function () {
         $(this).parent()[0].remove();
@@ -304,14 +367,21 @@ $(document).ready(function () {
     });
 
     // CSVインポート
-    $('#import').on('click', function (e) {
+    $('input[name="import"]').on('click', function (e) {
         e.target.value = "" // CSV ファイルの初期化
-        csvImport();
+        csvImport(this);
+    });
+    $('.process').on('click', 'input[name="import"]', function (e) {
+        e.target.value = "" // CSV ファイルの初期化
+        csvImport(this);
     });
 
     // CSVエクスポート
-    $('#export').on('click', function () {
-        csvExport();
+    $('a[name="export"]').on('click', function () {
+        csvExport(this);
+    });
+    $('.process').on('click', 'a[name="export"]', function (e) {
+        csvExport(this);
     });
 
 })
