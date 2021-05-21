@@ -1,8 +1,8 @@
 // 計算の処理系群
 
-class PISVL{
+class PISVL {
     // POW、INT、SPD、VIT、LUK を管理するクラス
-    constructor(pow=0, int=0, spd=0, vit=0, luk=0) {
+    constructor(pow = 0, int = 0, spd = 0, vit = 0, luk = 0) {
         this.pow = pow;
         this.int = int;
         this.spd = spd;
@@ -48,9 +48,9 @@ class PISVL{
     }
 }
 
-class PISVLADMaMd{
+class PISVLADMaMd {
     // POW、INT、SPD、VIT、LUK、ATK、DEF、MAT、MDF を管理するクラス
-    constructor(pow=0, int=0, spd=0, vit=0, luk=0, atk=0, def=0, mat=0, mdf=0) {
+    constructor(pow = 0, int = 0, spd = 0, vit = 0, luk = 0, atk = 0, def = 0, mat = 0, mdf = 0) {
         this.pow = pow;
         this.int = int;
         this.spd = spd;
@@ -491,7 +491,7 @@ function calculation() {
                 Number(task.find("input[name=defTotal]").val()), // 着替え後のMAT合計
                 Number(task.find("input[name=matTotal]").val()), // 着替え後のMAT合計
                 Number(task.find("input[name=mdfTotal]").val()), // 着替え後のMDF合計
-                );
+            );
             result.pow += change.pow - total.pow; // POW表示の変更
             total.pow = change.pow; // POW合計の変更
             result.int += change.int - total.int; // INT表示の変更
@@ -553,7 +553,7 @@ function resetPISVLBuff(PISVLBuff, result) {
  * POW/INT/SPD/VIT/LUK/ATK/DEF/MAT/MDFの上昇値をリセットする
  * 巻物や、エル羽などのリセットに使用する
  */
- function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
+function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
     // POW上昇による効果のリセット
     result.pow -= PISVLADMaMdBuff.pow;
     result.atk -= PISVLADMaMdBuff.pow * 3;

@@ -44,7 +44,7 @@ function csvImport(element) {
                 }
             })
         })
-        
+
         calculation() // CSVインポート後のタイミングで更新
     }
 }
