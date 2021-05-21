@@ -345,6 +345,13 @@ $(document).ready(function () {
                 <td> <input type="number" value="1" name="mdfTotal" required /> </td>
             </tr>
         </table>
+        <a name="export" href="#" download="status.csv"><i class="download icon"></i>CSVエクスポート</a>
+        <div class="fileButton">
+            <i class="upload icon"></i>
+            CSVインポート
+            <input type="file" name="import">
+        </div>
+
         </div>`);
         calculation() // 処理の追加タイミングで更新
     });
@@ -360,13 +367,20 @@ $(document).ready(function () {
     });
 
     // CSVインポート
-    $('#import').on('click', function (e) {
+    $('input[name="import"]').on('click', function (e) {
+        e.target.value = "" // CSV ファイルの初期化
+        csvImport(this);
+    });
+    $('.process').on('click', 'input[name="import"]', function (e) {
         e.target.value = "" // CSV ファイルの初期化
         csvImport(this);
     });
 
     // CSVエクスポート
-    $('#export').on('click', function () {
+    $('a[name="export"]').on('click', function () {
+        csvExport(this);
+    });
+    $('.process').on('click', 'a[name="export"]', function (e) {
         csvExport(this);
     });
 
