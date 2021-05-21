@@ -149,6 +149,12 @@ function calculation() {
     const vitTotal = Number(safeEval(safeReplace($('#vitTotal').val())));
     const lukTotal = Number(safeEval(safeReplace($('#lukTotal').val())));
 
+    // ステ振り
+    let status = new PISVL(powStatus, intStatus, spdStatus, vitStatus, lukStatus);
+
+    // ステ合計
+    let total = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
+
     // 結果の初期化
     let result = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
@@ -188,7 +194,7 @@ function calculation() {
             result.pow -= bitaBuff.pow;
             result.atk -= bitaBuff.pow * 3;
 
-            bitaBuff.pow = parseInt(powStatus * 0.2); // POW上昇値
+            bitaBuff.pow = parseInt(status.pow * 0.2); // POW上昇値
             bitaBuff.pow = Math.max(1, bitaBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
             result.pow += bitaBuff.pow;
             result.atk += bitaBuff.pow * 3;
@@ -199,7 +205,7 @@ function calculation() {
             result.mat -= bitaBuff.int * 2;
             result.mdf -= bitaBuff.int * 15;
 
-            bitaBuff.int = parseInt(intStatus * 0.2); // INT上昇値
+            bitaBuff.int = parseInt(status.int * 0.2); // INT上昇値
             bitaBuff.int = Math.max(1, bitaBuff.int); // INT上昇値が 0 以下だったら、上昇値は 1 とする
             result.int += bitaBuff.int;
             result.mat += bitaBuff.int * 2;
@@ -209,7 +215,7 @@ function calculation() {
             // SPD上昇による効果のリセット
             result.spd -= bitaBuff.spd;
 
-            bitaBuff.spd = parseInt(spdStatus * 0.2); // SPD上昇値
+            bitaBuff.spd = parseInt(status.spd * 0.2); // SPD上昇値
             bitaBuff.spd = Math.max(1, bitaBuff.spd); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
             result.spd += bitaBuff.spd;
         }
@@ -218,7 +224,7 @@ function calculation() {
             result.vit -= bitaBuff.vit;
             result.def -= bitaBuff.vit * 2;
 
-            bitaBuff.vit = parseInt(vitStatus * 0.2); // VIT上昇値
+            bitaBuff.vit = parseInt(status.vit * 0.2); // VIT上昇値
             bitaBuff.vit = Math.max(1, bitaBuff.vit); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
             result.vit += bitaBuff.vit;
             result.def += bitaBuff.vit * 2;
@@ -227,29 +233,29 @@ function calculation() {
             // LUK上昇による効果のリセット
             result.luk -= bitaBuff.luk;
 
-            bitaBuff.luk = parseInt(lukStatus * 0.2); // LUK上昇値
+            bitaBuff.luk = parseInt(status.luk * 0.2); // LUK上昇値
             bitaBuff.luk = Math.max(1, bitaBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += bitaBuff.luk;
         }
         if (taskName == "allBita") {
             resetPISVLBuff(allBitaBuff, result);
-            allBitaBuff.pow = parseInt(powStatus * 0.1); // POW上昇値
+            allBitaBuff.pow = parseInt(status.pow * 0.1); // POW上昇値
             allBitaBuff.pow = Math.max(1, allBitaBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
             result.pow += allBitaBuff.pow;
             result.atk += allBitaBuff.pow * 3;
-            allBitaBuff.int = parseInt(intStatus * 0.1); // INT上昇値
+            allBitaBuff.int = parseInt(status.int * 0.1); // INT上昇値
             allBitaBuff.int = Math.max(1, allBitaBuff.int); // INT上昇値が 0 以下だったら、上昇値は 1 とする
             result.int += allBitaBuff.int;
             result.mat += allBitaBuff.int * 2;
             result.mdf += allBitaBuff.int * 15;
-            allBitaBuff.spd = parseInt(spdStatus * 0.1); // SPD上昇値
+            allBitaBuff.spd = parseInt(status.spd * 0.1); // SPD上昇値
             allBitaBuff.spd = Math.max(1, allBitaBuff.spd); // SPD上昇値が 0 以下だったら、上昇値は 1 とする
             result.spd += allBitaBuff.spd;
-            allBitaBuff.vit = parseInt(vitStatus * 0.1); // VIT上昇値
+            allBitaBuff.vit = parseInt(status.vit * 0.1); // VIT上昇値
             allBitaBuff.vit = Math.max(1, allBitaBuff.vit); // VIT上昇値が 0 以下だったら、上昇値は 1 とする
             result.vit += allBitaBuff.vit;
             result.def += allBitaBuff.vit * 2;
-            allBitaBuff.luk = parseInt(lukStatus * 0.1); // LUK上昇値
+            allBitaBuff.luk = parseInt(status.luk * 0.1); // LUK上昇値
             allBitaBuff.luk = Math.max(1, allBitaBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += allBitaBuff.luk;
         }
@@ -456,20 +462,54 @@ function calculation() {
             elysionBuff.luk = Math.max(1, elysionBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += elysionBuff.luk;
 
-            elysionBuff.atk = parseInt((atkTotal + makimonoBuff.atk - (powTotal * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
+            elysionBuff.atk = parseInt((total.atk + makimonoBuff.atk - (total.pow * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
             result.atk += elysionBuff.atk;
-            elysionBuff.def = parseInt((defTotal + makimonoBuff.def - (vitTotal * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
+            elysionBuff.def = parseInt((total.def + makimonoBuff.def - (total.vit * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
             result.def += elysionBuff.def;
-            elysionBuff.mat = parseInt((matTotal + makimonoBuff.mat - (intTotal * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
+            elysionBuff.mat = parseInt((total.mat + makimonoBuff.mat - (total.int * 2) + (result.int * 2)) * 0.2); // エル羽のMAT上昇量
             result.mat += elysionBuff.mat;
             let maxIntOrVit = Math.max(result.int, result.vit); // INT or VIT の大きい値を取る
-            elysionBuff.mdf = parseInt((mdfTotal + makimonoBuff.mdf - (intTotal * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
+            elysionBuff.mdf = parseInt((total.mdf + makimonoBuff.mdf - (total.int * 15) + (maxIntOrVit * 2)) * 0.2); // エル羽のMDF上昇量
             result.mdf += elysionBuff.mdf;
         }
         if (taskName == "apophis") {
             resetPISVLBuff(apophisBuff, result);
             apophisBuff.luk = parseInt(result.luk * 0.3); // LUK上昇値
             result.luk += apophisBuff.luk;
+        }
+
+        // 着替え処理
+        if (taskName == "changeClothes") {
+            // 着替え後のステータスを保持
+            let change = new PISVLADMaMd(
+                Number(safeEval(safeReplace(task.find("input[name=powTotal]").val()))), // 着替え後のPOW合計
+                Number(safeEval(safeReplace(task.find("input[name=intTotal]").val()))), // 着替え後のINT合計
+                Number(safeEval(safeReplace(task.find("input[name=spdTotal]").val()))), // 着替え後のSPD合計
+                Number(safeEval(safeReplace(task.find("input[name=vitTotal]").val()))), // 着替え後のVIT合計
+                Number(safeEval(safeReplace(task.find("input[name=lukTotal]").val()))), // 着替え後のLUK合計
+                Number(task.find("input[name=atkTotal]").val()), // 着替え後のATK合計
+                Number(task.find("input[name=defTotal]").val()), // 着替え後のMAT合計
+                Number(task.find("input[name=matTotal]").val()), // 着替え後のMAT合計
+                Number(task.find("input[name=mdfTotal]").val()), // 着替え後のMDF合計
+                );
+            result.pow += change.pow - total.pow; // POW表示の変更
+            total.pow = change.pow; // POW合計の変更
+            result.int += change.int - total.int; // INT表示の変更
+            total.int = change.int; // INT合計の変更
+            result.spd += change.spd - total.spd; // SPD表示の変更
+            total.spd = change.spd; // SPD合計の変更
+            result.vit += change.vit - total.vit; // VIT表示の変更
+            total.vit = change.vit; // VIT合計の変更
+            result.luk += change.luk - total.luk; // LUK表示の変更
+            total.luk = change.luk; // LUK合計の変更
+            result.atk += change.atk - total.atk; // ATK表示の変更
+            total.atk = change.atk; // ATK合計の変更
+            result.def += change.def - total.def; // DEF表示の変更
+            total.def = change.def; // DEF合計の変更
+            result.mat += change.mat - total.mat; // MAT表示の変更
+            total.mat = change.mat; // MAT合計の変更
+            result.mdf += change.mdf - total.mdf; // MDF表示の変更
+            total.mdf = change.mdf; // MDF合計の変更
         }
     });
 

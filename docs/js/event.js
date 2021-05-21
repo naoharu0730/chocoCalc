@@ -15,6 +15,9 @@ $(document).ready(function () {
     $('.process').on('change', 'input[type="number"]', function () {
         calculation() // 入力値の更新タイミングで更新
     });
+    $('.process').on('change', 'input[type="text"]', function () {
+        calculation() // 入力値の更新タイミングで更新
+    });
 
     // ビタ処理の追加
     $('#appendPowBita').on('click', function () {
@@ -288,6 +291,59 @@ $(document).ready(function () {
             <th><input type="number" value="0" name="vitCard"/></th>
             <th><input type="number" value="0" name="lukCard"/></th>
         </tr>
+        </table>
+        </div>`);
+        calculation() // 処理の追加タイミングで更新
+    });
+
+    // 着替え処理の追加
+    $('#appendChangeClothes').on('click', function () {
+        $('.process').append(`<div name=changeClothes><i class="tshirt icon"></i>着替え <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
+        <table class="status-table">
+            <tr>
+                <th></th>
+                <th>ステ振り</th>
+                <th>合計</th>
+            </tr>
+            <tr>
+                <th class="pow-item">POW</th>
+                <td> <input type="number" value="" name="powStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="powTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="int-item">INT</th>
+                <td> <input type="number" value="" name="intStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="intTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="spd-item">SPD</th>
+                <td> <input type="number" value="" name="spdStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="spdTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="vit-item">VIT</th>
+                <td> <input type="number" value="" name="vitStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="vitTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="luk-item">LUK</th>
+                <td> <input type="number" value="" name="lukStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="lukTotal" required /> </td>
+            </tr>
+        </table>
+        <table class="status-table">
+            <tr>
+                <th class="atk-item">ATK</th>
+                <td> <input type="number" value="1" name="atkTotal" required /> </td>
+                <th class="def-item">DEF</th>
+                <td> <input type="number" value="1" name="defTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="mat-item">MAT</th>
+                <td> <input type="number" value="1" name="matTotal" required /> </td>
+                <th class="mdf-item">MDF</th>
+                <td> <input type="number" value="1" name="mdfTotal" required /> </td>
+            </tr>
         </table>
         </div>`);
         calculation() // 処理の追加タイミングで更新
