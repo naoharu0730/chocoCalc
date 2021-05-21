@@ -362,12 +362,12 @@ $(document).ready(function () {
     // CSVインポート
     $('#import').on('click', function (e) {
         e.target.value = "" // CSV ファイルの初期化
-        csvImport();
+        csvImport(this);
     });
 
     // CSVエクスポート
     $('#export').on('click', function () {
-        csvExport();
+        csvExport(this);
     });
 
 })

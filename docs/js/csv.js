@@ -11,9 +11,10 @@ const parseCSV = (csv) => {
 
 /**
  * CSVをインポートして、画面の入力を更新する
+ * @param {*} element CSVインポートのinputタグ
  */
-function csvImport() {
-    let fileInput = $('#import')[0];
+function csvImport(element) {
+    let fileInput = $(element)[0];
     let fileReader = new FileReader();
     fileInput.onchange = () => {
         let file = fileInput.files[0];
@@ -23,38 +24,39 @@ function csvImport() {
     fileReader.onload = () => {
         csv = parseCSV(fileReader.result);
         console.log(csv);
-        input_id = []
-        input_id.push([])
-        input_id.push(['', '#powStatus', '#powTotal'])
-        input_id.push(['', '#intStatus', '#intTotal'])
-        input_id.push(['', '#spdStatus', '#spdTotal'])
-        input_id.push(['', '#vitStatus', '#vitTotal'])
-        input_id.push(['', '#lukStatus', '#lukTotal'])
-        input_id.push(['', '', '#atkTotal'])
-        input_id.push(['', '', '#defTotal'])
-        input_id.push(['', '', '#matTotal'])
-        input_id.push(['', '', '#mdfTotal'])
-        $.each(input_id, function (i, e) {
-            $.each(e, function (j, elem) {
+        input_name = []
+        input_name.push([])
+        input_name.push(['', 'input[name=powStatus]', 'input[name=powTotal]'])
+        input_name.push(['', 'input[name=intStatus]', 'input[name=intTotal]'])
+        input_name.push(['', 'input[name=spdStatus]', 'input[name=spdTotal]'])
+        input_name.push(['', 'input[name=vitStatus]', 'input[name=vitTotal]'])
+        input_name.push(['', 'input[name=lukStatus]', 'input[name=lukTotal]'])
+        input_name.push(['', '', 'input[name=atkTotal]'])
+        input_name.push(['', '', 'input[name=defTotal]'])
+        input_name.push(['', '', 'input[name=matTotal]'])
+        input_name.push(['', '', 'input[name=mdfTotal]'])
+        $.each(input_name, function (i, f) {
+            $.each(f, function (j, filter) {
                 if (i > 5) {
-                    $(elem).val(csv[i][j]);
+                    $(element).parent().parent().find(filter).val(csv[i][j]);
                 } else {
-                    $(elem).val(csv[i][j]);
+                    $(element).parent().parent().find(filter).val(csv[i][j]);
                 }
             })
         })
-
+        
         calculation() // CSVインポート後のタイミングで更新
     }
 }
 
 /**
  * 画面の入力をもとに、CSVをエクスポートする
+ * @param {*} element CSVエクスポートのリンクがあるaタグ
  */
-function csvExport() {
+function csvExport(element) {
     // table からデータを取得
     let d = [];
-    $('.status-table tr').each(function (i) {
+    $(element).parent().find("table tr").each(function (i) {
         let dd = [];
         $(this).find('th').each(function () {
             dd.push($(this).text()); // ラベル
@@ -90,7 +92,7 @@ function csvExport() {
     let csv_data = m.map(function (l) { return l.join(',') }).join('\r\n');
     let bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM を用意（文字コードを BOM 付き UTF-8 にする）
     let blob = new Blob([bom, csv_data], { type: "text/csv" }); // データを CSV の BLOB に変換
-    $("#export")[0].href = window.URL.createObjectURL(blob);
+    $(element)[0].href = window.URL.createObjectURL(blob);
 
     delete csv_data; // オブジェクトを削除してメモリを開放
 }
