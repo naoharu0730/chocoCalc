@@ -15,68 +15,267 @@ $(document).ready(function () {
     $('.process').on('change', 'input[type="number"]', function () {
         calculation() // 入力値の更新タイミングで更新
     });
+    $('.process').on('change', 'input[type="text"]', function () {
+        calculation() // 入力値の更新タイミングで更新
+    });
 
     // ビタ処理の追加
     $('#appendPowBita').on('click', function () {
-        $('.process').append('<div name=powBita>POWビタ <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=powBita><i class="wine bottle icon"></i>POWビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntBita').on('click', function () {
-        $('.process').append('<div name=intBita>INTビタ <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=intBita><i class="wine bottle icon"></i>INTビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdBita').on('click', function () {
-        $('.process').append('<div name=spdBita>SPDビタ <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=spdBita><i class="wine bottle icon"></i>SPDビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitBita').on('click', function () {
-        $('.process').append('<div name=vitBita>VITビタ <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=vitBita><i class="wine bottle icon"></i>VITビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukBita').on('click', function () {
-        $('.process').append('<div name=lukBita>LUKビタ <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=lukBita><i class="wine bottle icon"></i>LUKビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendAllBita').on('click', function () {
-        $('.process').append('<div name=allBita>ALLビタ <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=allBita><i class="wine bottle icon"></i>ALLビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // 魔獣缶処理の追加
     $('#appendPowCan').on('click', function () {
-        $('.process').append('<div name=powCan>魔獣缶A <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=powCan><i class="gift icon"></i>魔獣缶A <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntCan').on('click', function () {
-        $('.process').append('<div name=intCan>魔獣缶B <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=intCan><i class="gift icon"></i>魔獣缶B <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // シール処理の追加
     $('#appendPowSeal').on('click', function () {
-        $('.process').append('<div name=powSeal>POWシール <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=powSeal><i class="sticky note icon icon"></i>POWシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntSeal').on('click', function () {
-        $('.process').append('<div name=intSeal>INTシール <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=intSeal><i class="sticky note icon icon"></i>INTシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdSeal').on('click', function () {
-        $('.process').append('<div name=spdSeal>SPDシール <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=spdSeal><i class="sticky note icon icon"></i>SPDシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitSeal').on('click', function () {
-        $('.process').append('<div name=vitSeal>VITシール <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=vitSeal><i class="sticky note icon icon"></i>VITシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukSeal').on('click', function () {
-        $('.process').append('<div name=lukSeal>LUKシール <button class="delete">削除</button> </div>');
+        $('.process').append('<div name=lukSeal><i class="sticky note icon icon"></i>LUKシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+
+    // 巻物処理の追加
+    $('#appendPowMakimono').on('click', function () {
+        $('.process').append(`<div name=powMakimono><i class="scroll icon"></i>POW巻物
+        <select name="selectPowMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendIntMakimono').on('click', function () {
+        $('.process').append(`<div name=intMakimono><i class="scroll icon"></i>INT巻物
+        <select name="selectIntMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendSpdMakimono').on('click', function () {
+        $('.process').append(`<div name=spdMakimono><i class="scroll icon"></i>SPD巻物
+        <select name="selectSpdMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendVitMakimono').on('click', function () {
+        $('.process').append(`<div name=vitMakimono><i class="scroll icon"></i>VIT巻物
+        <select name="selectVitMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendLukMakimono').on('click', function () {
+        $('.process').append(`<div name=lukMakimono><i class="scroll icon"></i>LUK巻物
+        <select name="selectLukMakimono">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendAtkMakimono').on('click', function () {
+        $('.process').append(`<div name=atkMakimono><i class="scroll icon"></i>ATK巻物
+        <select name="selectAtkMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendDefMakimono').on('click', function () {
+        $('.process').append(`<div name=defMakimono><i class="scroll icon"></i>DEF巻物
+        <select name="selectDefMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendMatMakimono').on('click', function () {
+        $('.process').append(`<div name=matMakimono><i class="scroll icon"></i>MAT巻物
+        <select name="selectMatMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendMdfMakimono').on('click', function () {
+        $('.process').append(`<div name=mdfMakimono><i class="scroll icon"></i>MDF巻物
+        <select name="selectMdfMakimono">
+        <option value="0" selected>0</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="80">80</option>
+        <option value="100">100</option>
+        <option value="120">120</option>
+        <option value="140">140</option>
+        <option value="160">160</option>
+        <option value="180">180</option>
+        <option value="200">200</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+
+    // リキッド処理の追加
+    $('#appendPowLiquid').on('click', function () {
+        $('.process').append('<div name=powLiquid><i class="flask icon"></i>アタークリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendDefLiquid').on('click', function () {
+        $('.process').append('<div name=defLiquid><i class="flask icon"></i>マモールリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendMatLiquid').on('click', function () {
+        $('.process').append('<div name=matLiquid><i class="flask icon"></i>マホアタリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendMdfLiquid').on('click', function () {
+        $('.process').append('<div name=mdfLiquid><i class="flask icon"></i>マホマモリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+
+    // スキル処理の追加
+    $('#appendBloodScraper').on('click', function () {
+        $('.process').append('<div name=bloodScraper><i class="tint icon"></i>ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendElysion').on('click', function () {
+        $('.process').append('<div name=elysion><i class="feather alternate icon"></i>大天使の加護 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendApophis').on('click', function () {
+        $('.process').append('<div name=apophis><i class="feather alternate icon"></i>邪神の呪詛 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // ブレイク処理の追加
     $('#appendBreak').on('click', function () {
-        $('.process').append(`<div name=break>ブレイク
+        $('.process').append(`<div name=break><i class="ring icon"></i>ブレイク <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
         <table class="card-table">
         <tr>
             <th class="pow-item">POW</th>
@@ -93,203 +292,67 @@ $(document).ready(function () {
             <th><input type="number" value="0" name="lukCard"/></th>
         </tr>
         </table>
-        <button class="delete">削除</button> </div>`);
+        </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
-    // 巻物処理の追加
-    $('#appendPowMakimono').on('click', function () {
-        $('.process').append(`<div name=powMakimono>POW巻物
-        <select name="selectPowMakimono">
-        <option value="0" selected>0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendIntMakimono').on('click', function () {
-        $('.process').append(`<div name=intMakimono>INT巻物
-        <select name="selectIntMakimono">
-        <option value="0" selected>0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendSpdMakimono').on('click', function () {
-        $('.process').append(`<div name=spdMakimono>SPD巻物
-        <select name="selectSpdMakimono">
-        <option value="0" selected>0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendVitMakimono').on('click', function () {
-        $('.process').append(`<div name=vitMakimono>VIT巻物
-        <select name="selectVitMakimono">
-        <option value="0" selected>0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendLukMakimono').on('click', function () {
-        $('.process').append(`<div name=lukMakimono>LUK巻物
-        <select name="selectLukMakimono">
-        <option value="0" selected>0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendAtkMakimono').on('click', function () {
-        $('.process').append(`<div name=atkMakimono>ATK巻物
-        <select name="selectAtkMakimono">
-        <option value="0" selected>0</option>
-        <option value="20">20</option>
-        <option value="40">40</option>
-        <option value="60">60</option>
-        <option value="80">80</option>
-        <option value="100">100</option>
-        <option value="120">120</option>
-        <option value="140">140</option>
-        <option value="160">160</option>
-        <option value="180">180</option>
-        <option value="200">200</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendDefMakimono').on('click', function () {
-        $('.process').append(`<div name=defMakimono>DEF巻物
-        <select name="selectDefMakimono">
-        <option value="0" selected>0</option>
-        <option value="20">20</option>
-        <option value="40">40</option>
-        <option value="60">60</option>
-        <option value="80">80</option>
-        <option value="100">100</option>
-        <option value="120">120</option>
-        <option value="140">140</option>
-        <option value="160">160</option>
-        <option value="180">180</option>
-        <option value="200">200</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendMatMakimono').on('click', function () {
-        $('.process').append(`<div name=matMakimono>MAT巻物
-        <select name="selectMatMakimono">
-        <option value="0" selected>0</option>
-        <option value="20">20</option>
-        <option value="40">40</option>
-        <option value="60">60</option>
-        <option value="80">80</option>
-        <option value="100">100</option>
-        <option value="120">120</option>
-        <option value="140">140</option>
-        <option value="160">160</option>
-        <option value="180">180</option>
-        <option value="200">200</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendMdfMakimono').on('click', function () {
-        $('.process').append(`<div name=mdfMakimono>MDF巻物
-        <select name="selectMdfMakimono">
-        <option value="0" selected>0</option>
-        <option value="20">20</option>
-        <option value="40">40</option>
-        <option value="60">60</option>
-        <option value="80">80</option>
-        <option value="100">100</option>
-        <option value="120">120</option>
-        <option value="140">140</option>
-        <option value="160">160</option>
-        <option value="180">180</option>
-        <option value="200">200</option>
-        </select>
-        <button class="delete">削除</button> </div>`)
-        calculation() // 処理の追加タイミングで更新
-    });
+    // 着替え処理の追加
+    $('#appendChangeClothes').on('click', function () {
+        $('.process').append(`<div name=changeClothes><i class="tshirt icon"></i>着替え <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
+        <table class="status-table">
+            <tr>
+                <th></th>
+                <th>ステ振り</th>
+                <th>合計</th>
+            </tr>
+            <tr>
+                <th class="pow-item">POW</th>
+                <td> <input type="number" value="" name="powStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="powTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="int-item">INT</th>
+                <td> <input type="number" value="" name="intStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="intTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="spd-item">SPD</th>
+                <td> <input type="number" value="" name="spdStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="spdTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="vit-item">VIT</th>
+                <td> <input type="number" value="" name="vitStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="vitTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="luk-item">LUK</th>
+                <td> <input type="number" value="" name="lukStatus" disabled="disabled" /> </td>
+                <td> <input type="text" value="1" name="lukTotal" required /> </td>
+            </tr>
+        </table>
+        <table class="status-table">
+            <tr>
+                <th class="atk-item">ATK</th>
+                <td> <input type="number" value="1" name="atkTotal" required /> </td>
+                <th class="def-item">DEF</th>
+                <td> <input type="number" value="1" name="defTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="mat-item">MAT</th>
+                <td> <input type="number" value="1" name="matTotal" required /> </td>
+                <th class="mdf-item">MDF</th>
+                <td> <input type="number" value="1" name="mdfTotal" required /> </td>
+            </tr>
+        </table>
+        <a name="export" href="#" download="status.csv"><i class="download icon"></i>CSVエクスポート</a>
+        <div class="fileButton">
+            <i class="upload icon"></i>
+            CSVインポート
+            <input type="file" name="import">
+        </div>
 
-    // リキッド処理の追加
-    $('#appendPowLiquid').on('click', function () {
-        $('.process').append('<div name=powLiquid>アタークリキッド  <button class="delete">削除</button> </div>');
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendDefLiquid').on('click', function () {
-        $('.process').append('<div name=defLiquid>マモールリキッド  <button class="delete">削除</button> </div>');
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendMatLiquid').on('click', function () {
-        $('.process').append('<div name=matLiquid>マホアタリキッド  <button class="delete">削除</button> </div>');
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendMdfLiquid').on('click', function () {
-        $('.process').append('<div name=mdfLiquid>マホマモリキッド  <button class="delete">削除</button> </div>');
-        calculation() // 処理の追加タイミングで更新
-    });
-
-    // スキル処理の追加
-    $('#appendBloodScraper').on('click', function () {
-        $('.process').append('<div name=bloodScraper>ブラッドスクレイパー  <button class="delete">削除</button> </div>');
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendElysion').on('click', function () {
-        $('.process').append('<div name=elysion>大天使の加護  <button class="delete">削除</button> </div>');
-        calculation() // 処理の追加タイミングで更新
-    });
-    $('#appendApophis').on('click', function () {
-        $('.process').append('<div name=apophis>邪神の呪詛  <button class="delete">削除</button> </div>');
+        </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
@@ -304,14 +367,21 @@ $(document).ready(function () {
     });
 
     // CSVインポート
-    $('#import').on('click', function (e) {
+    $('input[name="import"]').on('click', function (e) {
         e.target.value = "" // CSV ファイルの初期化
-        csvImport();
+        csvImport(this);
+    });
+    $('.process').on('click', 'input[name="import"]', function (e) {
+        e.target.value = "" // CSV ファイルの初期化
+        csvImport(this);
     });
 
     // CSVエクスポート
-    $('#export').on('click', function () {
-        csvExport();
+    $('a[name="export"]').on('click', function () {
+        csvExport(this);
+    });
+    $('.process').on('click', 'a[name="export"]', function (e) {
+        csvExport(this);
     });
 
 })

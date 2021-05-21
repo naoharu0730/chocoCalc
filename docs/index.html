@@ -7,6 +7,8 @@
     <title>ドピ計算</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
     <script src="js/csv.js"></script>
     <script src="js/calc.js"></script>
     <script src="js/event.js"></script>
@@ -31,78 +33,51 @@
             </tr>
             <tr>
                 <th class="pow-item">POW</th>
-                <td>
-                    <input id="powStatus" type="number" value="1" name="powStatus" required />
-                </td>
-                <td>
-                    <input id="powTotal" type="text" value="1" name="powTotal" required />
-                </td>
+                <td> <input id="powStatus" type="number" value="1" name="powStatus" required /> </td>
+                <td> <input id="powTotal" type="text" value="1" name="powTotal" required /> </td>
             </tr>
             <tr>
                 <th class="int-item">INT</th>
-                <td>
-                    <input id="intStatus" type="number" value="1" name="intStatus" required />
-                </td>
-                <td>
-                    <input id="intTotal" type="text" value="1" name="intTotal" required />
-                </td>
+                <td> <input id="intStatus" type="number" value="1" name="intStatus" required /> </td>
+                <td> <input id="intTotal" type="text" value="1" name="intTotal" required /> </td>
             </tr>
             <tr>
                 <th class="spd-item">SPD</th>
-                <td>
-                    <input id="spdStatus" type="number" value="1" name="spdStatus" required />
-                </td>
-                <td>
-                    <input id="spdTotal" type="text" value="1" name="spdTotal" required />
-                </td>
+                <td> <input id="spdStatus" type="number" value="1" name="spdStatus" required /> </td>
+                <td> <input id="spdTotal" type="text" value="1" name="spdTotal" required /> </td>
             </tr>
             <tr>
                 <th class="vit-item">VIT</th>
-                <td>
-                    <input id="vitStatus" type="number" value="1" name="vitStatus" required />
-                </td>
-                <td>
-                    <input id="vitTotal" type="text" value="1" name="vitTotal" required />
-                </td>
+                <td> <input id="vitStatus" type="number" value="1" name="vitStatus" required /> </td>
+                <td> <input id="vitTotal" type="text" value="1" name="vitTotal" required /> </td>
             </tr>
             <tr>
                 <th class="luk-item">LUK</th>
-                <td>
-                    <input id="lukStatus" type="number" value="1" name="lukStatus" required />
-                </td>
-                <td>
-                    <input id="lukTotal" type="text" value="1" name="lukTotal" required />
-                </td>
+                <td> <input id="lukStatus" type="number" value="1" name="lukStatus" required /> </td>
+                <td> <input id="lukTotal" type="text" value="1" name="lukTotal" required /> </td>
             </tr>
         </table>
 
         <table class="status-table">
             <tr>
                 <th class="atk-item">ATK</th>
-                <td>
-                    <input id="atkTotal" type="number" value="1" name="atkTotal" required />
-                </td>
+                <td> <input id="atkTotal" type="number" value="1" name="atkTotal" required /> </td>
                 <th class="def-item">DEF</th>
-                <td>
-                    <input id="defTotal" type="number" value="1" name="defTotal" required />
-                </td>
+                <td> <input id="defTotal" type="number" value="1" name="defTotal" required /> </td>
             </tr>
             <tr>
                 <th class="mat-item">MAT</th>
-                <td>
-                    <input id="matTotal" type="number" value="1" name="matTotal" required />
-                </td>
+                <td> <input id="matTotal" type="number" value="1" name="matTotal" required /> </td>
                 <th class="mdf-item">MDF</th>
-                <td>
-                    <input id="mdfTotal" type="number" value="1" name="mdfTotal" required />
-                </td>
+                <td> <input id="mdfTotal" type="number" value="1" name="mdfTotal" required /> </td>
             </tr>
         </table>
 
-        <a id="export" href="#" download="status.csv">CSVエクスポート</a>
+        <a name="export" href="#" download="status.csv"><i class="download icon"></i>CSVエクスポート</a>
         <div class="fileButton">
+            <i class="upload icon"></i>
             CSVインポート
-            <input type="file" id="import">
+            <input type="file" name="import">
         </div>
 
     </fieldset>
@@ -110,42 +85,42 @@
     <fieldset>
         <legend>処理</legend>
         <div class="process">
-            <button class="all-delete">全削除</button>
+            <button class="all-delete compact mini negative ui button"><i class="times icon"></i>全削除</button>
             <!-- ここに処理イベントが div タグで追加されていく -->
         </div>
     </fieldset>
     <fieldset>
         <legend>表示ステータス</legend>
-            <table class="result-table">
-                <tr>
-                    <th><label class="pow-item">POW:</label></th>
-                    <td><output id="powResult" name="powResult">???</output></td>
-                    <th><label class="atk-item">ATK:</label></th>
-                    <td><output id="atkResult" name="atkResult">???</output></td>
-                </tr>
-                <tr>
-                    <th><label class="int-item">INT:</label></th>
-                    <td><output id="intResult" name="intResult">???</output></td>
-                    <th><label class="def-item">DEF:</label></th>
-                    <td><output id="defResult" name="defResult">???</output></td>
-                </tr>
-                <tr>
-                    <th><label class="spd-item">SPD:</label></th>
-                    <td><output id="spdResult" name="spdResult">???</output></td>
-                    <th><label class="mat-item">MAT:</label></th>
-                    <td><output id="matResult" name="matResult">???</output></td>
-                </tr>
-                <tr>
-                    <th><label class="vit-item">VIT:</label></th>
-                    <td><output id="vitResult" name="vitResult">???</output></td>
-                    <th><label class="mdf-item">MDF:</label></th>
-                    <td><output id="mdfResult" name="mdfResult">???</output></td>
-                </tr>
-                <tr>
-                    <th><label class="luk-item">LUK:</label></th>
-                    <td><output id="lukResult" name="lukResult">???</output></td>
-                </tr>
-            </table>
+        <table class="result-table">
+            <tr>
+                <th> <label class="pow-item">POW:</label> </th>
+                <td> <output id="powResult" name="powResult">???</output> </td>
+                <th> <label class="atk-item">ATK:</label> </th>
+                <td> <output id="atkResult" name="atkResult">???</output> </td>
+            </tr>
+            <tr>
+                <th> <label class="int-item">INT:</label> </th>
+                <td> <output id="intResult" name="intResult">???</output> </td>
+                <th> <label class="def-item">DEF:</label> </th>
+                <td> <output id="defResult" name="defResult">???</output> </td>
+            </tr>
+            <tr>
+                <th> <label class="spd-item">SPD:</label> </th>
+                <td> <output id="spdResult" name="spdResult">???</output> </td>
+                <th> <label class="mat-item">MAT:</label> </th>
+                <td> <output id="matResult" name="matResult">???</output> </td>
+            </tr>
+            <tr>
+                <th> <label class="vit-item">VIT:</label> </th>
+                <td> <output id="vitResult" name="vitResult">???</output> </td>
+                <th> <label class="mdf-item">MDF:</label> </th>
+                <td> <output id="mdfResult" name="mdfResult">???</output> </td>
+            </tr>
+            <tr>
+                <th> <label class="luk-item">LUK:</label> </th>
+                <td> <output id="lukResult" name="lukResult">???</output> </td>
+            </tr>
+        </table>
 
     </fieldset>
 
@@ -153,46 +128,60 @@
         <legend>消費アイテム</legend>
 
         <div class="bita">
-            <button id="appendPowBita">POWビタ</button>
-            <button id="appendIntBita">INTビタ</button>
-            <button id="appendSpdBita">SPDビタ</button>
-            <button id="appendVitBita">VITビタ</button>
-            <button id="appendLukBita">LUKビタ</button>
-            <button id="appendAllBita">ALLビタ</button>
+            <i class="wine bottle icon"></i>
+            <div class="ui buttons">
+                <button id="appendPowBita" class="ui pink basic button">POWビタ</button>
+                <button id="appendIntBita" class="ui green basic button">INTビタ</button>
+                <button id="appendSpdBita" class="ui teal basic button">SPDビタ</button>
+                <button id="appendVitBita" class="ui orange basic button">VITビタ</button>
+                <button id="appendLukBita" class="ui yellow basic button">LUKビタ</button>
+                <button id="appendAllBita" class="ui basic button">ALLビタ</button>
+            </div>
         </div>
 
         <div class="can">
-            <button id="appendPowCan">魔獣缶A</button>
-            <button id="appendIntCan">魔獣缶B</button>
+            <i class="gift icon"></i>
+            <div class="ui buttons">
+                <button id="appendPowCan" class="ui pink basic button">魔獣缶A</button>
+                <button id="appendIntCan" class="ui green basic button">魔獣缶B</button>
+            </div>
         </div>
 
         <div class="seal">
-            <button id="appendPowSeal">POWシール</button>
-            <button id="appendIntSeal">INTシール</button>
-            <button id="appendSpdSeal">SPDシール</button>
-            <button id="appendVitSeal">VITシール</button>
-            <button id="appendLukSeal">LUKシール</button>
-        </div>
+            <i class="sticky note icon"></i>
+            <div class="ui buttons">
+                <button id="appendPowSeal" class="ui pink basic button">POWシール</button>
+                <button id="appendIntSeal" class="ui green basic button">INTシール</button>
+                <button id="appendSpdSeal" class="ui teal basic button">SPDシール</button>
+                <button id="appendVitSeal" class="ui orange basic button">VITシール</button>
+                <button id="appendLukSeal" class="ui yellow basic button">LUKシール</button>
+            </div>
         </div>
 
         <div class="makimono">
-            <button id="appendPowMakimono">POW巻物</button>
-            <button id="appendIntMakimono">INT巻物</button>
-            <button id="appendSpdMakimono">SPD巻物</button>
-            <button id="appendVitMakimono">VIT巻物</button>
-            <button id="appendLukMakimono">LUK巻物</button>
+            <i class="scroll icon"></i>
+            <div class="ui buttons">
+                <button id="appendPowMakimono" class="ui pink basic button">POW巻物</button>
+                <button id="appendIntMakimono" class="ui green basic button">INT巻物</button>
+                <button id="appendSpdMakimono" class="ui teal basic button">SPD巻物</button>
+                <button id="appendVitMakimono" class="ui orange basic button">VIT巻物</button>
+                <button id="appendLukMakimono" class="ui yellow basic button">LUK巻物</button>
 
-            <button id="appendAtkMakimono">ATK巻物</button>
-            <button id="appendDefMakimono">DEF巻物</button>
-            <button id="appendMatMakimono">MAT巻物</button>
-            <button id="appendMdfMakimono">MDF巻物</button>
+                <button id="appendAtkMakimono" class="ui red basic button">ATK巻物</button>
+                <button id="appendDefMakimono" class="ui blue basic button">DEF巻物</button>
+                <button id="appendMatMakimono" class="ui purple basic button">MAT巻物</button>
+                <button id="appendMdfMakimono" class="ui violet basic button">MDF巻物</button>
+            </div>
         </div>
 
         <div class="liquid">
-            <button id="appendPowLiquid">アタークリキッド</button>
-            <button id="appendDefLiquid">マモールリキッド</button>
-            <button id="appendMatLiquid">マホアタリキッド</button>
-            <button id="appendMdfLiquid">マホマモリキッド</button>
+            <i class="flask icon"></i>
+            <div class="ui buttons">
+                <button id="appendPowLiquid" class="ui red basic button">アタークリキッド</button>
+                <button id="appendDefLiquid" class="ui blue basic button">マモールリキッド</button>
+                <button id="appendMatLiquid" class="ui purple basic button">マホアタリキッド</button>
+                <button id="appendMdfLiquid" class="ui violet basic button">マホマモリキッド</button>
+            </div>
         </div>
 
     </fieldset>
@@ -201,12 +190,16 @@
         <legend>スキル</legend>
 
         <div class="jobSkill">
-            <button id="appendBloodScraper">ブラッドスクレイパー</button>
+            <i class="tint icon"></i>
+            <button id="appendBloodScraper" class="ui pink basic button">ブラッドスクレイパー</button>
         </div>
 
         <div class="specialSkill">
-            <button id="appendElysion">大天使の加護</button>
-            <button id="appendApophis">邪神の呪詛</button>
+            <i class="feather alternate icon"></i>
+            <div class="ui buttons">
+                <button id="appendElysion" class="ui basic button">大天使の加護</button>
+                <button id="appendApophis" class="ui yellow basic button">邪神の呪詛</button>
+            </div>
         </div>
 
     </fieldset>
@@ -215,7 +208,18 @@
         <legend>アタッチメントシステム</legend>
 
         <div class="break">
-            <button id="appendBreak">ブレイク</button>
+            <i class="ring icon"></i>
+            <button id="appendBreak" class="ui basic button">ブレイク</button>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>マネキン</legend>
+
+        <div class="changeClothes">
+            <i class="tshirt icon"></i>
+            <button id="appendChangeClothes" class="ui basic button">着替え</button>
         </div>
 
     </fieldset>
