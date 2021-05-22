@@ -425,25 +425,6 @@ function calculation() {
             result.luk += canSealBuff.luk;
         }
 
-        // ブレイク処理
-        if (taskName == "break") {
-            resetPISVLBuff(breakBuff, result);
-            breakBuff.pow = Number(task.find("input[name=powCard]").val()); // POW上昇値
-            result.pow += breakBuff.pow;
-            result.atk += breakBuff.pow * 3;
-            breakBuff.int = Number(task.find("input[name=intCard]").val()); // INT上昇値
-            result.int += breakBuff.int;
-            result.mat += breakBuff.int * 2;
-            result.mdf += breakBuff.int * 15;
-            breakBuff.spd = Number(task.find("input[name=spdCard]").val()); // SPD上昇値
-            result.spd += breakBuff.spd;
-            breakBuff.vit = Number(task.find("input[name=vitCard]").val()); // VIT上昇値
-            result.vit += breakBuff.vit;
-            result.def += breakBuff.vit * 2;
-            breakBuff.luk = Number(task.find("input[name=lukCard]").val()); // LUK上昇値
-            result.luk += breakBuff.luk;
-        }
-
         // 巻物処理
         if (taskName == "powMakimono") {
             resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
@@ -589,6 +570,25 @@ function calculation() {
             resetPISVLBuff(apophisBuff, result);
             apophisBuff.luk = parseInt(result.luk * 0.3); // LUK上昇値
             result.luk += apophisBuff.luk;
+        }
+
+        // ブレイク処理
+        if (taskName == "break") {
+            resetPISVLBuff(breakBuff, result);
+            breakBuff.pow = Number(task.find("input[name=powCard]").val()); // POW上昇値
+            result.pow += breakBuff.pow;
+            result.atk += breakBuff.pow * 3;
+            breakBuff.int = Number(task.find("input[name=intCard]").val()); // INT上昇値
+            result.int += breakBuff.int;
+            result.mat += breakBuff.int * 2;
+            result.mdf += breakBuff.int * 15;
+            breakBuff.spd = Number(task.find("input[name=spdCard]").val()); // SPD上昇値
+            result.spd += breakBuff.spd;
+            breakBuff.vit = Number(task.find("input[name=vitCard]").val()); // VIT上昇値
+            result.vit += breakBuff.vit;
+            result.def += breakBuff.vit * 2;
+            breakBuff.luk = Number(task.find("input[name=lukCard]").val()); // LUK上昇値
+            result.luk += breakBuff.luk;
         }
 
         // 着替え処理
