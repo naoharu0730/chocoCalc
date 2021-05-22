@@ -128,6 +128,102 @@ class PISVLADMaMd {
     }
 }
 
+class PISVLHpSpADMaMd {
+    // POW、INT、SPD、VIT、LUK、HP、SP。ATK、DEF、MAT、MDF を管理するクラス
+    constructor(pow = 0, int = 0, spd = 0, vit = 0, luk = 0, hp = 0, sp = 0, atk = 0, def = 0, mat = 0, mdf = 0) {
+        this.pow = pow;
+        this.int = int;
+        this.spd = spd;
+        this.vit = vit;
+        this.luk = luk;
+        this.hp = hp;
+        this.sp = sp;
+        this.atk = atk;
+        this.def = def;
+        this.mat = mat;
+        this.mdf = mdf;
+    }
+    get pow() {
+        return this._pow;
+    }
+    set pow(value) {
+        this._pow = value;
+    }
+    get int() {
+        return this._int;
+    }
+    set int(value) {
+        this._int = value;
+    }
+    get spd() {
+        return this._spd;
+    }
+    set spd(value) {
+        this._spd = value;
+    }
+    get vit() {
+        return this._vit;
+    }
+    set vit(value) {
+        this._vit = value;
+    }
+    get luk() {
+        return this._luk;
+    }
+    set luk(value) {
+        this._luk = value;
+    }
+    get hp() {
+        return this._hp;
+    }
+    set hp(value) {
+        this._hp = value;
+    }
+    get sp() {
+        return this._sp;
+    }
+    set sp(value) {
+        this._sp = value;
+    }
+    get atk() {
+        return this._atk;
+    }
+    set atk(value) {
+        this._atk = value;
+    }
+    get def() {
+        return this._def;
+    }
+    set def(value) {
+        this._def = value;
+    }
+    get mat() {
+        return this._mat;
+    }
+    set mat(value) {
+        this._mat = value;
+    }
+    get mdf() {
+        return this._mdf;
+    }
+    set mdf(value) {
+        this._mdf = value;
+    }
+    reset() {
+        this._pow = 0;
+        this._int = 0;
+        this._spd = 0;
+        this._vit = 0;
+        this._luk = 0;
+        this._hp = 0;
+        this._sp = 0;
+        this._atk = 0;
+        this._def = 0;
+        this._mat = 0;
+        this._mdf = 0;
+    }
+}
+
 /**
  * 画面の入力をもとに、計算を行う
  */
@@ -139,24 +235,26 @@ function calculation() {
     const spdStatus = Number($('#spdStatus').val());
     const vitStatus = Number($('#vitStatus').val());
     const lukStatus = Number($('#lukStatus').val());
-    const atkTotal = Number($('#atkTotal').val());
-    const defTotal = Number($('#defTotal').val());
-    const matTotal = Number($('#matTotal').val());
-    const mdfTotal = Number($('#mdfTotal').val());
     const powTotal = Number(safeEval(safeReplace($('#powTotal').val())));
     const intTotal = Number(safeEval(safeReplace($('#intTotal').val())));
     const spdTotal = Number(safeEval(safeReplace($('#spdTotal').val())));
     const vitTotal = Number(safeEval(safeReplace($('#vitTotal').val())));
     const lukTotal = Number(safeEval(safeReplace($('#lukTotal').val())));
+    const hpTotal = Number($('#hpTotal').val());
+    const spTotal = Number($('#spTotal').val());
+    const atkTotal = Number($('#atkTotal').val());
+    const defTotal = Number($('#defTotal').val());
+    const matTotal = Number($('#matTotal').val());
+    const mdfTotal = Number($('#mdfTotal').val());
 
     // ステ振り
     let status = new PISVL(powStatus, intStatus, spdStatus, vitStatus, lukStatus);
 
     // ステ合計
-    let total = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
+    let total = new PISVLHpSpADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, hpTotal, spTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
     // 結果の初期化
-    let result = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
+    let result = new PISVLHpSpADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, hpTotal, spTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
     // ビタの上昇値
     let bitaBuff = new PISVL(0, 0, 0, 0, 0);
@@ -481,12 +579,14 @@ function calculation() {
         // 着替え処理
         if (taskName == "changeClothes") {
             // 着替え後のステータスを保持
-            let change = new PISVLADMaMd(
+            let change = new PISVLHpSpADMaMd(
                 Number(safeEval(safeReplace(task.find("input[name=powTotal]").val()))), // 着替え後のPOW合計
                 Number(safeEval(safeReplace(task.find("input[name=intTotal]").val()))), // 着替え後のINT合計
                 Number(safeEval(safeReplace(task.find("input[name=spdTotal]").val()))), // 着替え後のSPD合計
                 Number(safeEval(safeReplace(task.find("input[name=vitTotal]").val()))), // 着替え後のVIT合計
                 Number(safeEval(safeReplace(task.find("input[name=lukTotal]").val()))), // 着替え後のLUK合計
+                Number(task.find("input[name=hpTotal]").val()), // 着替え後のHP合計
+                Number(task.find("input[name=spTotal]").val()), // 着替え後のSP合計
                 Number(task.find("input[name=atkTotal]").val()), // 着替え後のATK合計
                 Number(task.find("input[name=defTotal]").val()), // 着替え後のMAT合計
                 Number(task.find("input[name=matTotal]").val()), // 着替え後のMAT合計
@@ -502,6 +602,10 @@ function calculation() {
             total.vit = change.vit; // VIT合計の変更
             result.luk += change.luk - total.luk; // LUK表示の変更
             total.luk = change.luk; // LUK合計の変更
+            result.hp += change.hp - total.hp; // HP表示の変更
+            total.hp = change.hp; // HP合計の変更
+            result.sp += change.sp - total.sp; // SP表示の変更
+            total.sp = change.sp; // SP合計の変更
             result.atk += change.atk - total.atk; // ATK表示の変更
             total.atk = change.atk; // ATK合計の変更
             result.def += change.def - total.def; // DEF表示の変更
@@ -519,6 +623,8 @@ function calculation() {
     $('#spdResult').text(result.spd);
     $('#vitResult').text(result.vit);
     $('#lukResult').text(result.luk);
+    $('#hpResult').text(result.hp);
+    $('#spResult').text(result.sp);
     $('#atkResult').text(result.atk + "(上昇値：" + liquidBuff.atk + ")");
     $('#defResult').text(result.def + "(上昇値：" + liquidBuff.def + ")");
     $('#matResult').text(result.mat + "(上昇値：" + liquidBuff.mat + ")");

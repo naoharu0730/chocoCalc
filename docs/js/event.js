@@ -333,6 +333,12 @@ $(document).ready(function () {
         </table>
         <table class="status-table">
             <tr>
+                <th class="hp-item">HP</th>
+                <td> <input type="number" value="1" name="hpTotal" required /> </td>
+                <th class="sp-item">SP</th>
+                <td> <input type="number" value="1" name="spTotal" required /> </td>
+            </tr>
+            <tr>
                 <th class="atk-item">ATK</th>
                 <td> <input type="number" value="1" name="atkTotal" required /> </td>
                 <th class="def-item">DEF</th>

@@ -12,6 +12,9 @@
     width: 5em;
 }
 .result-table td:nth-of-type(2){
+    width: 5em;
+}
+.result-table td:nth-of-type(3){
     width: 15em;
 }
 
@@ -31,6 +34,12 @@
     color: gold;
 }
 
+.hp-item{
+    color: gray;
+}
+.sp-item{
+    color: gray;
+}
 .atk-item{
     color: red;
 }
