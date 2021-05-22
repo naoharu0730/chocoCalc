@@ -1,5 +1,5 @@
 // イベント発生の処理系群
-// イベント：入力値の更新、処理の追加、処理項目の削除、CSVインポート/エクスポート
+// イベント：入力値の更新、処理の追加、処理項目の削除、処理項目の入れ替え、CSVインポート
 
 $(document).ready(function () {
     $('input[type="number"]').change(function () {
@@ -434,11 +434,11 @@ $(document).ready(function () {
     // 処理項目を削除する
     $('.process').on('click', '.delete', function () {
         $(this).parent()[0].remove();
-        calculation() // 処理の追加タイミングで更新
+        calculation() // 処理項目の削除タイミングで更新
     });
     $('.all-delete').on('click', function () {
         $('.process').find("div").remove();
-        calculation() // 処理の追加タイミングで更新
+        calculation() // 処理項目の削除タイミングで更新
     });
 
     // 処理項目を入れ替え可能にする
@@ -447,7 +447,7 @@ $(document).ready(function () {
             axis: "y", // ドラッグの方向を縦に固定
             "opacity": 0.5, // ドラッグ中の透明度
             "update": function(){ // ドラッグ完了後のコールバック
-                calculation() // 処理の入れ替えタイミングで更新
+                calculation() // 処理項目の入れ替えタイミングで更新
             }
         });
     });
