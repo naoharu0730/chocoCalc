@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ドピ計算</title>
 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
     <script src="js/csv.js"></script>
@@ -90,8 +92,8 @@
 
     <fieldset>
         <legend>処理</legend>
+        <button class="all-delete compact mini negative ui button"><i class="times icon"></i>全削除</button>
         <div class="process">
-            <button class="all-delete compact mini negative ui button"><i class="times icon"></i>全削除</button>
             <!-- ここに処理イベントが div タグで追加されていく -->
         </div>
     </fieldset>

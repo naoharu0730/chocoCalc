@@ -436,9 +436,20 @@ $(document).ready(function () {
         $(this).parent()[0].remove();
         calculation() // 処理の追加タイミングで更新
     });
-    $('.process').on('click', '.all-delete', function () {
-        $(this).parent().find("div").remove();
+    $('.all-delete').on('click', function () {
+        $('.process').find("div").remove();
         calculation() // 処理の追加タイミングで更新
+    });
+
+    // 処理項目を入れ替え可能にする
+    $(function(){
+        $('.process').sortable({
+            axis: "y", // ドラッグの方向を縦に固定
+            "opacity": 0.5, // ドラッグ中の透明度
+            "update": function(){ // ドラッグ完了後のコールバック
+                calculation() // 処理の入れ替えタイミングで更新
+            }
+        });
     });
 
     // CSVインポート
