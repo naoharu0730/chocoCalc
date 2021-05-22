@@ -276,7 +276,7 @@ function calculation() {
     let bloodScraperBuff = new PISVL(0, 0, 0, 0, 0);
 
     // エル羽の上昇値
-    let elysionBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let elysionBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // フィス羽の上昇値
     let apophisBuff = new PISVL(0, 0, 0, 0, 0);
@@ -538,7 +538,7 @@ function calculation() {
             result.atk += bloodScraperBuff.pow * 3;
         }
         if (taskName == "elysion") {
-            resetPISVLADMaMdBuff(elysionBuff, result);
+            resetPISVLHpSpADMaMdBuff(elysionBuff, result);
 
             elysionBuff.pow = parseInt(result.pow * 0.2); // POW上昇値
             elysionBuff.pow = Math.max(1, elysionBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
@@ -559,6 +559,11 @@ function calculation() {
             elysionBuff.luk = parseInt(result.luk * 0.2); // LUK上昇値
             elysionBuff.luk = Math.max(1, elysionBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += elysionBuff.luk;
+
+            elysionBuff.hp = result.hp * 4; // エル羽のHP上昇量
+            result.hp += elysionBuff.hp;
+            elysionBuff.sp = result.sp * 4; // エル羽のSP上昇量
+            result.sp += elysionBuff.sp;
 
             elysionBuff.atk = parseInt((total.atk + makimonoBuff.atk - (total.pow * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
             result.atk += elysionBuff.atk;
@@ -657,7 +662,7 @@ function resetPISVLBuff(PISVLBuff, result) {
 
 /**
  * POW/INT/SPD/VIT/LUK/ATK/DEF/MAT/MDFの上昇値をリセットする
- * 巻物や、エル羽などのリセットに使用する
+ * 巻物などのリセットに使用する
  */
 function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
     // POW上昇による効果のリセット
@@ -686,6 +691,44 @@ function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
 
     // 上昇値のリセット
     PISVLADMaMdBuff.reset();
+}
+
+/**
+ * POW/INT/SPD/VIT/LUK/HP/SP/ATK/DEF/MAT/MDFの上昇値をリセットする
+ * エル羽などのリセットに使用する
+ */
+function resetPISVLHpSpADMaMdBuff(PISVLHpSpADMaMdBuff, result) {
+    // POW上昇による効果のリセット
+    result.pow -= PISVLHpSpADMaMdBuff.pow;
+    result.atk -= PISVLHpSpADMaMdBuff.pow * 3;
+    // INT上昇による効果のリセット
+    result.int -= PISVLHpSpADMaMdBuff.int;
+    result.mat -= PISVLHpSpADMaMdBuff.int * 2;
+    result.mdf -= PISVLHpSpADMaMdBuff.int * 15;
+    // SPD上昇による効果のリセット
+    result.spd -= PISVLHpSpADMaMdBuff.spd;
+    // VIT上昇による効果のリセット
+    result.vit -= PISVLHpSpADMaMdBuff.vit;
+    result.def -= PISVLHpSpADMaMdBuff.vit * 2;
+    // LUK上昇による効果のリセット
+    result.luk -= PISVLHpSpADMaMdBuff.luk;
+
+    // HP上昇による効果のリセット
+    result.hp -= PISVLHpSpADMaMdBuff.hp;
+    // SP上昇による効果のリセット
+    result.sp -= PISVLHpSpADMaMdBuff.sp;
+
+    // ATK上昇による効果のリセット
+    result.atk -= PISVLHpSpADMaMdBuff.atk;
+    // DEF上昇による効果のリセット
+    result.def -= PISVLHpSpADMaMdBuff.def;
+    // MAT上昇による効果のリセット
+    result.mat -= PISVLHpSpADMaMdBuff.mat;
+    // MDf上昇による効果のリセット
+    result.mdf -= PISVLHpSpADMaMdBuff.mdf;
+
+    // 上昇値のリセット
+    PISVLHpSpADMaMdBuff.reset();
 }
 
 /**
