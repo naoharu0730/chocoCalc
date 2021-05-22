@@ -48,130 +48,16 @@ class PISVL {
     }
 }
 
-class PISVLADMaMd {
-    // POW、INT、SPD、VIT、LUK、ATK、DEF、MAT、MDF を管理するクラス
-    constructor(pow = 0, int = 0, spd = 0, vit = 0, luk = 0, atk = 0, def = 0, mat = 0, mdf = 0) {
-        this.pow = pow;
-        this.int = int;
-        this.spd = spd;
-        this.vit = vit;
-        this.luk = luk;
-        this.atk = atk;
-        this.def = def;
-        this.mat = mat;
-        this.mdf = mdf;
-    }
-    get pow() {
-        return this._pow;
-    }
-    set pow(value) {
-        this._pow = value;
-    }
-    get int() {
-        return this._int;
-    }
-    set int(value) {
-        this._int = value;
-    }
-    get spd() {
-        return this._spd;
-    }
-    set spd(value) {
-        this._spd = value;
-    }
-    get vit() {
-        return this._vit;
-    }
-    set vit(value) {
-        this._vit = value;
-    }
-    get luk() {
-        return this._luk;
-    }
-    set luk(value) {
-        this._luk = value;
-    }
-    get atk() {
-        return this._atk;
-    }
-    set atk(value) {
-        this._atk = value;
-    }
-    get def() {
-        return this._def;
-    }
-    set def(value) {
-        this._def = value;
-    }
-    get mat() {
-        return this._mat;
-    }
-    set mat(value) {
-        this._mat = value;
-    }
-    get mdf() {
-        return this._mdf;
-    }
-    set mdf(value) {
-        this._mdf = value;
-    }
-    reset() {
-        this._pow = 0;
-        this._int = 0;
-        this._spd = 0;
-        this._vit = 0;
-        this._luk = 0;
-        this._atk = 0;
-        this._def = 0;
-        this._mat = 0;
-        this._mdf = 0;
-    }
-}
-
-class PISVLHpSpADMaMd {
+class PISVLHpSpADMaMd extends PISVL {
     // POW、INT、SPD、VIT、LUK、HP、SP。ATK、DEF、MAT、MDF を管理するクラス
     constructor(pow = 0, int = 0, spd = 0, vit = 0, luk = 0, hp = 0, sp = 0, atk = 0, def = 0, mat = 0, mdf = 0) {
-        this.pow = pow;
-        this.int = int;
-        this.spd = spd;
-        this.vit = vit;
-        this.luk = luk;
+        super(pow, int, spd, vit, luk);
         this.hp = hp;
         this.sp = sp;
         this.atk = atk;
         this.def = def;
         this.mat = mat;
         this.mdf = mdf;
-    }
-    get pow() {
-        return this._pow;
-    }
-    set pow(value) {
-        this._pow = value;
-    }
-    get int() {
-        return this._int;
-    }
-    set int(value) {
-        this._int = value;
-    }
-    get spd() {
-        return this._spd;
-    }
-    set spd(value) {
-        this._spd = value;
-    }
-    get vit() {
-        return this._vit;
-    }
-    set vit(value) {
-        this._vit = value;
-    }
-    get luk() {
-        return this._luk;
-    }
-    set luk(value) {
-        this._luk = value;
     }
     get hp() {
         return this._hp;
@@ -210,11 +96,7 @@ class PISVLHpSpADMaMd {
         this._mdf = value;
     }
     reset() {
-        this._pow = 0;
-        this._int = 0;
-        this._spd = 0;
-        this._vit = 0;
-        this._luk = 0;
+        super.reset();
         this._hp = 0;
         this._sp = 0;
         this._atk = 0;
@@ -261,7 +143,7 @@ function calculation() {
     let allBitaBuff = new PISVL(0, 0, 0, 0, 0);
 
     // リキッドの上昇値
-    let liquidBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let liquidBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // ブレイクの上昇値
     let breakBuff = new PISVL(0, 0, 0, 0, 0);
