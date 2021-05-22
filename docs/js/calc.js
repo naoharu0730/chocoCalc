@@ -357,6 +357,10 @@ function calculation() {
             allBitaBuff.luk = Math.max(1, allBitaBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += allBitaBuff.luk;
         }
+        if (taskName == "resetBita") {
+            resetPISVLBuff(bitaBuff, result); // POW、INT、SPD、VIT、LUKビタのリセット
+            resetPISVLBuff(allBitaBuff, result); // ALLビタのリセット
+        }
 
         // 魔獣缶処理
         if (taskName == "powCan") {
@@ -424,6 +428,10 @@ function calculation() {
             canSealBuff.luk = 15; // LUK上昇値
             result.luk += canSealBuff.luk;
         }
+        if (taskName == "resetCanSeal") {
+            resetPISVLBuff(canSealBuff, result); // 缶のリセット
+            resetPISVLBuff(canSealBuff, result); // シールのリセット
+        }
 
         // ブレイク処理
         if (taskName == "break") {
@@ -442,6 +450,9 @@ function calculation() {
             result.def += breakBuff.vit * 2;
             breakBuff.luk = Number(task.find("input[name=lukCard]").val()); // LUK上昇値
             result.luk += breakBuff.luk;
+        }
+        if (taskName == "resetBreak") {
+            resetPISVLBuff(breakBuff, result);
         }
 
         // 巻物処理
@@ -504,6 +515,9 @@ function calculation() {
             makimonoBuff.mdf = Number(task.find("select").val()); // MDF上昇値
             result.mdf += makimonoBuff.mdf;
         }
+        if (taskName == "resetMakimono") {
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+        }
 
         // リキッド処理
         if (taskName == "powLiquid") {
@@ -539,14 +553,22 @@ function calculation() {
             liquidBuff.mdf = parseInt((result.mdf - (result.int * 15) + (maxIntOrVit * 2) - elysionBuff.mdf) * Math.max(0.1, mdfMagni)); // MDF上昇量
             result.mdf += liquidBuff.mdf;
         }
+        if (taskName == "resetLiquid") {
+            resetPISVLHpSpADMaMdBuff(liquidBuff, result);
+        }
 
-        // スキル処理
+        // スキル（職業）処理
         if (taskName == "bloodScraper") {
             resetPISVLBuff(bloodScraperBuff, result);
             bloodScraperBuff.pow = 9; // POW上昇値
             result.pow += bloodScraperBuff.pow;
             result.atk += bloodScraperBuff.pow * 3;
         }
+        if (taskName == "resetBloodScraper") {
+            resetPISVLBuff(bloodScraperBuff, result);
+        }
+
+        // スキル（羽）処理
         if (taskName == "elysion") {
             resetPISVLHpSpADMaMdBuff(elysionBuff, result);
 
@@ -589,6 +611,10 @@ function calculation() {
             resetPISVLBuff(apophisBuff, result);
             apophisBuff.luk = parseInt(result.luk * 0.3); // LUK上昇値
             result.luk += apophisBuff.luk;
+        }
+        if (taskName == "resetSpecial") {
+            resetPISVLHpSpADMaMdBuff(elysionBuff, result); // 大天使の加護のリセット
+            resetPISVLBuff(apophisBuff, result); // 邪神の呪詛のリセット
         }
 
         // 着替え処理

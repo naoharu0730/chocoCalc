@@ -44,6 +44,10 @@ $(document).ready(function () {
         $('.process').append('<div name=allBita><i class="wine bottle icon"></i>ALLビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendResetBita').on('click', function () {
+        $('.process').append('<div name=resetBita><i class="wine bottle icon"></i>リセット：ビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
 
     // 魔獣缶処理の追加
     $('#appendPowCan').on('click', function () {
@@ -54,26 +58,34 @@ $(document).ready(function () {
         $('.process').append('<div name=intCan><i class="gift icon"></i>魔獣缶B <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendResetCan').on('click', function () {
+        $('.process').append('<div name=resetCanSeal><i class="gift icon"></i><i class="sticky note icon"></i>リセット：缶・シール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
 
     // シール処理の追加
     $('#appendPowSeal').on('click', function () {
-        $('.process').append('<div name=powSeal><i class="sticky note icon icon"></i>POWシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=powSeal><i class="sticky note icon"></i>POWシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntSeal').on('click', function () {
-        $('.process').append('<div name=intSeal><i class="sticky note icon icon"></i>INTシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=intSeal><i class="sticky note icon"></i>INTシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdSeal').on('click', function () {
-        $('.process').append('<div name=spdSeal><i class="sticky note icon icon"></i>SPDシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=spdSeal><i class="sticky note icon"></i>SPDシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitSeal').on('click', function () {
-        $('.process').append('<div name=vitSeal><i class="sticky note icon icon"></i>VITシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=vitSeal><i class="sticky note icon"></i>VITシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukSeal').on('click', function () {
-        $('.process').append('<div name=lukSeal><i class="sticky note icon icon"></i>LUKシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=lukSeal><i class="sticky note icon"></i>LUKシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendResetSeal').on('click', function () {
+        $('.process').append('<div name=resetCanSeal><i class="gift icon"></i><i class="sticky note icon"></i>リセット：缶・シール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
@@ -276,6 +288,10 @@ $(document).ready(function () {
         <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendResetMakimono').on('click', function () {
+        $('.process').append(`<div name=resetMakimono><i class="scroll icon"></i>リセット：巻物 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
 
     // リキッド処理の追加
     $('#appendPowLiquid').on('click', function () {
@@ -294,18 +310,31 @@ $(document).ready(function () {
         $('.process').append('<div name=mdfLiquid><i class="flask icon"></i>マホマモリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendResetLiquid').on('click', function () {
+        $('.process').append('<div name=resetLiquid><i class="flask icon"></i>リセット：リキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
 
     // スキル処理の追加
     $('#appendBloodScraper').on('click', function () {
         $('.process').append('<div name=bloodScraper><i class="tint icon"></i>ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendResetBloodScraper').on('click', function () {
+        $('.process').append('<div name=resetBloodScraper><i class="tint icon"></i>リセット：ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+
     $('#appendElysion').on('click', function () {
         $('.process').append('<div name=elysion><i class="feather alternate icon"></i>大天使の加護 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendApophis').on('click', function () {
         $('.process').append('<div name=apophis><i class="feather alternate icon"></i>邪神の呪詛 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendResetSpecial').on('click', function () {
+        $('.process').append('<div name=resetSpecial><i class="feather alternate icon"></i>リセット：スペシャル（羽） <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
@@ -329,6 +358,10 @@ $(document).ready(function () {
         </tr>
         </table>
         </div>`);
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendResetBreak').on('click', function () {
+        $('.process').append(`<div name=resetBreak><i class="ring icon"></i>リセット：ブレイク <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
