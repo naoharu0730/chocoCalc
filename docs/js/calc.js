@@ -128,6 +128,102 @@ class PISVLADMaMd {
     }
 }
 
+class PISVLHpSpADMaMd {
+    // POW、INT、SPD、VIT、LUK、HP、SP。ATK、DEF、MAT、MDF を管理するクラス
+    constructor(pow = 0, int = 0, spd = 0, vit = 0, luk = 0, hp = 0, sp = 0, atk = 0, def = 0, mat = 0, mdf = 0) {
+        this.pow = pow;
+        this.int = int;
+        this.spd = spd;
+        this.vit = vit;
+        this.luk = luk;
+        this.hp = hp;
+        this.sp = sp;
+        this.atk = atk;
+        this.def = def;
+        this.mat = mat;
+        this.mdf = mdf;
+    }
+    get pow() {
+        return this._pow;
+    }
+    set pow(value) {
+        this._pow = value;
+    }
+    get int() {
+        return this._int;
+    }
+    set int(value) {
+        this._int = value;
+    }
+    get spd() {
+        return this._spd;
+    }
+    set spd(value) {
+        this._spd = value;
+    }
+    get vit() {
+        return this._vit;
+    }
+    set vit(value) {
+        this._vit = value;
+    }
+    get luk() {
+        return this._luk;
+    }
+    set luk(value) {
+        this._luk = value;
+    }
+    get hp() {
+        return this._hp;
+    }
+    set hp(value) {
+        this._hp = value;
+    }
+    get sp() {
+        return this._sp;
+    }
+    set sp(value) {
+        this._sp = value;
+    }
+    get atk() {
+        return this._atk;
+    }
+    set atk(value) {
+        this._atk = value;
+    }
+    get def() {
+        return this._def;
+    }
+    set def(value) {
+        this._def = value;
+    }
+    get mat() {
+        return this._mat;
+    }
+    set mat(value) {
+        this._mat = value;
+    }
+    get mdf() {
+        return this._mdf;
+    }
+    set mdf(value) {
+        this._mdf = value;
+    }
+    reset() {
+        this._pow = 0;
+        this._int = 0;
+        this._spd = 0;
+        this._vit = 0;
+        this._luk = 0;
+        this._hp = 0;
+        this._sp = 0;
+        this._atk = 0;
+        this._def = 0;
+        this._mat = 0;
+        this._mdf = 0;
+    }
+}
+
 /**
  * 画面の入力をもとに、計算を行う
  */
@@ -139,24 +235,26 @@ function calculation() {
     const spdStatus = Number($('#spdStatus').val());
     const vitStatus = Number($('#vitStatus').val());
     const lukStatus = Number($('#lukStatus').val());
-    const atkTotal = Number($('#atkTotal').val());
-    const defTotal = Number($('#defTotal').val());
-    const matTotal = Number($('#matTotal').val());
-    const mdfTotal = Number($('#mdfTotal').val());
     const powTotal = Number(safeEval(safeReplace($('#powTotal').val())));
     const intTotal = Number(safeEval(safeReplace($('#intTotal').val())));
     const spdTotal = Number(safeEval(safeReplace($('#spdTotal').val())));
     const vitTotal = Number(safeEval(safeReplace($('#vitTotal').val())));
     const lukTotal = Number(safeEval(safeReplace($('#lukTotal').val())));
+    const hpTotal = Number($('#hpTotal').val());
+    const spTotal = Number($('#spTotal').val());
+    const atkTotal = Number($('#atkTotal').val());
+    const defTotal = Number($('#defTotal').val());
+    const matTotal = Number($('#matTotal').val());
+    const mdfTotal = Number($('#mdfTotal').val());
 
     // ステ振り
     let status = new PISVL(powStatus, intStatus, spdStatus, vitStatus, lukStatus);
 
     // ステ合計
-    let total = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
+    let total = new PISVLHpSpADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, hpTotal, spTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
     // 結果の初期化
-    let result = new PISVLADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, atkTotal, defTotal, matTotal, mdfTotal);
+    let result = new PISVLHpSpADMaMd(powTotal, intTotal, spdTotal, vitTotal, lukTotal, hpTotal, spTotal, atkTotal, defTotal, matTotal, mdfTotal);
 
     // ビタの上昇値
     let bitaBuff = new PISVL(0, 0, 0, 0, 0);
@@ -172,13 +270,13 @@ function calculation() {
     let canSealBuff = new PISVL(0, 0, 0, 0, 0);
 
     // 巻物の上昇値
-    let makimonoBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let makimonoBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // ブラッドスクレイパーの上昇値
     let bloodScraperBuff = new PISVL(0, 0, 0, 0, 0);
 
     // エル羽の上昇値
-    let elysionBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let elysionBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // フィス羽の上昇値
     let apophisBuff = new PISVL(0, 0, 0, 0, 0);
@@ -348,52 +446,62 @@ function calculation() {
 
         // 巻物処理
         if (taskName == "powMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.pow = Number(task.children().val()); // POW上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.pow = Number(task.find("select").val()); // POW上昇値
             result.pow += makimonoBuff.pow;
             result.atk += makimonoBuff.pow * 3;
         }
         if (taskName == "intMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.int = Number(task.children().val()); // INT上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.int = Number(task.find("select").val()); // INT上昇値
             result.int += makimonoBuff.int;
             result.mat += makimonoBuff.int * 2;
             result.mdf += makimonoBuff.int * 15;
         }
         if (taskName == "spdMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.spd = Number(task.children().val()); // SPD上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.spd = Number(task.find("select").val()); // SPD上昇値
             result.spd += makimonoBuff.spd;
         }
         if (taskName == "vitMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.vit = Number(task.children().val()); // VIT上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.vit = Number(task.find("select").val()); // VIT上昇値
             result.vit += makimonoBuff.vit;
             result.def += makimonoBuff.vit * 2;
         }
         if (taskName == "lukMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.luk = Number(task.children().val()); // LUK上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.luk = Number(task.find("select").val()); // LUK上昇値
             result.luk += makimonoBuff.luk;
         }
+        if (taskName == "hpMakimono") {
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.hp = Number(task.find("select").val()); // HP上昇値
+            result.hp += makimonoBuff.hp;
+        }
+        if (taskName == "spMakimono") {
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.sp = Number(task.find("select").val()); // SP上昇値
+            result.sp += makimonoBuff.sp;
+        }
         if (taskName == "atkMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.atk = Number(task.children().val()); // ATK上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.atk = Number(task.find("select").val()); // ATK上昇値
             result.atk += makimonoBuff.atk;
         }
         if (taskName == "defMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.def = Number(task.children().val()); // DEF上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.def = Number(task.find("select").val()); // DEF上昇値
             result.def += makimonoBuff.def;
         }
         if (taskName == "matMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.mat = Number(task.children().val()); // MAT上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.mat = Number(task.find("select").val()); // MAT上昇値
             result.mat += makimonoBuff.mat;
         }
         if (taskName == "mdfMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.mdf = Number(task.children().val()); // MDF上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.mdf = Number(task.find("select").val()); // MDF上昇値
             result.mdf += makimonoBuff.mdf;
         }
 
@@ -440,7 +548,7 @@ function calculation() {
             result.atk += bloodScraperBuff.pow * 3;
         }
         if (taskName == "elysion") {
-            resetPISVLADMaMdBuff(elysionBuff, result);
+            resetPISVLHpSpADMaMdBuff(elysionBuff, result);
 
             elysionBuff.pow = parseInt(result.pow * 0.2); // POW上昇値
             elysionBuff.pow = Math.max(1, elysionBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
@@ -462,6 +570,11 @@ function calculation() {
             elysionBuff.luk = Math.max(1, elysionBuff.luk); // LUK上昇値が 0 以下だったら、上昇値は 1 とする
             result.luk += elysionBuff.luk;
 
+            elysionBuff.hp = result.hp * 4; // エル羽のHP上昇量
+            result.hp += elysionBuff.hp;
+            elysionBuff.sp = result.sp * 4; // エル羽のSP上昇量
+            result.sp += elysionBuff.sp;
+
             elysionBuff.atk = parseInt((total.atk + makimonoBuff.atk - (total.pow * 3) + (result.pow * 2)) * 0.2); // エル羽のATK上昇量
             result.atk += elysionBuff.atk;
             elysionBuff.def = parseInt((total.def + makimonoBuff.def - (total.vit * 2) + (result.vit * 2)) * 0.2); // エル羽のDEF上昇量
@@ -481,12 +594,14 @@ function calculation() {
         // 着替え処理
         if (taskName == "changeClothes") {
             // 着替え後のステータスを保持
-            let change = new PISVLADMaMd(
+            let change = new PISVLHpSpADMaMd(
                 Number(safeEval(safeReplace(task.find("input[name=powTotal]").val()))), // 着替え後のPOW合計
                 Number(safeEval(safeReplace(task.find("input[name=intTotal]").val()))), // 着替え後のINT合計
                 Number(safeEval(safeReplace(task.find("input[name=spdTotal]").val()))), // 着替え後のSPD合計
                 Number(safeEval(safeReplace(task.find("input[name=vitTotal]").val()))), // 着替え後のVIT合計
                 Number(safeEval(safeReplace(task.find("input[name=lukTotal]").val()))), // 着替え後のLUK合計
+                Number(task.find("input[name=hpTotal]").val()), // 着替え後のHP合計
+                Number(task.find("input[name=spTotal]").val()), // 着替え後のSP合計
                 Number(task.find("input[name=atkTotal]").val()), // 着替え後のATK合計
                 Number(task.find("input[name=defTotal]").val()), // 着替え後のMAT合計
                 Number(task.find("input[name=matTotal]").val()), // 着替え後のMAT合計
@@ -502,6 +617,10 @@ function calculation() {
             total.vit = change.vit; // VIT合計の変更
             result.luk += change.luk - total.luk; // LUK表示の変更
             total.luk = change.luk; // LUK合計の変更
+            result.hp += change.hp - total.hp; // HP表示の変更
+            total.hp = change.hp; // HP合計の変更
+            result.sp += change.sp - total.sp; // SP表示の変更
+            total.sp = change.sp; // SP合計の変更
             result.atk += change.atk - total.atk; // ATK表示の変更
             total.atk = change.atk; // ATK合計の変更
             result.def += change.def - total.def; // DEF表示の変更
@@ -519,6 +638,8 @@ function calculation() {
     $('#spdResult').text(result.spd);
     $('#vitResult').text(result.vit);
     $('#lukResult').text(result.luk);
+    $('#hpResult').text(result.hp);
+    $('#spResult').text(result.sp);
     $('#atkResult').text(result.atk + "(上昇値：" + liquidBuff.atk + ")");
     $('#defResult').text(result.def + "(上昇値：" + liquidBuff.def + ")");
     $('#matResult').text(result.mat + "(上昇値：" + liquidBuff.mat + ")");
@@ -551,7 +672,7 @@ function resetPISVLBuff(PISVLBuff, result) {
 
 /**
  * POW/INT/SPD/VIT/LUK/ATK/DEF/MAT/MDFの上昇値をリセットする
- * 巻物や、エル羽などのリセットに使用する
+ * リセットに使用する
  */
 function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
     // POW上昇による効果のリセット
@@ -580,6 +701,44 @@ function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
 
     // 上昇値のリセット
     PISVLADMaMdBuff.reset();
+}
+
+/**
+ * POW/INT/SPD/VIT/LUK/HP/SP/ATK/DEF/MAT/MDFの上昇値をリセットする
+ * 巻物、エル羽などのリセットに使用する
+ */
+function resetPISVLHpSpADMaMdBuff(PISVLHpSpADMaMdBuff, result) {
+    // POW上昇による効果のリセット
+    result.pow -= PISVLHpSpADMaMdBuff.pow;
+    result.atk -= PISVLHpSpADMaMdBuff.pow * 3;
+    // INT上昇による効果のリセット
+    result.int -= PISVLHpSpADMaMdBuff.int;
+    result.mat -= PISVLHpSpADMaMdBuff.int * 2;
+    result.mdf -= PISVLHpSpADMaMdBuff.int * 15;
+    // SPD上昇による効果のリセット
+    result.spd -= PISVLHpSpADMaMdBuff.spd;
+    // VIT上昇による効果のリセット
+    result.vit -= PISVLHpSpADMaMdBuff.vit;
+    result.def -= PISVLHpSpADMaMdBuff.vit * 2;
+    // LUK上昇による効果のリセット
+    result.luk -= PISVLHpSpADMaMdBuff.luk;
+
+    // HP上昇による効果のリセット
+    result.hp -= PISVLHpSpADMaMdBuff.hp;
+    // SP上昇による効果のリセット
+    result.sp -= PISVLHpSpADMaMdBuff.sp;
+
+    // ATK上昇による効果のリセット
+    result.atk -= PISVLHpSpADMaMdBuff.atk;
+    // DEF上昇による効果のリセット
+    result.def -= PISVLHpSpADMaMdBuff.def;
+    // MAT上昇による効果のリセット
+    result.mat -= PISVLHpSpADMaMdBuff.mat;
+    // MDf上昇による効果のリセット
+    result.mdf -= PISVLHpSpADMaMdBuff.mdf;
+
+    // 上昇値のリセット
+    PISVLHpSpADMaMdBuff.reset();
 }
 
 /**

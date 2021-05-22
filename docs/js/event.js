@@ -168,6 +168,42 @@ $(document).ready(function () {
         <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendHpMakimono').on('click', function () {
+        $('.process').append(`<div name=hpMakimono><i class="scroll icon"></i>HP巻物
+        <select name="selectHpMakimono">
+        <option value="0" selected>0</option>
+        <option value="200">200</option>
+        <option value="400">400</option>
+        <option value="600">600</option>
+        <option value="800">800</option>
+        <option value="1000">1000</option>
+        <option value="1200">1200</option>
+        <option value="1400">1400</option>
+        <option value="1600">1600</option>
+        <option value="1800">1800</option>
+        <option value="2000">2000</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendSpMakimono').on('click', function () {
+        $('.process').append(`<div name=spMakimono><i class="scroll icon"></i>SP巻物
+        <select name="selectSpMakimono">
+        <option value="0" selected>0</option>
+        <option value="200">200</option>
+        <option value="400">400</option>
+        <option value="600">600</option>
+        <option value="800">800</option>
+        <option value="1000">1000</option>
+        <option value="1200">1200</option>
+        <option value="1400">1400</option>
+        <option value="1600">1600</option>
+        <option value="1800">1800</option>
+        <option value="2000">2000</option>
+        </select>
+        <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        calculation() // 処理の追加タイミングで更新
+    });
     $('#appendAtkMakimono').on('click', function () {
         $('.process').append(`<div name=atkMakimono><i class="scroll icon"></i>ATK巻物
         <select name="selectAtkMakimono">
@@ -332,6 +368,12 @@ $(document).ready(function () {
             </tr>
         </table>
         <table class="status-table">
+            <tr>
+                <th class="hp-item">HP</th>
+                <td> <input type="number" value="1" name="hpTotal" required /> </td>
+                <th class="sp-item">SP</th>
+                <td> <input type="number" value="1" name="spTotal" required /> </td>
+            </tr>
             <tr>
                 <th class="atk-item">ATK</th>
                 <td> <input type="number" value="1" name="atkTotal" required /> </td>

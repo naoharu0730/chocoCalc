@@ -31,6 +31,8 @@ function csvImport(element) {
         input_name.push(['', 'input[name=spdStatus]', 'input[name=spdTotal]'])
         input_name.push(['', 'input[name=vitStatus]', 'input[name=vitTotal]'])
         input_name.push(['', 'input[name=lukStatus]', 'input[name=lukTotal]'])
+        input_name.push(['', '', 'input[name=hpTotal]'])
+        input_name.push(['', '', 'input[name=spTotal]'])
         input_name.push(['', '', 'input[name=atkTotal]'])
         input_name.push(['', '', 'input[name=defTotal]'])
         input_name.push(['', '', 'input[name=matTotal]'])
