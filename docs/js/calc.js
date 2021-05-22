@@ -270,7 +270,7 @@ function calculation() {
     let canSealBuff = new PISVL(0, 0, 0, 0, 0);
 
     // 巻物の上昇値
-    let makimonoBuff = new PISVLADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let makimonoBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     // ブラッドスクレイパーの上昇値
     let bloodScraperBuff = new PISVL(0, 0, 0, 0, 0);
@@ -446,52 +446,62 @@ function calculation() {
 
         // 巻物処理
         if (taskName == "powMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.pow = Number(task.children().val()); // POW上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.pow = Number(task.find("select").val()); // POW上昇値
             result.pow += makimonoBuff.pow;
             result.atk += makimonoBuff.pow * 3;
         }
         if (taskName == "intMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.int = Number(task.children().val()); // INT上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.int = Number(task.find("select").val()); // INT上昇値
             result.int += makimonoBuff.int;
             result.mat += makimonoBuff.int * 2;
             result.mdf += makimonoBuff.int * 15;
         }
         if (taskName == "spdMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.spd = Number(task.children().val()); // SPD上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.spd = Number(task.find("select").val()); // SPD上昇値
             result.spd += makimonoBuff.spd;
         }
         if (taskName == "vitMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.vit = Number(task.children().val()); // VIT上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.vit = Number(task.find("select").val()); // VIT上昇値
             result.vit += makimonoBuff.vit;
             result.def += makimonoBuff.vit * 2;
         }
         if (taskName == "lukMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.luk = Number(task.children().val()); // LUK上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.luk = Number(task.find("select").val()); // LUK上昇値
             result.luk += makimonoBuff.luk;
         }
+        if (taskName == "hpMakimono") {
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.hp = Number(task.find("select").val()); // HP上昇値
+            result.hp += makimonoBuff.hp;
+        }
+        if (taskName == "spMakimono") {
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.sp = Number(task.find("select").val()); // SP上昇値
+            result.sp += makimonoBuff.sp;
+        }
         if (taskName == "atkMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.atk = Number(task.children().val()); // ATK上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.atk = Number(task.find("select").val()); // ATK上昇値
             result.atk += makimonoBuff.atk;
         }
         if (taskName == "defMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.def = Number(task.children().val()); // DEF上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.def = Number(task.find("select").val()); // DEF上昇値
             result.def += makimonoBuff.def;
         }
         if (taskName == "matMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.mat = Number(task.children().val()); // MAT上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.mat = Number(task.find("select").val()); // MAT上昇値
             result.mat += makimonoBuff.mat;
         }
         if (taskName == "mdfMakimono") {
-            resetPISVLADMaMdBuff(makimonoBuff, result);
-            makimonoBuff.mdf = Number(task.children().val()); // MDF上昇値
+            resetPISVLHpSpADMaMdBuff(makimonoBuff, result);
+            makimonoBuff.mdf = Number(task.find("select").val()); // MDF上昇値
             result.mdf += makimonoBuff.mdf;
         }
 
@@ -662,7 +672,7 @@ function resetPISVLBuff(PISVLBuff, result) {
 
 /**
  * POW/INT/SPD/VIT/LUK/ATK/DEF/MAT/MDFの上昇値をリセットする
- * 巻物などのリセットに使用する
+ * リセットに使用する
  */
 function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
     // POW上昇による効果のリセット
@@ -695,7 +705,7 @@ function resetPISVLADMaMdBuff(PISVLADMaMdBuff, result) {
 
 /**
  * POW/INT/SPD/VIT/LUK/HP/SP/ATK/DEF/MAT/MDFの上昇値をリセットする
- * エル羽などのリセットに使用する
+ * 巻物、エル羽などのリセットに使用する
  */
 function resetPISVLHpSpADMaMdBuff(PISVLHpSpADMaMdBuff, result) {
     // POW上昇による効果のリセット
