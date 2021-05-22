@@ -441,6 +441,17 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
 
+    // 処理項目を入れ替え可能にする
+    $(function(){
+        $('.process').sortable({
+            axis: "y", // ドラッグの方向を縦に固定
+            "opacity": 0.5, // ドラッグ中の透明度
+            "update": function(){ // ドラッグ完了後のコールバック
+                calculation() // 処理の入れ替えタイミングで更新
+            }
+        });
+    });
+
     // CSVインポート
     $('input[name="import"]').on('click', function (e) {
         e.target.value = "" // CSV ファイルの初期化
