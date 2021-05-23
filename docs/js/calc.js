@@ -380,7 +380,7 @@ function calculation() {
         }
 
         // リキッド処理
-        if (taskName == "powLiquid") {
+        if (taskName == "atkLiquid") {
             // ATK上昇による効果のリセット
             result.atk -= liquidBuff.atk;
 

@@ -92,7 +92,13 @@
 
     <fieldset>
         <legend>処理</legend>
-        <button class="all-delete compact mini negative ui button"><i class="times icon"></i>全削除</button>
+        <button id="allDelete" class="compact mini negative ui button"><i class="times icon"></i>全削除</button>
+        <a name="processExport" href="#" download="process.csv"><i class="download icon"></i>処理エクスポート</a>
+        <div class="fileButton">
+            <i class="upload icon"></i>
+            処理インポート
+            <input type="file" name="processImport">
+        </div>
         <div class="process">
             <!-- ここに処理イベントが div タグで追加されていく -->
         </div>
@@ -202,7 +208,7 @@
         <div class="liquid">
             <i class="flask icon"></i>
             <div class="ui buttons">
-                <button id="appendPowLiquid" class="ui red basic button">アタークリキッド</button>
+                <button id="appendAtkLiquid" class="ui red basic button">アタークリキッド</button>
                 <button id="appendDefLiquid" class="ui blue basic button">マモールリキッド</button>
                 <button id="appendMatLiquid" class="ui purple basic button">マホアタリキッド</button>
                 <button id="appendMdfLiquid" class="ui violet basic button">マホマモリキッド</button>
