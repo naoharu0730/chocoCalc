@@ -103,7 +103,7 @@ function csvExport(element) {
  * 処理をインポートして、画面の入力を更新する
  * @param {*} element 処理インポートのinputタグ
  */
- function processImport(element) {
+function processImport(element) {
     let fileInput = $(element)[0];
     let fileReader = new FileReader();
     fileInput.onchange = () => {
@@ -114,7 +114,7 @@ function csvExport(element) {
     fileReader.onload = () => {
         csv = parseCSV(fileReader.result);
         console.log(csv);
-        $('#allDelete ').click();
+        $('#allDelete').click();
         csv.forEach(process => {
             switch (process[0]) {
                 case 'resetCanSeal':
@@ -123,6 +123,16 @@ function csvExport(element) {
                 default:
                     let text = process[0];
                     $('#append' + text.charAt(0).toUpperCase() + text.slice(1)).click();
+
+                    if (text.includes("Makimono")) {
+                        $('.process').find('div select').last().val(process[1])
+                    }
+                    if (text == "break") {
+                        $('.process').find('div').last().find('input').each(function(i) {
+                            $(this).val(process[i+1]);
+                        })
+                    }
+
                     break;
             }
         });
@@ -140,42 +150,22 @@ function processExport(element) {
 
     let d = [];
     $(element).parent().children(".process").children("div").each(function (i) {
-    //     let dd = [];
-    //     $(this).find('th').each(function () {
-    //         dd.push($(this).text()); // ラベル
-    //     });
-    //     $(this).find('td').each(function () {
-    //         dd.push($(this).find('input').val()); // 入力値
-    //     });
-    //  d.push(dd);
-        d.push($(this).attr('name'));
+        let dd = [];
+        dd.push($(this).attr('name')); // 処理の名前
+        if ($(this).find('select').length) {
+            dd.push($(this).find('select').val()); // 巻物の入力値
+        }
+        if ($(this).attr('name') == "break") {
+            $(this).find('input').each(function() {
+                dd.push($(this).val()); // ブレイクの入力値 
+            });
+        }
+        d.push(dd);
     });
-
-    // // CSV として見やすいようにデータを入れ替え
-    // let m = [];
-    // $.each(d, function (i) {
-    //     if (i > 5) {
-    //         let m1 = [];
-    //         m1.push(this[0])
-    //         m1.push("")
-    //         m1.push(this[2])
-    //         m.push(m1)
-    //         let m2 = [];
-    //         m2.push(this[1])
-    //         m2.push("")
-    //         m2.push(this[3])
-    //         m.push(m2)
-    //     } else {
-    //         m.push(this)
-    //     }
-
-    // })
-    // console.log(m);
     console.log(d);
 
     // CSV 出力
-    // let csv_data = m.map(function (l) { return l.join(',') }).join('\r\n');
-    let csv_data = d.join('\r\n');
+    let csv_data = d.map(function (l) { return l.join(',') }).join('\r\n');
     let bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM を用意（文字コードを BOM 付き UTF-8 にする）
     let blob = new Blob([bom, csv_data], { type: "text/csv" }); // データを CSV の BLOB に変換
     $(element)[0].href = window.URL.createObjectURL(blob);
