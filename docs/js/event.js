@@ -413,11 +413,11 @@ $(document).ready(function () {
                 <td> <input type="number" value="1" name="mdfTotal" required /> </td>
             </tr>
         </table>
-        <a name="export" href="#" download="status.csv"><i class="download icon"></i>CSVエクスポート</a>
+        <a name="statusExport" href="#" download="status.csv"><i class="download icon"></i>ステータスエクスポート</a>
         <div class="fileButton">
             <i class="upload icon"></i>
-            CSVインポート
-            <input type="file" name="import">
+            ステータスインポート
+            <input type="file" name="statusImport">
         </div>
 
         </div>`);
@@ -445,22 +445,22 @@ $(document).ready(function () {
         });
     });
 
-    // CSVインポート
-    $('input[name="import"]').on('click', function (e) {
+    // ステータスインポート
+    $('input[name="statusImport"]').on('click', function (e) {
         e.target.value = "" // CSV ファイルの初期化
-        csvImport(this);
+        statusImport(this);
     });
-    $('.process').on('click', 'input[name="import"]', function (e) {
+    $('.process').on('click', 'input[name="statusImport"]', function (e) {
         e.target.value = "" // CSV ファイルの初期化
-        csvImport(this);
+        statusImport(this);
     });
 
-    // CSVエクスポート
-    $('a[name="export"]').on('click', function () {
-        csvExport(this);
+    // ステータスエクスポート
+    $('a[name="statusExport"]').on('click', function () {
+        statusExport(this);
     });
-    $('.process').on('click', 'a[name="export"]', function (e) {
-        csvExport(this);
+    $('.process').on('click', 'a[name="statusExport"]', function (e) {
+        statusExport(this);
     });
 
     // 処理インポート

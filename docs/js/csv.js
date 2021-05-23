@@ -10,10 +10,10 @@ const parseCSV = (csv) => {
 }
 
 /**
- * CSVをインポートして、画面の入力を更新する
- * @param {*} element CSVインポートのinputタグ
+ * ステータスのCSVをインポートして、画面の入力を更新する
+ * @param {*} element ステータスインポートのinputタグ
  */
-function csvImport(element) {
+function statusImport(element) {
     let fileInput = $(element)[0];
     let fileReader = new FileReader();
     fileInput.onchange = () => {
@@ -52,10 +52,10 @@ function csvImport(element) {
 }
 
 /**
- * 画面の入力をもとに、CSVをエクスポートする
- * @param {*} element CSVエクスポートのリンクがあるaタグ
+ * 画面の入力をもとに、ステータスをCSVでエクスポートする
+ * @param {*} element ステータスエクスポートのリンクがあるaタグ
  */
-function csvExport(element) {
+function statusExport(element) {
     // table からデータを取得
     let d = [];
     $(element).parent().find("table tr").each(function (i) {
@@ -100,7 +100,7 @@ function csvExport(element) {
 }
 
 /**
- * 処理をインポートして、画面の入力を更新する
+ * 処理をCSVでインポートして、画面の入力を更新する
  * @param {*} element 処理インポートのinputタグ
  */
 function processImport(element) {
@@ -142,7 +142,7 @@ function processImport(element) {
 }
 
 /**
- * 画面の入力をもとに、処理をエクスポートする
+ * 画面の入力をもとに、処理をCSVでエクスポートする
  * @param {*} element 処理エクスポートのリンクがあるaタグ
  */
 function processExport(element) {
