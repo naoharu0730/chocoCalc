@@ -19,38 +19,38 @@
 }
 
 .pow-item{
-    color: deeppink;
+    color: #e03997;
 }
 .int-item{
-    color: limegreen;
+    color: #21ba45;
 }
 .spd-item{
-    color: deepskyblue;
+    color: #00b5ad;
 }
 .vit-item{
-    color: orange;
+    color: #f2711c;
 }
 .luk-item{
-    color: gold;
+    color: #fbbd08;
 }
 
 .hp-item{
-    color: gray;
+    color: #767676;
 }
 .sp-item{
-    color: gray;
+    color: #767676;
 }
 .atk-item{
-    color: red;
+    color: #db2828;
 }
 .def-item{
-    color: blue;
+    color: #2185d0;
 }
 .mat-item{
-    color: purple;
+    color: #a333c8;
 }
 .mdf-item{
-    color: royalblue;
+    color: #6435c9;
 }
 
 input{
