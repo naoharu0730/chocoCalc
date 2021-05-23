@@ -14,77 +14,77 @@ $(document).ready(function () {
 
     // ビタ処理の追加
     $('#appendPowBita').on('click', function () {
-        $('.process').append('<div name=powBita><i class="wine bottle icon"></i>POWビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=powBita class="ui fitted segment"><i class="wine bottle icon"></i>POWビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntBita').on('click', function () {
-        $('.process').append('<div name=intBita><i class="wine bottle icon"></i>INTビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=intBita class="ui fitted segment"><i class="wine bottle icon"></i>INTビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdBita').on('click', function () {
-        $('.process').append('<div name=spdBita><i class="wine bottle icon"></i>SPDビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=spdBita class="ui fitted segment"><i class="wine bottle icon"></i>SPDビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitBita').on('click', function () {
-        $('.process').append('<div name=vitBita><i class="wine bottle icon"></i>VITビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=vitBita class="ui fitted segment"><i class="wine bottle icon"></i>VITビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukBita').on('click', function () {
-        $('.process').append('<div name=lukBita><i class="wine bottle icon"></i>LUKビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=lukBita class="ui fitted segment"><i class="wine bottle icon"></i>LUKビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendAllBita').on('click', function () {
-        $('.process').append('<div name=allBita><i class="wine bottle icon"></i>ALLビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=allBita class="ui fitted segment"><i class="wine bottle icon"></i>ALLビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetBita').on('click', function () {
-        $('.process').append('<div name=resetBita><i class="wine bottle icon"></i>リセット：ビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=resetBita class="ui fitted segment"><i class="wine bottle icon"></i>リセット：ビタ <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // 魔獣缶処理の追加
     $('#appendPowCan').on('click', function () {
-        $('.process').append('<div name=powCan><i class="gift icon"></i>魔獣缶A <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=powCan class="ui fitted segment"><i class="gift icon"></i>魔獣缶A <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntCan').on('click', function () {
-        $('.process').append('<div name=intCan><i class="gift icon"></i>魔獣缶B <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=intCan class="ui fitted segment"><i class="gift icon"></i>魔獣缶B <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetCan').on('click', function () {
-        $('.process').append('<div name=resetCanSeal><i class="gift icon"></i><i class="sticky note icon"></i>リセット：缶・シール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=resetCanSeal class="ui fitted segment"><i class="gift icon"></i><i class="sticky note icon"></i>リセット：缶・シール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // シール処理の追加
     $('#appendPowSeal').on('click', function () {
-        $('.process').append('<div name=powSeal><i class="sticky note icon"></i>POWシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=powSeal class="ui fitted segment"><i class="sticky note icon"></i>POWシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntSeal').on('click', function () {
-        $('.process').append('<div name=intSeal><i class="sticky note icon"></i>INTシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=intSeal class="ui fitted segment"><i class="sticky note icon"></i>INTシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdSeal').on('click', function () {
-        $('.process').append('<div name=spdSeal><i class="sticky note icon"></i>SPDシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=spdSeal class="ui fitted segment"><i class="sticky note icon"></i>SPDシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitSeal').on('click', function () {
-        $('.process').append('<div name=vitSeal><i class="sticky note icon"></i>VITシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=vitSeal class="ui fitted segment"><i class="sticky note icon"></i>VITシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukSeal').on('click', function () {
-        $('.process').append('<div name=lukSeal><i class="sticky note icon"></i>LUKシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=lukSeal class="ui fitted segment"><i class="sticky note icon"></i>LUKシール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetSeal').on('click', function () {
-        $('.process').append('<div name=resetCanSeal><i class="gift icon"></i><i class="sticky note icon"></i>リセット：缶・シール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=resetCanSeal class="ui fitted segment"><i class="gift icon"></i><i class="sticky note icon"></i>リセット：缶・シール <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // 巻物処理の追加
     $('#appendPowMakimono').on('click', function () {
-        $('.process').append(`<div name=powMakimono><i class="scroll icon"></i>POW巻物
+        $('.process').append(`<div name=powMakimono class="ui fitted segment"><i class="scroll icon"></i>POW巻物
         <select name="selectPowMakimono">
         <option value="0" selected>0</option>
         <option value="1">1</option>
@@ -102,7 +102,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendIntMakimono').on('click', function () {
-        $('.process').append(`<div name=intMakimono><i class="scroll icon"></i>INT巻物
+        $('.process').append(`<div name=intMakimono class="ui fitted segment"><i class="scroll icon"></i>INT巻物
         <select name="selectIntMakimono">
         <option value="0" selected>0</option>
         <option value="1">1</option>
@@ -120,7 +120,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpdMakimono').on('click', function () {
-        $('.process').append(`<div name=spdMakimono><i class="scroll icon"></i>SPD巻物
+        $('.process').append(`<div name=spdMakimono class="ui fitted segment"><i class="scroll icon"></i>SPD巻物
         <select name="selectSpdMakimono">
         <option value="0" selected>0</option>
         <option value="1">1</option>
@@ -138,7 +138,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendVitMakimono').on('click', function () {
-        $('.process').append(`<div name=vitMakimono><i class="scroll icon"></i>VIT巻物
+        $('.process').append(`<div name=vitMakimono class="ui fitted segment"><i class="scroll icon"></i>VIT巻物
         <select name="selectVitMakimono">
         <option value="0" selected>0</option>
         <option value="1">1</option>
@@ -156,7 +156,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendLukMakimono').on('click', function () {
-        $('.process').append(`<div name=lukMakimono><i class="scroll icon"></i>LUK巻物
+        $('.process').append(`<div name=lukMakimono class="ui fitted segment"><i class="scroll icon"></i>LUK巻物
         <select name="selectLukMakimono">
         <option value="0" selected>0</option>
         <option value="1">1</option>
@@ -174,7 +174,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendHpMakimono').on('click', function () {
-        $('.process').append(`<div name=hpMakimono><i class="scroll icon"></i>HP巻物
+        $('.process').append(`<div name=hpMakimono class="ui fitted segment"><i class="scroll icon"></i>HP巻物
         <select name="selectHpMakimono">
         <option value="0" selected>0</option>
         <option value="200">200</option>
@@ -192,7 +192,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendSpMakimono').on('click', function () {
-        $('.process').append(`<div name=spMakimono><i class="scroll icon"></i>SP巻物
+        $('.process').append(`<div name=spMakimono class="ui fitted segment"><i class="scroll icon"></i>SP巻物
         <select name="selectSpMakimono">
         <option value="0" selected>0</option>
         <option value="200">200</option>
@@ -210,7 +210,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendAtkMakimono').on('click', function () {
-        $('.process').append(`<div name=atkMakimono><i class="scroll icon"></i>ATK巻物
+        $('.process').append(`<div name=atkMakimono class="ui fitted segment"><i class="scroll icon"></i>ATK巻物
         <select name="selectAtkMakimono">
         <option value="0" selected>0</option>
         <option value="20">20</option>
@@ -228,7 +228,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendDefMakimono').on('click', function () {
-        $('.process').append(`<div name=defMakimono><i class="scroll icon"></i>DEF巻物
+        $('.process').append(`<div name=defMakimono class="ui fitted segment"><i class="scroll icon"></i>DEF巻物
         <select name="selectDefMakimono">
         <option value="0" selected>0</option>
         <option value="20">20</option>
@@ -246,7 +246,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendMatMakimono').on('click', function () {
-        $('.process').append(`<div name=matMakimono><i class="scroll icon"></i>MAT巻物
+        $('.process').append(`<div name=matMakimono class="ui fitted segment"><i class="scroll icon"></i>MAT巻物
         <select name="selectMatMakimono">
         <option value="0" selected>0</option>
         <option value="20">20</option>
@@ -264,7 +264,7 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendMdfMakimono').on('click', function () {
-        $('.process').append(`<div name=mdfMakimono><i class="scroll icon"></i>MDF巻物
+        $('.process').append(`<div name=mdfMakimono class="ui fitted segment"><i class="scroll icon"></i>MDF巻物
         <select name="selectMdfMakimono">
         <option value="0" selected>0</option>
         <option value="20">20</option>
@@ -282,58 +282,58 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetMakimono').on('click', function () {
-        $('.process').append(`<div name=resetMakimono><i class="scroll icon"></i>リセット：巻物 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
+        $('.process').append(`<div name=resetMakimono class="ui fitted segment"><i class="scroll icon"></i>リセット：巻物 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`)
         calculation() // 処理の追加タイミングで更新
     });
 
     // リキッド処理の追加
     $('#appendAtkLiquid').on('click', function () {
-        $('.process').append('<div name=atkLiquid><i class="flask icon"></i>アタークリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=atkLiquid class="ui fitted segment"><i class="flask icon"></i>アタークリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendDefLiquid').on('click', function () {
-        $('.process').append('<div name=defLiquid><i class="flask icon"></i>マモールリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=defLiquid class="ui fitted segment"><i class="flask icon"></i>マモールリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendMatLiquid').on('click', function () {
-        $('.process').append('<div name=matLiquid><i class="flask icon"></i>マホアタリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=matLiquid class="ui fitted segment"><i class="flask icon"></i>マホアタリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendMdfLiquid').on('click', function () {
-        $('.process').append('<div name=mdfLiquid><i class="flask icon"></i>マホマモリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=mdfLiquid class="ui fitted segment"><i class="flask icon"></i>マホマモリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetLiquid').on('click', function () {
-        $('.process').append('<div name=resetLiquid><i class="flask icon"></i>リセット：リキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=resetLiquid class="ui fitted segment"><i class="flask icon"></i>リセット：リキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // スキル処理の追加
     $('#appendBloodScraper').on('click', function () {
-        $('.process').append('<div name=bloodScraper><i class="tint icon"></i>ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=bloodScraper class="ui fitted segment"><i class="tint icon"></i>ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetBloodScraper').on('click', function () {
-        $('.process').append('<div name=resetBloodScraper><i class="tint icon"></i>リセット：ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=resetBloodScraper class="ui fitted segment"><i class="tint icon"></i>リセット：ブラッドスクレイパー <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     $('#appendElysion').on('click', function () {
-        $('.process').append('<div name=elysion><i class="feather alternate icon"></i>大天使の加護 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=elysion class="ui fitted segment"><i class="feather alternate icon"></i>大天使の加護 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendApophis').on('click', function () {
-        $('.process').append('<div name=apophis><i class="feather alternate icon"></i>邪神の呪詛 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=apophis class="ui fitted segment"><i class="feather alternate icon"></i>邪神の呪詛 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetSpecial').on('click', function () {
-        $('.process').append('<div name=resetSpecial><i class="feather alternate icon"></i>リセット：スペシャル（羽） <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        $('.process').append('<div name=resetSpecial class="ui fitted segment"><i class="feather alternate icon"></i>リセット：スペシャル（羽） <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
 
     // ブレイク処理の追加
     $('#appendBreak').on('click', function () {
-        $('.process').append(`<div name=break><i class="ring icon"></i>ブレイク <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
+        $('.process').append(`<div name=break class="ui fitted segment"><i class="ring icon"></i>ブレイク <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
         <table class="card-table">
         <tr>
             <th class="pow-item">POW</th>
@@ -354,13 +354,13 @@ $(document).ready(function () {
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendResetBreak').on('click', function () {
-        $('.process').append(`<div name=resetBreak><i class="ring icon"></i>リセット：ブレイク <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`);
+        $('.process').append(`<div name=resetBreak class="ui fitted segment"><i class="ring icon"></i>リセット：ブレイク <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>`);
         calculation() // 処理の追加タイミングで更新
     });
 
     // 着替え処理の追加
     $('#appendChangeClothes').on('click', function () {
-        $('.process').append(`<div name=changeClothes><i class="tshirt icon"></i>着替え <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
+        $('.process').append(`<div name=changeClothes class="ui fitted segment"><i class="tshirt icon"></i>着替え <button class="delete compact mini ui button"><i class="times icon"></i>削除</button>
         <table class="status-table">
             <tr>
                 <th></th>
