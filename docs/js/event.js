@@ -2,20 +2,13 @@
 // イベント：入力値の更新、処理の追加、処理項目の削除、処理項目の入れ替え、CSVインポート
 
 $(document).ready(function () {
-    $('input[type="number"]').change(function () {
-        calculation() // 入力値の更新タイミングで更新
-    });
-    $('input[type="text"]').change(function () {
+    // ステータス入力の更新
+    $('input[type="number"], input[type="text"]').change(function () {
         calculation() // 入力値の更新タイミングで更新
     });
 
-    $('.process').on('change', 'select', function () {
-        calculation() // 入力値の更新タイミングで更新
-    });
-    $('.process').on('change', 'input[type="number"]', function () {
-        calculation() // 入力値の更新タイミングで更新
-    });
-    $('.process').on('change', 'input[type="text"]', function () {
+    // 処理の更新
+    $('.process').on('change', 'select, input[type="number"], input[type="text"]', function () {
         calculation() // 入力値の更新タイミングで更新
     });
 
