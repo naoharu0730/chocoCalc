@@ -287,8 +287,8 @@ $(document).ready(function () {
     });
 
     // リキッド処理の追加
-    $('#appendPowLiquid').on('click', function () {
-        $('.process').append('<div name=powLiquid><i class="flask icon"></i>アタークリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+    $('#appendAtkLiquid').on('click', function () {
+        $('.process').append('<div name=atkLiquid><i class="flask icon"></i>アタークリキッド <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
     $('#appendDefLiquid').on('click', function () {
@@ -429,7 +429,7 @@ $(document).ready(function () {
         $(this).parent()[0].remove();
         calculation() // 処理項目の削除タイミングで更新
     });
-    $('.all-delete').on('click', function () {
+    $('#allDelete').on('click', function () {
         $('.process').find("div").remove();
         calculation() // 処理項目の削除タイミングで更新
     });
@@ -461,6 +461,16 @@ $(document).ready(function () {
     });
     $('.process').on('click', 'a[name="export"]', function (e) {
         csvExport(this);
+    });
+
+    // 処理インポート
+    $('input[name="processImport"]').on('click', function (e) {
+        e.target.value = "" // CSV ファイルの初期化
+        processImport(this);
+    });
+    // 処理エクスポート
+    $('a[name="processExport"]').on('click', function () {
+        processExport(this);
     });
 
 })
