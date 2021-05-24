@@ -473,4 +473,8 @@ $(document).ready(function () {
         processExport(this);
     });
 
+    // 使い方の表示
+    $('#description').on('click', function () {
+        $('.description-top.ui.modal').modal('show');
+    });;
 })
