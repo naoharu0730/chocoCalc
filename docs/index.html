@@ -23,8 +23,8 @@
         <h1>ドピ計算</h1>
     </header>
 
-    <button id="description" class="ui button">使い方</button>
-    <div class="description-top ui modal">
+    <button id="description" class="circular compact ui button"><i class="icon lightbulb outline"></i>使い方</button>
+    <div class="description-top ui coupled modal">
         <div class="header">使い方</div>
         <div class="scrolling content">
             <h2>ステータス入力</h2>
@@ -34,45 +34,103 @@
                 <li>ステ振り：キャラのステ振り値</li>
                 <li>合計：ステ振り＋装備などの合計値（ヌシステペットを含む）</li>
             </ul>
-            <p><img src="images/statusAllow.png" alt="" decoding="async" width="385" height="270"></p>
+            <p><img src="images/input-status-join-chara-atk-half.png" alt="" decoding="async" width="359" height="160"></p>
             <p>上記の画像のように、キャラのステータスに表示されている値を参考に入力すればOKです。<br>
                 合計の欄は、足し算の形式で書くこともできます。</p>
+            <p>※ステ振りは、キャラの純粋なステ振り値です。アニバ首などの上昇値は含みません。</p>
+            <p>※合計は、キャラステータス画面のキャラ＋装備の数値の合計です。<br>
+                　ヌシステペットなどを使う場合、目的のペットを出した状態で計算してください。<br>
+                　アバターやルーンを使う場合、目的のアバターやルーンに着替えた状態で計算してください。<br>
+                　ビタや缶などのアイテムや、スキル等は使っていない状態で計算してください。</p>
 
             <h2>処理</h2>
             <p>使った処理が表示されます。上から順番に効果が発動します。<br>
                 下記の画像は、POWビタ、魔獣缶A、POWシール、POW巻物、アタークリキッド、ブラッドスクレイパー、大天使の加護、ブレイク、着替え、の順番に処理が追加されている例です。</p>
             <p><img src="images/process-half.png" alt="" decoding="async" width="231" height="306"></p>
-            <p>処理を削除したい時は、削除したい処理の<button class="compact mini ui button"><i class="times icon"></i>削除</button>を押してください。<br>
-                全ての処理を削除したい時は、<button class="compact mini negative ui button"><i class="times icon"></i>全削除</button>を押してください。</p>
+            <p>処理を削除したい時は、削除したい処理の削除ボタンを押してください。<br>
+                全ての処理を削除したい時は、全削除ボタンを押してください。</p>
 
             <h2>表示ステータス</h2>
-            <p>ステータス入力と処理内容の結果が表示されます。</p>
+            <p>ステータス入力と処理内容の結果が表示されます。<br>
+                下記の画像は、ステータス入力のようなキャラがアタークリキッドを使った時の表示ステータスの例です。</p>
+            <p><img src="images/display-status-half.png" alt="" decoding="async" width="214" height="286"></p>
 
             <h2>消費アイテム</h2>
             <p>使える消費アイテムが表示されます。<br>
                 アイテムのボタンを押すと、使用したアイテムが処理フィールドの中に追加されます。</p>
             <p><img src="images/item-half.png" alt="" decoding="async" width="593" height="110"></p>
-            <p>※巻物は、追加後に処理フィールド内で値を設定する必要があります。</p>
+            <p>※魔獣缶・シールは、他の魔獣缶・シールの効果と重複しません。最後に使った効果が適用されます。</p>
+            <p>※巻物は、追加後に処理フィールド内で値を設定する必要があります。<br>
+                　また、他の巻物の効果と重複しません。最後に使った効果が適用されます。</p>
+            <p>※リセットは、各アイテムの効果をリセットします。アイテムの効果切れを再現することができます。</p>
 
             <h2>スキル</h2>
             <p>使えるスキルが表示されます。<br>
                 スキルのボタンを押すと、使用したスキルが処理フィールドの中に追加されます。</p>
                 <p><img src="images/skill-half.png" alt="" decoding="async" width="192" height="55"></p>
             <p>※ブラッドスクレイパーは、POW上昇量が9で固定です。（サブ装備8点着用を想定）</p>
+            <p>※リセットは、各スキルの効果をリセットします。スキルの効果切れを再現することができます。</p>
                 
             <h2>アタッチメントシステム</h2>
-            <p>ブレイクのボタンが表示されます。<br>
+            <p>ブレイク機能が表示されます。<br>
                 ブレイクのボタンを押すと、使用したブレイクが処理フィールドの中に追加されます。</p>
             <p><img src="images/attachment-half.png" alt="" decoding="async" width="124" height="37"></p>
             <p>※ブレイクは、追加後に処理フィールド内で値を設定する必要があります。</p>
+            <p>※リセットは、ブレイクの効果をリセットします。ブレイクの効果切れを再現することができます。</p>
             
             <h2>マネキン</h2>
-            <p>着替えのボタンが表示されます。<br>
-                着替えのボタンを押すと、着替えた後のステータス入力欄が処理フィールドの中に追加されます。</p>
+            <p>着替え機能が表示されます。<br>
+                着替えのボタンを押すと、着替えた後のステータスが処理フィールドの中に追加されます。</p>
             <p><img src="images/mannequin-half.png" alt="" decoding="async" width="66" height="35"></p>
+            <p><span style="color: red; font-weight: bold;">※着替えは、ビタや缶などのアイテムや、スキル等は使っていない状態で計算してください。</span></p>
             <p>※着替えは、追加後に処理フィールド内で値を設定する必要があります。<br>
                 　設定の方法はステータス入力と同じです。ステ振りは変更できません。</p>
+            <p>※その他の注意事項は、ステータス入力と同じです。</p>
+        </div>
+        <div class="actions">
+            <div class="description-using ui button">使用例</div>
+            <div class="ui cancel button">閉じる</div>
+        </div>
+    </div>
+    <div class="description-using ui coupled small modal">
+        <div class="header">使用例</div>
+        <div class="scrolling content">
+            <h2>想定ケース</h2>
+            <p>職業はアラミカグラとし、下記のようなケースを想定します。</p>
+            <ul>
+                <li>1. POW装備に着替える</li>
+                <li>2. POWビタ、ALLビタ、魔獣缶A、POW巻物(+5)を使う</li>
+                <li>3. ブラッドスクレイパー、大天使の加護を発動する</li>
+                <li>4. アタークリキッドを使う</li>
+                <li>5. 戦闘装備に着替える</li>
+            </ul>
 
+            <h2>手順</h2>
+            <h3>1. POW装備に着替える</h3>
+            <p>ステータス入力フィールドに、POW装備のステータスを入力します。</p>
+            <p><img src="images/input-status-join-chara-atk-cut.png" alt="" decoding="async" width="588" height="316"></p>
+
+            <h3>2. POWビタ、ALLビタ、魔獣缶A、POW巻物(+5)を使う</h3>
+            <p>消費アイテムのボタンを、使いたい順番に押します。<br>
+                処理フィールドのPOW巻物のドロップダウンから、5を選択します。</p>
+            <p><img src="images/process-ex-2.png" alt="" decoding="async" width="386" height="176"></p>
+
+            <h3>3. ブラッドスクレイパー、大天使の加護を発動する</h3>
+            <p>スキルのボタンを、使いたい順番に押します。</p>
+            <p><img src="images/process-ex-3.png" alt="" decoding="async" width="389" height="226"></p>
+
+            <h3>4. アタークリキッドを使う</h3>
+            <p>消費アイテムの、アタークリキッドのボタンを押します。</p>
+            <p><img src="images/process-ex-4.png" alt="" decoding="async" width="391" height="251"></p>
+
+            <h3>5. 戦闘装備に着替える</h3>
+            <p>マネキンの、着替えのボタンを押します。<br>
+                処理フィールドの着替えの入力欄に、数値を入力します。</p>
+            <p><img src="images/process-ex-join-chara-luk.png" alt="" decoding="async" width="657" height="369"></p>
+
+            <h2>結果の確認</h2>
+            <p>ステータス表示のフィールドに、結果が表示されます。</p>
+            <p><img src="images/display-status-ex.png" alt="" decoding="async" width="421" height="153"></p>
         </div>
         <div class="actions">
             <div class="ui cancel button">閉じる</div>

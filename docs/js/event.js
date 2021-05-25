@@ -476,5 +476,8 @@ $(document).ready(function () {
     // 使い方の表示
     $('#description').on('click', function () {
         $('.description-top.ui.modal').modal('show');
-    });;
+    });
+    
+    $('.coupled.modal').modal({allowMultiple: true});
+    $('.description-using.ui.modal').modal('attach events', '.description-top.ui.modal .description-using.ui.button');
 })
