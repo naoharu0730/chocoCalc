@@ -34,8 +34,8 @@ function statusImport(element) {
         input_name.push(['', '', 'input[name=hpTotal]'])
         input_name.push(['', '', 'input[name=spTotal]'])
         input_name.push(['', '', 'input[name=atkTotal]'])
-        input_name.push(['', '', 'input[name=defTotal]'])
         input_name.push(['', '', 'input[name=matTotal]'])
+        input_name.push(['', '', 'input[name=defTotal]'])
         input_name.push(['', '', 'input[name=mdfTotal]'])
         $.each(input_name, function (i, f) {
             $.each(f, function (j, filter) {

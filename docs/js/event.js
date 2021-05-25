@@ -403,12 +403,12 @@ $(document).ready(function () {
             <tr>
                 <th class="atk-item">ATK</th>
                 <td> <input type="number" value="1" name="atkTotal" required /> </td>
-                <th class="def-item">DEF</th>
-                <td> <input type="number" value="1" name="defTotal" required /> </td>
-            </tr>
-            <tr>
                 <th class="mat-item">MAT</th>
                 <td> <input type="number" value="1" name="matTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="def-item">DEF</th>
+                <td> <input type="number" value="1" name="defTotal" required /> </td>
                 <th class="mdf-item">MDF</th>
                 <td> <input type="number" value="1" name="mdfTotal" required /> </td>
             </tr>
@@ -473,4 +473,11 @@ $(document).ready(function () {
         processExport(this);
     });
 
+    // 使い方の表示
+    $('#description').on('click', function () {
+        $('.description-top.ui.modal').modal('show');
+    });
+    
+    $('.coupled.modal').modal({allowMultiple: true});
+    $('.description-using.ui.modal').modal('attach events', '.description-top.ui.modal .description-using.ui.button');
 })
