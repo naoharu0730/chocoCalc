@@ -1,3 +1,55 @@
+h2 {
+    border-bottom: 3px solid #000;
+}
+
+.howto-box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.howto-box .howto-box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 16px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+}
+.howto-box p {
+    margin: 0; 
+    padding: 0;
+}
+
+.option-box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #90eba3;
+    border-radius: 8px;
+}
+.option-box .option-box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 16px;
+    background: #FFF;
+    color: #90eba3;
+    font-weight: bold;
+}
+.option-box p {
+    margin: 0; 
+    padding: 0;
+}
+
 /* .status-table{
     border:solid 1px gray;
     margin-top: 5px;
@@ -12,36 +64,45 @@
     width: 5em;
 }
 .result-table td:nth-of-type(2){
+    width: 5em;
+}
+.result-table td:nth-of-type(3){
     width: 15em;
 }
 
 .pow-item{
-    color: deeppink;
+    color: #e03997;
 }
 .int-item{
-    color: limegreen;
+    color: #21ba45;
 }
 .spd-item{
-    color: deepskyblue;
+    color: #00b5ad;
 }
 .vit-item{
-    color: orange;
+    color: #f2711c;
 }
 .luk-item{
-    color: gold;
+    color: #fbbd08;
 }
 
+.hp-item{
+    color: #767676;
+}
+.sp-item{
+    color: #767676;
+}
 .atk-item{
-    color: red;
+    color: #db2828;
 }
 .def-item{
-    color: blue;
+    color: #2185d0;
 }
 .mat-item{
-    color: purple;
+    color: #a333c8;
 }
 .mdf-item{
-    color: royalblue;
+    color: #6435c9;
 }
 
 input{

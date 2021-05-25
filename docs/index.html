@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ドピ計算</title>
 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
     <script src="js/csv.js"></script>
@@ -20,6 +22,150 @@
     <header>
         <h1>ドピ計算</h1>
     </header>
+
+    <button id="description" class="circular compact ui button"><i class="icon lightbulb outline"></i>使い方</button>
+    <div class="description-top ui coupled modal">
+        <div class="header">使い方</div>
+        <div class="scrolling content">
+            <h2>概要</h2>
+            <h3>サイトについて</h3>
+            <p>このサイトは、チョコットランドのドーピングを計算するサイトです。</p>
+
+            <h3>大まかな流れ</h3>
+            <p>以下のように使います。</p>
+            <li>1. ステータス入力にキャラのステータスを書く</li>
+            <li>2. 使いたいアイテムやスキルのボタンを押す</li>
+            <li>3. 表示ステータスの結果を見る</li>
+
+            <h2>ステータス入力</h2>
+            <p>キャラのステータスを入力します。</p>
+            <ul>
+                <li>キャラレベル：キャラのレベル</li>
+                <li>ステ振り：キャラのステ振り値</li>
+                <li>合計：ステ振り＋装備などの合計値（ヌシステペットを含む）</li>
+            </ul>
+            <p><img src="images/input-status-join-chara-atk-half.png" alt="" decoding="async" width="359" height="160"></p>
+            <p>上記の画像のように、キャラのステータスに表示されている値を参考に入力すればOKです。<br>
+                合計の欄は、足し算の形式で書くこともできます。</p>
+            <p>※ステ振りは、キャラの純粋なステ振り値です。アニバ首などの上昇値は含みません。</p>
+            <p>※合計は、キャラステータス画面のキャラ＋装備の数値の合計です。<br>
+                　ヌシステペットなどを使う場合、目的のペットを出した状態で計算してください。<br>
+                　アバターやルーンを使う場合、目的のアバターやルーンに着替えた状態で計算してください。<br>
+                　ビタや缶などのアイテムや、スキル等は使っていない状態で計算してください。</p>
+            <div class="option-box">
+                <span class="option-box-title">便利な機能：インポート/エクスポート</span>
+                <p>ステータス入力の内容は、ステータスエクスポートからCSVファイルでダウンロードできます。<br>
+                    ダウンロードしたCSVファイルは、ステータスインポートから読み込むことができます。</p>
+            </div>
+
+            <h2>処理</h2>
+            <p>使った処理が表示されます。上から順番に効果が発動します。<br>
+                下記の画像は、POWビタ、魔獣缶A、POWシール、POW巻物、アタークリキッド、ブラッドスクレイパー、大天使の加護、ブレイク、着替え、の順番に処理が追加されている例です。</p>
+            <p><img src="images/process-half.png" alt="" decoding="async" width="231" height="306"></p>
+            <p>処理を削除したい時は、削除したい処理の削除ボタンを押してください。<br>
+                全ての処理を削除したい時は、全削除ボタンを押してください。</p>
+            <div class="howto-box">
+                <span class="howto-box-title">処理を途中で入れ替えたい時は？</span>
+                <p>処理の順番はドラッグ＆ドロップで入れ替えることができます。</p>
+            </div>
+            <div class="option-box">
+                <span class="option-box-title">便利な機能：インポート/エクスポート</span>
+                <p>処理の内容は、処理エクスポートからCSVファイルでダウンロードできます。<br>
+                    ダウンロードしたCSVファイルは、処理インポートから読み込むことができます。</p>
+            </div>
+
+            <h2>表示ステータス</h2>
+            <p>ステータス入力と処理内容の結果が表示されます。<br>
+                下記の画像は、ステータス入力のようなキャラがアタークリキッドを使った時の表示ステータスの例です。</p>
+            <p><img src="images/display-status-half.png" alt="" decoding="async" width="214" height="286"></p>
+
+            <h2>消費アイテム</h2>
+            <p>使える消費アイテムが表示されます。<br>
+                アイテムのボタンを押すと、使用したアイテムが処理フィールドの中に追加されます。</p>
+            <p><img src="images/item-half.png" alt="" decoding="async" width="593" height="110"></p>
+            <p>※魔獣缶・シールは、他の魔獣缶・シールの効果と重複しません。最後に使った効果が適用されます。</p>
+            <p>※巻物は、追加後に処理フィールド内で値を設定する必要があります。<br>
+                　また、他の巻物の効果と重複しません。最後に使った効果が適用されます。</p>
+            <p>※リセットは、各アイテムの効果をリセットします。アイテムの効果切れを再現することができます。</p>
+
+            <h2>スキル</h2>
+            <p>使えるスキルが表示されます。<br>
+                スキルのボタンを押すと、使用したスキルが処理フィールドの中に追加されます。</p>
+                <p><img src="images/skill-half.png" alt="" decoding="async" width="192" height="55"></p>
+            <p>※ブラッドスクレイパーは、POW上昇量が9で固定です。（サブ装備8点着用を想定）</p>
+            <p>※リセットは、各スキルの効果をリセットします。スキルの効果切れを再現することができます。</p>
+                
+            <h2>アタッチメントシステム</h2>
+            <p>ブレイク機能が表示されます。<br>
+                ブレイクのボタンを押すと、使用したブレイクが処理フィールドの中に追加されます。</p>
+            <p><img src="images/attachment-half.png" alt="" decoding="async" width="124" height="37"></p>
+            <p>※ブレイクは、追加後に処理フィールド内で値を設定する必要があります。</p>
+            <p>※リセットは、ブレイクの効果をリセットします。ブレイクの効果切れを再現することができます。</p>
+            
+            <h2>マネキン</h2>
+            <p>着替え機能が表示されます。<br>
+                着替えのボタンを押すと、着替えた後のステータスが処理フィールドの中に追加されます。</p>
+            <p><img src="images/mannequin-half.png" alt="" decoding="async" width="66" height="35"></p>
+            <p><span style="color: red; font-weight: bold;">※着替えは、ビタや缶などのアイテムや、スキル等は使っていない状態で計算してください。</span></p>
+            <p>※着替えは、追加後に処理フィールド内で値を設定する必要があります。<br>
+                　設定の方法はステータス入力と同じです。ステ振りは変更できません。</p>
+            <p>※その他の注意事項は、ステータス入力と同じです。</p>
+        </div>
+        <div class="actions">
+            <div class="description-using ui button">使用例</div>
+            <div class="ui cancel button">閉じる</div>
+        </div>
+    </div>
+    <div class="description-using ui coupled small modal">
+        <div class="header">使用例</div>
+        <div class="scrolling content">
+            <h2>想定ケース</h2>
+            <p>職業はアラミカグラとし、下記のようなケースを想定します。</p>
+            <ul>
+                <li>1. POW装備に着替える</li>
+                <li>2. POWビタ、ALLビタ、魔獣缶A、POW巻物(+5)を使う</li>
+                <li>3. ブラッドスクレイパー、大天使の加護を発動する</li>
+                <li>4. アタークリキッドを使う</li>
+                <li>5. 戦闘装備に着替える</li>
+            </ul>
+
+            <h2>手順</h2>
+            <h3>1. POW装備に着替える</h3>
+            <p>ステータス入力に、POW装備のステータスを入力します。</p>
+            <p><img src="images/input-status-join-chara-atk-cut.png" alt="" decoding="async" width="588" height="316"></p>
+            <div class="howto-box">
+                <span class="howto-box-title">なんで着替え機能を使わないの？</span>
+                <p>POW装備に着替える前に、アイテム・スキルなどを使わないからです。<br>
+                    【戦闘装備→POW装備→アイテム・スキルなど→戦闘装備】のような場合、<br>
+                    最初のステータス入力にはPOW装備の値を入れると手間がかかりません。</p>
+            </div>
+
+            <h3>2. POWビタ、ALLビタ、魔獣缶A、POW巻物(+5)を使う</h3>
+            <p>消費アイテムのボタンを、使いたい順番に押します。<br>
+                処理のPOW巻物のドロップダウンから、5を選択します。</p>
+            <p><img src="images/process-ex-2.png" alt="" decoding="async" width="386" height="176"></p>
+
+            <h3>3. ブラッドスクレイパー、大天使の加護を発動する</h3>
+            <p>スキルのボタンを、使いたい順番に押します。</p>
+            <p><img src="images/process-ex-3.png" alt="" decoding="async" width="389" height="226"></p>
+
+            <h3>4. アタークリキッドを使う</h3>
+            <p>消費アイテムの、アタークリキッドのボタンを押します。</p>
+            <p><img src="images/process-ex-4.png" alt="" decoding="async" width="391" height="251"></p>
+
+            <h3>5. 戦闘装備に着替える</h3>
+            <p>マネキンの、着替えのボタンを押します。<br>
+                処理の着替えの入力欄に、数値を入力します。</p>
+            <p><img src="images/process-ex-join-chara-luk.png" alt="" decoding="async" width="657" height="369"></p>
+
+            <h2>結果の確認</h2>
+            <p>表示ステータスに、結果が表示されました。</p>
+            <p><img src="images/display-status-ex.png" alt="" decoding="async" width="421" height="153"></p>
+        </div>
+        <div class="actions">
+            <div class="ui cancel button">閉じる</div>
+        </div>
+    </div>
 
     <fieldset>
         <legend>ステータス入力</legend>
@@ -60,32 +206,44 @@
 
         <table class="status-table">
             <tr>
-                <th class="atk-item">ATK</th>
-                <td> <input id="atkTotal" type="number" value="1" name="atkTotal" required /> </td>
-                <th class="def-item">DEF</th>
-                <td> <input id="defTotal" type="number" value="1" name="defTotal" required /> </td>
+                <th class="hp-item">HP</th>
+                <td> <input id="hpTotal" type="number" value="1" name="hpTotal" required /> </td>
+                <th class="sp-item">SP</th>
+                <td> <input id="spTotal" type="number" value="1" name="spTotal" required /> </td>
             </tr>
             <tr>
+                <th class="atk-item">ATK</th>
+                <td> <input id="atkTotal" type="number" value="1" name="atkTotal" required /> </td>
                 <th class="mat-item">MAT</th>
                 <td> <input id="matTotal" type="number" value="1" name="matTotal" required /> </td>
+            </tr>
+            <tr>
+                <th class="def-item">DEF</th>
+                <td> <input id="defTotal" type="number" value="1" name="defTotal" required /> </td>
                 <th class="mdf-item">MDF</th>
                 <td> <input id="mdfTotal" type="number" value="1" name="mdfTotal" required /> </td>
             </tr>
         </table>
 
-        <a name="export" href="#" download="status.csv"><i class="download icon"></i>CSVエクスポート</a>
+        <a name="statusExport" href="#" download="status.csv"><i class="download icon"></i>ステータスエクスポート</a>
         <div class="fileButton">
             <i class="upload icon"></i>
-            CSVインポート
-            <input type="file" name="import">
+            ステータスインポート
+            <input type="file" name="statusImport">
         </div>
 
     </fieldset>
 
     <fieldset>
         <legend>処理</legend>
-        <div class="process">
-            <button class="all-delete compact mini negative ui button"><i class="times icon"></i>全削除</button>
+        <button id="allDelete" class="compact mini negative ui button"><i class="times icon"></i>全削除</button>
+        <a name="processExport" href="#" download="process.csv"><i class="download icon"></i>処理エクスポート</a>
+        <div class="fileButton">
+            <i class="upload icon"></i>
+            処理インポート
+            <input type="file" name="processImport">
+        </div>
+        <div class="process ui segments">
             <!-- ここに処理イベントが div タグで追加されていく -->
         </div>
     </fieldset>
@@ -93,30 +251,40 @@
         <legend>表示ステータス</legend>
         <table class="result-table">
             <tr>
+                <th> <label class="hp-item">HP:</label> </th>
+                <td> <output id="hpResult" name="hpResult">???</output> </td>
                 <th> <label class="pow-item">POW:</label> </th>
                 <td> <output id="powResult" name="powResult">???</output> </td>
                 <th> <label class="atk-item">ATK:</label> </th>
                 <td> <output id="atkResult" name="atkResult">???</output> </td>
             </tr>
             <tr>
+                <th> <label class="sp-item">SP:</label> </th>
+                <td> <output id="spResult" name="spResult">???</output> </td>
                 <th> <label class="int-item">INT:</label> </th>
                 <td> <output id="intResult" name="intResult">???</output> </td>
                 <th> <label class="def-item">DEF:</label> </th>
                 <td> <output id="defResult" name="defResult">???</output> </td>
             </tr>
             <tr>
+                <th> </th>
+                <td> </td>
                 <th> <label class="spd-item">SPD:</label> </th>
                 <td> <output id="spdResult" name="spdResult">???</output> </td>
                 <th> <label class="mat-item">MAT:</label> </th>
                 <td> <output id="matResult" name="matResult">???</output> </td>
             </tr>
             <tr>
+                <th> </th>
+                <td> </td>
                 <th> <label class="vit-item">VIT:</label> </th>
                 <td> <output id="vitResult" name="vitResult">???</output> </td>
                 <th> <label class="mdf-item">MDF:</label> </th>
                 <td> <output id="mdfResult" name="mdfResult">???</output> </td>
             </tr>
             <tr>
+                <th> </th>
+                <td> </td> 
                 <th> <label class="luk-item">LUK:</label> </th>
                 <td> <output id="lukResult" name="lukResult">???</output> </td>
             </tr>
@@ -136,6 +304,7 @@
                 <button id="appendVitBita" class="ui orange basic button">VITビタ</button>
                 <button id="appendLukBita" class="ui yellow basic button">LUKビタ</button>
                 <button id="appendAllBita" class="ui basic button">ALLビタ</button>
+                <button id="appendResetBita" class="ui button">リセット</button>
             </div>
         </div>
 
@@ -144,6 +313,7 @@
             <div class="ui buttons">
                 <button id="appendPowCan" class="ui pink basic button">魔獣缶A</button>
                 <button id="appendIntCan" class="ui green basic button">魔獣缶B</button>
+                <button id="appendResetCan" class="ui button">リセット</button>
             </div>
         </div>
 
@@ -155,6 +325,7 @@
                 <button id="appendSpdSeal" class="ui teal basic button">SPDシール</button>
                 <button id="appendVitSeal" class="ui orange basic button">VITシール</button>
                 <button id="appendLukSeal" class="ui yellow basic button">LUKシール</button>
+                <button id="appendResetSeal" class="ui button">リセット</button>
             </div>
         </div>
 
@@ -166,21 +337,26 @@
                 <button id="appendSpdMakimono" class="ui teal basic button">SPD巻物</button>
                 <button id="appendVitMakimono" class="ui orange basic button">VIT巻物</button>
                 <button id="appendLukMakimono" class="ui yellow basic button">LUK巻物</button>
-
+                
+                <button id="appendHpMakimono" class="ui basic button">HP巻物</button>
+                <button id="appendSpMakimono" class="ui basic button">SP巻物</button>
                 <button id="appendAtkMakimono" class="ui red basic button">ATK巻物</button>
                 <button id="appendDefMakimono" class="ui blue basic button">DEF巻物</button>
                 <button id="appendMatMakimono" class="ui purple basic button">MAT巻物</button>
                 <button id="appendMdfMakimono" class="ui violet basic button">MDF巻物</button>
+                
+                <button id="appendResetMakimono" class="ui button">リセット</button>
             </div>
         </div>
 
         <div class="liquid">
             <i class="flask icon"></i>
             <div class="ui buttons">
-                <button id="appendPowLiquid" class="ui red basic button">アタークリキッド</button>
+                <button id="appendAtkLiquid" class="ui red basic button">アタークリキッド</button>
                 <button id="appendDefLiquid" class="ui blue basic button">マモールリキッド</button>
                 <button id="appendMatLiquid" class="ui purple basic button">マホアタリキッド</button>
                 <button id="appendMdfLiquid" class="ui violet basic button">マホマモリキッド</button>
+                <button id="appendResetLiquid" class="ui button">リセット</button>
             </div>
         </div>
 
@@ -191,7 +367,10 @@
 
         <div class="jobSkill">
             <i class="tint icon"></i>
-            <button id="appendBloodScraper" class="ui pink basic button">ブラッドスクレイパー</button>
+            <div class="ui buttons">
+                <button id="appendBloodScraper" class="ui pink basic button">ブラッドスクレイパー</button>
+                <button id="appendResetBloodScraper" class="ui button">リセット</button>
+            </div>
         </div>
 
         <div class="specialSkill">
@@ -199,6 +378,7 @@
             <div class="ui buttons">
                 <button id="appendElysion" class="ui basic button">大天使の加護</button>
                 <button id="appendApophis" class="ui yellow basic button">邪神の呪詛</button>
+                <button id="appendResetSpecial" class="ui button">リセット</button>
             </div>
         </div>
 
@@ -209,7 +389,10 @@
 
         <div class="break">
             <i class="ring icon"></i>
-            <button id="appendBreak" class="ui basic button">ブレイク</button>
+            <div class="ui buttons">
+                <button id="appendBreak" class="ui basic button">ブレイク</button>
+                <button id="appendResetBreak" class="ui button">リセット</button>
+            </div>
         </div>
 
     </fieldset>
