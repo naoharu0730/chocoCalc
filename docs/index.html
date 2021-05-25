@@ -27,6 +27,16 @@
     <div class="description-top ui coupled modal">
         <div class="header">使い方</div>
         <div class="scrolling content">
+            <h2>概要</h2>
+            <h3>サイトについて</h3>
+            <p>このサイトは、チョコットランドのドーピングを計算するサイトです。</p>
+
+            <h3>大まかな流れ</h3>
+            <p>以下のように使います。</p>
+            <li>1. ステータス入力にキャラのステータスを書く</li>
+            <li>2. 使いたいアイテムやスキルのボタンを押す</li>
+            <li>3. 表示ステータスの結果を見る</li>
+
             <h2>ステータス入力</h2>
             <p>キャラのステータスを入力します。</p>
             <ul>
@@ -42,6 +52,11 @@
                 　ヌシステペットなどを使う場合、目的のペットを出した状態で計算してください。<br>
                 　アバターやルーンを使う場合、目的のアバターやルーンに着替えた状態で計算してください。<br>
                 　ビタや缶などのアイテムや、スキル等は使っていない状態で計算してください。</p>
+            <div class="option-box">
+                <span class="option-box-title">便利な機能：インポート/エクスポート</span>
+                <p>ステータス入力の内容は、ステータスエクスポートからCSVファイルでダウンロードできます。<br>
+                    ダウンロードしたCSVファイルは、ステータスインポートから読み込むことができます。</p>
+            </div>
 
             <h2>処理</h2>
             <p>使った処理が表示されます。上から順番に効果が発動します。<br>
@@ -49,6 +64,15 @@
             <p><img src="images/process-half.png" alt="" decoding="async" width="231" height="306"></p>
             <p>処理を削除したい時は、削除したい処理の削除ボタンを押してください。<br>
                 全ての処理を削除したい時は、全削除ボタンを押してください。</p>
+            <div class="howto-box">
+                <span class="howto-box-title">処理を途中で入れ替えたい時は？</span>
+                <p>処理の順番はドラッグ＆ドロップで入れ替えることができます。</p>
+            </div>
+            <div class="option-box">
+                <span class="option-box-title">便利な機能：インポート/エクスポート</span>
+                <p>処理の内容は、処理エクスポートからCSVファイルでダウンロードできます。<br>
+                    ダウンロードしたCSVファイルは、処理インポートから読み込むことができます。</p>
+            </div>
 
             <h2>表示ステータス</h2>
             <p>ステータス入力と処理内容の結果が表示されます。<br>
@@ -107,12 +131,18 @@
 
             <h2>手順</h2>
             <h3>1. POW装備に着替える</h3>
-            <p>ステータス入力フィールドに、POW装備のステータスを入力します。</p>
+            <p>ステータス入力に、POW装備のステータスを入力します。</p>
             <p><img src="images/input-status-join-chara-atk-cut.png" alt="" decoding="async" width="588" height="316"></p>
+            <div class="howto-box">
+                <span class="howto-box-title">なんで着替え機能を使わないの？</span>
+                <p>POW装備に着替える前に、アイテム・スキルなどを使わないからです。<br>
+                    【戦闘装備→POW装備→アイテム・スキルなど→戦闘装備】のような場合、<br>
+                    最初のステータス入力にはPOW装備の値を入れると手間がかかりません。</p>
+            </div>
 
             <h3>2. POWビタ、ALLビタ、魔獣缶A、POW巻物(+5)を使う</h3>
             <p>消費アイテムのボタンを、使いたい順番に押します。<br>
-                処理フィールドのPOW巻物のドロップダウンから、5を選択します。</p>
+                処理のPOW巻物のドロップダウンから、5を選択します。</p>
             <p><img src="images/process-ex-2.png" alt="" decoding="async" width="386" height="176"></p>
 
             <h3>3. ブラッドスクレイパー、大天使の加護を発動する</h3>
@@ -125,11 +155,11 @@
 
             <h3>5. 戦闘装備に着替える</h3>
             <p>マネキンの、着替えのボタンを押します。<br>
-                処理フィールドの着替えの入力欄に、数値を入力します。</p>
+                処理の着替えの入力欄に、数値を入力します。</p>
             <p><img src="images/process-ex-join-chara-luk.png" alt="" decoding="async" width="657" height="369"></p>
 
             <h2>結果の確認</h2>
-            <p>ステータス表示のフィールドに、結果が表示されます。</p>
+            <p>表示ステータスに、結果が表示されました。</p>
             <p><img src="images/display-status-ex.png" alt="" decoding="async" width="421" height="153"></p>
         </div>
         <div class="actions">
