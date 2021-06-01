@@ -108,6 +108,9 @@ h2 {
 input{
     width: 6em;
 }
+.card-table input{
+    width: 4em;
+}
 
 .fileButton {
     border: 1px solid gray;
