@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>ドピ計算</title>
 
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -294,94 +294,82 @@
 
     <fieldset>
         <legend>消費アイテム</legend>
-
-        <div class="bita">
-            <i class="wine bottle icon"></i>
-            <div class="ui buttons">
-                <button id="appendPowBita" class="ui pink basic button">POWビタ</button>
-                <button id="appendIntBita" class="ui green basic button">INTビタ</button>
-                <button id="appendSpdBita" class="ui teal basic button">SPDビタ</button>
-                <button id="appendVitBita" class="ui orange basic button">VITビタ</button>
-                <button id="appendLukBita" class="ui yellow basic button">LUKビタ</button>
-                <button id="appendAllBita" class="ui basic button">ALLビタ</button>
-                <button id="appendResetBita" class="ui button">リセット</button>
+    
+        <div class="ui basic segments">
+            <div class="ui fitted segment bita">
+                <i class="wine bottle icon"></i>
+                <button id="appendPowBita" class="ui mini pink basic button">POWビタ</button>
+                <button id="appendIntBita" class="ui mini green basic button">INTビタ</button>
+                <button id="appendSpdBita" class="ui mini teal basic button">SPDビタ</button>
+                <button id="appendVitBita" class="ui mini orange basic button">VITビタ</button>
+                <button id="appendLukBita" class="ui mini yellow basic button">LUKビタ</button>
+                <button id="appendAllBita" class="ui mini basic button">ALLビタ</button>
+                <button id="appendResetBita" class="ui mini button">リセット</button>
+            </div>
+    
+            <div class="ui fitted segment can">
+                <i class="gift icon"></i>
+                <button id="appendPowCan" class="ui mini pink basic button">魔獣缶A</button>
+                <button id="appendIntCan" class="ui mini green basic button">魔獣缶B</button>
+                <button id="appendResetCan" class="ui mini button">リセット</button>
+            </div>
+    
+            <div class="ui fitted segment seal">
+                <i class="sticky note icon"></i>
+                <button id="appendPowSeal" class="ui mini pink basic button">POWシール</button>
+                <button id="appendIntSeal" class="ui mini green basic button">INTシール</button>
+                <button id="appendSpdSeal" class="ui mini teal basic button">SPDシール</button>
+                <button id="appendVitSeal" class="ui mini orange basic button">VITシール</button>
+                <button id="appendLukSeal" class="ui mini yellow basic button">LUKシール</button>
+                <button id="appendResetSeal" class="ui mini button">リセット</button>
+            </div>
+    
+            <div class="ui fitted segment makimono">
+                <i class="scroll icon"></i>
+                <button id="appendPowMakimono" class="ui mini pink basic button">POW巻物</button>
+                <button id="appendIntMakimono" class="ui mini green basic button">INT巻物</button>
+                <button id="appendSpdMakimono" class="ui mini teal basic button">SPD巻物</button>
+                <button id="appendVitMakimono" class="ui mini orange basic button">VIT巻物</button>
+                <button id="appendLukMakimono" class="ui mini yellow basic button">LUK巻物</button>
+                <button id="appendHpMakimono" class="ui mini basic button">HP巻物</button>
+                <button id="appendSpMakimono" class="ui mini basic button">SP巻物</button>
+                <button id="appendAtkMakimono" class="ui mini red basic button">ATK巻物</button>
+                <button id="appendDefMakimono" class="ui mini blue basic button">DEF巻物</button>
+                <button id="appendMatMakimono" class="ui mini purple basic button">MAT巻物</button>
+                <button id="appendMdfMakimono" class="ui mini violet basic button">MDF巻物</button>
+                <button id="appendResetMakimono" class="ui mini button">リセット</button>
+            </div>
+    
+            <div class="ui fitted segment liquid">
+                <i class="flask icon"></i>
+                <button id="appendAtkLiquid" class="ui mini red basic button">アタークリキッド</button>
+                <button id="appendDefLiquid" class="ui mini blue basic button">マモールリキッド</button>
+                <button id="appendMatLiquid" class="ui mini purple basic button">マホアタリキッド</button>
+                <button id="appendMdfLiquid" class="ui mini violet basic button">マホマモリキッド</button>
+                <button id="appendResetLiquid" class="ui mini button">リセット</button>
             </div>
         </div>
-
-        <div class="can">
-            <i class="gift icon"></i>
-            <div class="ui buttons">
-                <button id="appendPowCan" class="ui pink basic button">魔獣缶A</button>
-                <button id="appendIntCan" class="ui green basic button">魔獣缶B</button>
-                <button id="appendResetCan" class="ui button">リセット</button>
-            </div>
-        </div>
-
-        <div class="seal">
-            <i class="sticky note icon"></i>
-            <div class="ui buttons">
-                <button id="appendPowSeal" class="ui pink basic button">POWシール</button>
-                <button id="appendIntSeal" class="ui green basic button">INTシール</button>
-                <button id="appendSpdSeal" class="ui teal basic button">SPDシール</button>
-                <button id="appendVitSeal" class="ui orange basic button">VITシール</button>
-                <button id="appendLukSeal" class="ui yellow basic button">LUKシール</button>
-                <button id="appendResetSeal" class="ui button">リセット</button>
-            </div>
-        </div>
-
-        <div class="makimono">
-            <i class="scroll icon"></i>
-            <div class="ui buttons">
-                <button id="appendPowMakimono" class="ui pink basic button">POW巻物</button>
-                <button id="appendIntMakimono" class="ui green basic button">INT巻物</button>
-                <button id="appendSpdMakimono" class="ui teal basic button">SPD巻物</button>
-                <button id="appendVitMakimono" class="ui orange basic button">VIT巻物</button>
-                <button id="appendLukMakimono" class="ui yellow basic button">LUK巻物</button>
-                
-                <button id="appendHpMakimono" class="ui basic button">HP巻物</button>
-                <button id="appendSpMakimono" class="ui basic button">SP巻物</button>
-                <button id="appendAtkMakimono" class="ui red basic button">ATK巻物</button>
-                <button id="appendDefMakimono" class="ui blue basic button">DEF巻物</button>
-                <button id="appendMatMakimono" class="ui purple basic button">MAT巻物</button>
-                <button id="appendMdfMakimono" class="ui violet basic button">MDF巻物</button>
-                
-                <button id="appendResetMakimono" class="ui button">リセット</button>
-            </div>
-        </div>
-
-        <div class="liquid">
-            <i class="flask icon"></i>
-            <div class="ui buttons">
-                <button id="appendAtkLiquid" class="ui red basic button">アタークリキッド</button>
-                <button id="appendDefLiquid" class="ui blue basic button">マモールリキッド</button>
-                <button id="appendMatLiquid" class="ui purple basic button">マホアタリキッド</button>
-                <button id="appendMdfLiquid" class="ui violet basic button">マホマモリキッド</button>
-                <button id="appendResetLiquid" class="ui button">リセット</button>
-            </div>
-        </div>
-
+    
     </fieldset>
 
     <fieldset>
         <legend>スキル</legend>
-
-        <div class="jobSkill">
-            <i class="tint icon"></i>
-            <div class="ui buttons">
-                <button id="appendBloodScraper" class="ui pink basic button">ブラッドスクレイパー</button>
-                <button id="appendResetBloodScraper" class="ui button">リセット</button>
+    
+        <div class="ui basic segments">
+            <div class="ui fitted segment jobSkill">
+                <i class="tint icon"></i>
+                <button id="appendBloodScraper" class="ui mini pink basic button">ブラッドスクレイパー</button>
+                <button id="appendResetBloodScraper" class="ui mini button">リセット</button>
+            </div>
+    
+            <div class="ui fitted segment specialSkill">
+                <i class="feather alternate icon"></i>
+                <button id="appendElysion" class="ui mini basic button">大天使の加護</button>
+                <button id="appendApophis" class="ui mini yellow basic button">邪神の呪詛</button>
+                <button id="appendResetSpecial" class="ui mini button">リセット</button>
             </div>
         </div>
-
-        <div class="specialSkill">
-            <i class="feather alternate icon"></i>
-            <div class="ui buttons">
-                <button id="appendElysion" class="ui basic button">大天使の加護</button>
-                <button id="appendApophis" class="ui yellow basic button">邪神の呪詛</button>
-                <button id="appendResetSpecial" class="ui button">リセット</button>
-            </div>
-        </div>
-
+    
     </fieldset>
 
     <fieldset>
@@ -389,10 +377,8 @@
 
         <div class="break">
             <i class="ring icon"></i>
-            <div class="ui buttons">
-                <button id="appendBreak" class="ui basic button">ブレイク</button>
-                <button id="appendResetBreak" class="ui button">リセット</button>
-            </div>
+                <button id="appendBreak" class="ui mini basic button">ブレイク</button>
+                <button id="appendResetBreak" class="ui mini button">リセット</button>
         </div>
 
     </fieldset>
@@ -402,7 +388,7 @@
 
         <div class="changeClothes">
             <i class="tshirt icon"></i>
-            <button id="appendChangeClothes" class="ui basic button">着替え</button>
+            <button id="appendChangeClothes" class="ui mini basic button">着替え</button>
         </div>
 
     </fieldset>
