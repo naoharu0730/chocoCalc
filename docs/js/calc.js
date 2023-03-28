@@ -394,7 +394,7 @@ function calculation() {
             result.atk -= liquidBuff.atk;
 
             let atkMagni = (level + result.pow - 100) / 100; // ATK上昇倍率
-            liquidBuff.atk = parseInt((result.atk - result.pow - elysionBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
+            liquidBuff.atk = parseInt((result.atk - result.pow - elysionBuff.atk - fairyPowBuff.atk) * Math.max(0.1, atkMagni)); // ATK上昇量
             result.atk += liquidBuff.atk;
         }
         if (taskName == "defLiquid") {
@@ -410,7 +410,7 @@ function calculation() {
             result.mat -= liquidBuff.mat;
 
             let matMagni = (level + result.int - 100) / 100; // MAT上昇倍率
-            liquidBuff.mat = parseInt((result.mat - elysionBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
+            liquidBuff.mat = parseInt((result.mat - elysionBuff.mat - fairyIntBuff.mat) * Math.max(0.1, matMagni)); // MAT上昇量
             result.mat += liquidBuff.mat;
         }
         if (taskName == "mdfLiquid") {
