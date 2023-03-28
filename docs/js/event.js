@@ -326,6 +326,18 @@ $(document).ready(function () {
         $('.process').append('<div name=apophis class="ui fitted segment"><i class="feather alternate icon"></i>邪神の呪詛 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
     });
+    $('#appendBlueShield').on('click', function () {
+        $('.process').append('<div name=blueShield class="ui fitted segment"><i class="feather alternate icon"></i>祝福の蒼盾 <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendFairyPow').on('click', function () {
+        $('.process').append('<div name=fairyPow class="ui fitted segment"><i class="feather alternate icon"></i>妖精王の祝福(POW) <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
+    $('#appendFairyInt').on('click', function () {
+        $('.process').append('<div name=fairyInt class="ui fitted segment"><i class="feather alternate icon"></i>妖精王の祝福(INT) <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
+        calculation() // 処理の追加タイミングで更新
+    });
     $('#appendResetSpecial').on('click', function () {
         $('.process').append('<div name=resetSpecial class="ui fitted segment"><i class="feather alternate icon"></i>リセット：スペシャル（羽） <button class="delete compact mini ui button"><i class="times icon"></i>削除</button> </div>');
         calculation() // 処理の追加タイミングで更新
