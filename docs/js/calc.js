@@ -163,6 +163,9 @@ function calculation() {
     // フィス羽の上昇値
     let apophisBuff = new PISVL(0, 0, 0, 0, 0);
 
+    // ベネ羽の上昇値
+    let blueShieldBuff = new PISVL(0, 0, 0, 0, 0);
+
     // 処理
     $(".process div").each(function (i) {
         let task = $(".process div").eq(i);
@@ -430,7 +433,7 @@ function calculation() {
 
         // スキル（羽）処理
         if (taskName == "elysion") {
-            resetPISVLHpSpADMaMdBuff(elysionBuff, result);
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
 
             elysionBuff.pow = parseInt(result.pow * 0.2); // POW上昇値
             elysionBuff.pow = Math.max(1, elysionBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
@@ -468,13 +471,17 @@ function calculation() {
             result.mdf += elysionBuff.mdf;
         }
         if (taskName == "apophis") {
-            resetPISVLBuff(apophisBuff, result);
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
             apophisBuff.luk = parseInt(result.luk * 0.3); // LUK上昇値
             result.luk += apophisBuff.luk;
         }
+        if (taskName == "blueShield") {
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
+            blueShieldBuff.vit = parseInt(result.vit * 0.3); // VIT上昇値
+            result.vit += blueShieldBuff.vit;
+        }
         if (taskName == "resetSpecial") {
-            resetPISVLHpSpADMaMdBuff(elysionBuff, result); // 大天使の加護のリセット
-            resetPISVLBuff(apophisBuff, result); // 邪神の呪詛のリセット
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
         }
 
         // ブレイク処理
@@ -647,6 +654,15 @@ function resetPISVLHpSpADMaMdBuff(PISVLHpSpADMaMdBuff, result) {
 
     // 上昇値のリセット
     PISVLHpSpADMaMdBuff.reset();
+}
+
+/**
+ * スキル（羽）の上昇値をリセットする
+ */
+function resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) {
+    resetPISVLHpSpADMaMdBuff(elysionBuff, result); // 大天使の加護のリセット
+    resetPISVLBuff(apophisBuff, result); // 邪神の呪詛のリセット
+    resetPISVLBuff(blueShieldBuff, result); // 祝福の蒼盾のリセット
 }
 
 /**
