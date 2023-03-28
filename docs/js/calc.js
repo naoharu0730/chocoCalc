@@ -166,6 +166,12 @@ function calculation() {
     // ベネ羽の上昇値
     let blueShieldBuff = new PISVL(0, 0, 0, 0, 0);
 
+    // レナ羽の上昇値
+    let fairyPowBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+    // マナ羽の上昇値
+    let fairyIntBuff = new PISVLHpSpADMaMd(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
     // 処理
     $(".process div").each(function (i) {
         let task = $(".process div").eq(i);
@@ -433,7 +439,7 @@ function calculation() {
 
         // スキル（羽）処理
         if (taskName == "elysion") {
-            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) //　スキル（羽）効果のリセット
 
             elysionBuff.pow = parseInt(result.pow * 0.2); // POW上昇値
             elysionBuff.pow = Math.max(1, elysionBuff.pow); // POW上昇値が 0 以下だったら、上昇値は 1 とする
@@ -471,17 +477,34 @@ function calculation() {
             result.mdf += elysionBuff.mdf;
         }
         if (taskName == "apophis") {
-            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) //　スキル（羽）効果のリセット
             apophisBuff.luk = parseInt(result.luk * 0.3); // LUK上昇値
             result.luk += apophisBuff.luk;
         }
         if (taskName == "blueShield") {
-            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) //　スキル（羽）効果のリセット
             blueShieldBuff.vit = parseInt(result.vit * 0.3); // VIT上昇値
             result.vit += blueShieldBuff.vit;
         }
+        if (taskName == "fairyPow") {
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) //　スキル（羽）効果のリセット
+            fairyPowBuff.pow = parseInt(result.pow * 0.3); // POW上昇値
+            result.pow += fairyPowBuff.pow;
+            result.atk += fairyPowBuff.pow * 3;
+            fairyPowBuff.atk = parseInt((total.atk + makimonoBuff.atk - (total.pow * 3) + (result.pow * 2)) * 0.2); // レナ羽のATK上昇量
+            result.atk += fairyPowBuff.atk;
+        }
+        if (taskName == "fairyInt") {
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) //　スキル（羽）効果のリセット
+            fairyIntBuff.int = parseInt(result.int * 0.3); // INT上昇値
+            result.int += fairyIntBuff.int;
+            result.mat += fairyIntBuff.int * 2;
+            result.mdf += fairyIntBuff.int * 15;
+            fairyIntBuff.mat = parseInt((total.mat + makimonoBuff.mat - (total.int * 2) + (result.int * 2)) * 0.2); // マナ羽のMAT上昇量
+            result.mat += fairyIntBuff.mat;
+        }
         if (taskName == "resetSpecial") {
-            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) //　スキル（羽）効果のリセット
+            resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) //　スキル（羽）効果のリセット
         }
 
         // ブレイク処理
@@ -563,7 +586,7 @@ function calculation() {
 
 /**
  * POW/INT/SPD/VIT/LUKの上昇値をリセットする
- * 魔獣缶・シールや、ビタ、スクレイパー、フィス羽などのリセットに使用する
+ * 魔獣缶・シールや、ビタ、スクレイパー、フィス羽、ベネ羽などのリセットに使用する
  */
 function resetPISVLBuff(PISVLBuff, result) {
     // POW上昇による効果のリセット
@@ -659,10 +682,12 @@ function resetPISVLHpSpADMaMdBuff(PISVLHpSpADMaMdBuff, result) {
 /**
  * スキル（羽）の上昇値をリセットする
  */
-function resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, result) {
+function resetWingSkill(elysionBuff, apophisBuff, blueShieldBuff, fairyPowBuff, fairyIntBuff, result) {
     resetPISVLHpSpADMaMdBuff(elysionBuff, result); // 大天使の加護のリセット
     resetPISVLBuff(apophisBuff, result); // 邪神の呪詛のリセット
     resetPISVLBuff(blueShieldBuff, result); // 祝福の蒼盾のリセット
+    resetPISVLADMaMdBuff(fairyPowBuff, result) // 妖精王の祝福(POW)のリセット
+    resetPISVLADMaMdBuff(fairyIntBuff, result) // 妖精王の祝福(INT)のリセット
 }
 
 /**
